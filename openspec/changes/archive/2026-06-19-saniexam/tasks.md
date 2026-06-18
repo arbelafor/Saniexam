@@ -194,7 +194,7 @@ Chain strategy: feature-branch-chain
 - [x] 7.3 a11y: `contentDescription` on reveal + each rating ("Calificar como Again/Hard/Good/Easy"); `Modifier.semantics` for timer; large-font sanity.
 - [x] 7.4 Emulator matrix (Home/Review/Exam/Stats/Settings; reveal/rating; timer expiry; backup; light+dark).
 - [x] 7.5 Final pre-merge: PR body chain-context (base = `feature/saniexam-pr6-exam`, target = `feature/saniexam`), no `size:exception`, `work-unit-commits` checklist passed.
-- [ ] 7.6 After PR7 merges into tracker: open tracker PR (`feature/saniexam` → `main`), merge, then run `sdd-archive`.
+- [x] 7.6 Bootstrap pushed to `main` (`origin/main`) as the final integration path. Note: the planned tracker PR was replaced by a direct initial bootstrap push because the repository had no prior commit history during implementation.
 
 ## Dependencies
 
