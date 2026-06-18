@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaniExam</string>
+
+    <!-- Common content descriptions -->
+    <string name="cd_back">Atrás</string>
+    <string name="cd_open_settings">Abrir ajustes</string>
+
+    <!-- Home -->
+    <string name="home_title">SaniExam</string>
+    <string name="home_subtitle">Preparación offline para oposiciones de sanidad</string>
+    <string name="home_loading">Cargando contenido…</string>
+    <string name="home_retry">Reintentar</string>
+    <string name="home_empty_title">No hay contenido para mostrar</string>
+    <string name="home_empty_no_pack">No se ha aplicado ningún paquete.</string>
+    <string name="home_empty_pack_label">Paquete aplicado: %1$s, pero no contiene preguntas.</string>
+    <string name="home_error_title">No se pudo cargar el contenido</string>
+    <string name="home_error_question">Pregunta afectada: %1$s</string>
+    <string name="home_pack_id">Paquete: %1$s</string>
+    <string name="home_pack_version">Versión: %1$d</string>
+    <string name="home_pack_attribution">Fuente: %1$s</string>
+    <string name="home_pack_license">Licencia: %1$s</string>
+    <string name="home_count_questions">Preguntas</string>
+    <string name="home_count_due_today">Repasos pendientes</string>
+    <string name="home_open_stats">Ver estadísticas</string>
+    <string name="home_open_stats_desc">Abrir la pantalla de estadísticas</string>
+    <string name="home_review_cta">Repasar</string>
+    <string name="home_review_unavailable_desc">Disponible en la próxima versión</string>
+    <string name="home_review_desc">Iniciar sesión de repaso</string>
+    <string name="home_exam_cta">Iniciar simulación</string>
+    <string name="home_exam_unavailable_desc">Disponible en la próxima versión</string>
+    <string name="home_exam_desc">Iniciar simulación de examen</string>
+
+    <!-- Review -->
+    <string name="review_title">Repaso</string>
+    <string name="review_loading">Cargando repasos…</string>
+    <string name="review_empty_title">No hay repasos pendientes</string>
+    <string name="review_empty_message">Vuelve más tarde: tu próxima sesión estará lista cuando haya tarjetas vencidas.</string>
+    <string name="review_error_title">No se pudo cargar la sesión</string>
+    <string name="review_error_unknown">Error desconocido</string>
+    <string name="review_position">%1$d de %2$d</string>
+    <string name="review_reveal">Mostrar respuesta</string>
+    <string name="review_reveal_desc">Mostrar respuesta</string>
+    <string name="review_explanation_label">Explicación</string>
+    <string name="rating_again">Otra vez</string>
+    <string name="rating_hard">Difícil</string>
+    <string name="rating_good">Bien</string>
+    <string name="rating_easy">Fácil</string>
+    <string name="rating_content_description">Calificar como %1$s, próximo repaso en %2$s</string>
+
+    <!-- Import error reasons (es-ES) -->
+    <string name="import_err_asset_missing">Falta el archivo del paquete en la aplicación.</string>
+    <string name="import_err_asset_unreadable">No se pudo leer el archivo del paquete.</string>
+    <string name="import_err_manifest_missing">Falta el manifiesto del paquete.</string>
+    <string name="import_err_manifest_mismatch">El manifiesto y el contenido del paquete no coinciden.</string>
+    <string name="import_err_pack_id_mismatch">El identificador del paquete no coincide.</string>
+    <string name="import_err_version_mismatch">La versión del paquete no coincide.</string>
+    <string name="import_err_checksum_mismatch">La suma de comprobación del paquete no coincide.</string>
+    <string name="import_err_missing_attribution">Faltan datos de atribución en el paquete.</string>
+    <string name="import_err_question_missing_fields">Alguna pregunta no tiene todos los campos obligatorios.</string>
+    <string name="import_err_zero_or_multi_correct">Alguna pregunta no tiene exactamente una opción correcta.</string>
+    <string name="import_err_orphan_topic">Alguna pregunta hace referencia a un tema inexistente.</string>
+    <string name="import_err_duplicate_question">Hay preguntas con identificadores duplicados.</string>
+
+    <!-- Stats -->
+    <string name="stats_title">Estadísticas</string>
+    <string name="stats_streak_label_short">Días consecutivos</string>
+    <string name="stats_total_label_short">Repasos totales</string>
+    <string name="stats_retention_label">Retención (30 días)</string>
+    <string name="stats_retention_value">%1$.1f %%</string>
+    <string name="stats_insufficient">Datos insuficientes</string>
+    <string name="stats_empty_message">Empieza a repasar para ver tu progreso aquí.</string>
+    <string name="stats_value_pending">—</string>
+    <string name="stats_days_zero">%1$d días</string>
+    <string name="stats_days_one">%1$d día</string>
+    <string name="stats_days_other">%1$d días</string>
+    <string name="stats_reviews_one">%1$d repaso</string>
+    <string name="stats_reviews_other">%1$d repasos</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_no_pack">No hay paquete aplicado.</string>
+    <string name="settings_export">Exportar progreso</string>
+    <string name="settings_import">Importar progreso</string>
+    <string name="settings_undo">Deshacer importación</string>
+    <string name="settings_export_success">Progreso exportado</string>
+    <string name="settings_import_success">Progreso importado</string>
+    <string name="settings_import_undone">Importación deshecha</string>
+    <string name="settings_import_error">No se pudo importar el archivo.</string>
+    <string name="settings_other_error">Ha ocurrido un error inesperado.</string>
+    <string name="settings_err_checksum">La suma de comprobación del archivo no coincide.</string>
+    <string name="settings_err_schema">Esta versión del archivo requiere una versión más reciente de la aplicación.</string>
+    <string name="settings_err_malformed">El archivo no tiene un formato válido.</string>
+    <string name="settings_err_nothing_to_undo">No hay ninguna importación reciente que deshacer.</string>
+
+    <!-- Backup confirmation dialog -->
+    <string name="settings_import_dialog_title">¿Reemplazar el progreso actual?</string>
+    <string name="settings_import_dialog_body">Vas a reemplazar el progreso almacenado en este dispositivo por el contenido del archivo de copia de seguridad.</string>
+    <string name="settings_import_dialog_will_replace">Se reemplazarán: CardState, ReviewLog y UserSettings.</string>
+    <string name="settings_import_dialog_confirm">Sí, reemplazar</string>
+    <string name="settings_import_dialog_cancel">Cancelar</string>
+
+    <!-- Exam (PR6) -->
+    <string name="exam_title">Simulación de examen</string>
+    <string name="exam_loading">Preparando preguntas…</string>
+    <string name="exam_error_title">No se pudo iniciar la simulación</string>
+    <string name="exam_error_no_active_pack">No hay ningún paquete aplicado.</string>
+    <string name="exam_error_empty_pack">El paquete aplicado no contiene preguntas.</string>
+    <string name="exam_error_unknown">Error desconocido.</string>
+    <string name="exam_position">Pregunta %1$d de %2$d</string>
+    <string name="exam_timer">Tiempo restante: %1$s</string>
+    <string name="exam_prev">Anterior</string>
+    <string name="exam_next">Siguiente</string>
+    <string name="exam_submit">Entregar</string>
+    <string name="exam_submit_desc">Entregar el examen y ver los resultados</string>
+    <string name="exam_select_option_desc">Seleccionar opción %1$s</string>
+    <string name="exam_results_title">Resultado de la simulación</string>
+    <string name="exam_correct_label">Correctas</string>
+    <string name="exam_incorrect_label">Incorrectas</string>
+    <string name="exam_blank_label">En blanco</string>
+    <!-- Breakdown copy: shows how many of the `incorrect` total were left
+         unanswered. The wording makes the spec "blank = incorrect"
+         relationship explicit on screen. -->
+    <string name="exam_blank_of_incorrect">%1$d de %2$d sin responder</string>
+    <string name="exam_score_label">Nota</string>
+    <string name="exam_score_value">%1$.1f %%</string>
+    <string name="exam_elapsed_label">Tiempo</string>
+    <string name="exam_elapsed_value">%1$d:%2$02d</string>
+    <string name="exam_review_title">Detalle por pregunta</string>
+    <string name="exam_prompt_index">Pregunta %1$d</string>
+    <string name="exam_your_answer">Tu respuesta</string>
+    <string name="exam_correct_answer">Respuesta correcta</string>
+    <string name="exam_no_answer">Sin responder</string>
+    <string name="exam_back_to_home">Volver al inicio</string>
+    <string name="exam_back_desc">Volver al inicio del examen</string>
+
+    <!-- Plurals (PR7). Replaces the hard-coded "%1$d días" / "%1$d repasos"
+         patterns that were tripping Lint's PluralsCandidate. The Stats
+         screens use [quantityString] via StatsViewModel-side helpers
+         (see presentation/stats/StatsScreen.kt) so the visible copy
+         now matches the grammatical plural form in es-ES. -->
+    <plurals name="stats_streak_label">
+        <item quantity="zero">%1$d días</item>
+        <item quantity="one">%1$d día</item>
+        <item quantity="other">%1$d días</item>
+    </plurals>
+    <plurals name="stats_total_label">
+        <item quantity="zero">%1$d repasos</item>
+        <item quantity="one">%1$d repaso</item>
+        <item quantity="other">%1$d repasos</item>
+    </plurals>
+</resources>

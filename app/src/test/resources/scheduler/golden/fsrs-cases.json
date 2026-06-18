@@ -1,0 +1,761 @@
+{
+  "generator": "ts-fsrs@5.4.1 (FSRS-6 / FSRS v6)",
+  "parameters": {
+    "request_retention": 0.9,
+    "maximum_interval": 36500,
+    "enable_fuzz": false,
+    "enable_short_term": true,
+    "learning_steps": [
+      "1m",
+      "10m"
+    ],
+    "relearning_steps": [
+      "10m"
+    ],
+    "w": [
+      0.212,
+      1.2931,
+      2.3065,
+      8.2956,
+      6.4133,
+      0.8334,
+      3.0194,
+      0.001,
+      1.8722,
+      0.1666,
+      0.796,
+      1.4835,
+      0.0614,
+      0.2629,
+      1.6483,
+      0.6014,
+      1.8729,
+      0.5425,
+      0.0912,
+      0.0658,
+      0.1542
+    ]
+  },
+  "cases": [
+    {
+      "id": "new-again",
+      "description": "New card rated Again",
+      "input": {
+        "card": {
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 0,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": null
+        },
+        "rating": "Again",
+        "now": 1736935200000
+      },
+      "output": {
+        "card": {
+          "state": "Learning",
+          "due": 1736935260000,
+          "stability": 0.212,
+          "difficulty": 6.4133,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 1,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1736935200000
+        },
+        "log": {
+          "rating": "Again",
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "last_elapsed_days": 0,
+          "scheduled_days": 0,
+          "review": 1736935200000
+        }
+      }
+    },
+    {
+      "id": "new-hard",
+      "description": "New card rated Hard",
+      "input": {
+        "card": {
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 0,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": null
+        },
+        "rating": "Hard",
+        "now": 1736935200000
+      },
+      "output": {
+        "card": {
+          "state": "Learning",
+          "due": 1736935560000,
+          "stability": 1.2931,
+          "difficulty": 5.11217071,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 1,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1736935200000
+        },
+        "log": {
+          "rating": "Hard",
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "last_elapsed_days": 0,
+          "scheduled_days": 0,
+          "review": 1736935200000
+        }
+      }
+    },
+    {
+      "id": "new-good",
+      "description": "New card rated Good",
+      "input": {
+        "card": {
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 0,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": null
+        },
+        "rating": "Good",
+        "now": 1736935200000
+      },
+      "output": {
+        "card": {
+          "state": "Learning",
+          "due": 1736935800000,
+          "stability": 2.3065,
+          "difficulty": 2.11810397,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 1,
+          "lapses": 0,
+          "learning_steps": 1,
+          "last_review": 1736935200000
+        },
+        "log": {
+          "rating": "Good",
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "last_elapsed_days": 0,
+          "scheduled_days": 0,
+          "review": 1736935200000
+        }
+      }
+    },
+    {
+      "id": "new-easy",
+      "description": "New card rated Easy",
+      "input": {
+        "card": {
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 0,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": null
+        },
+        "rating": "Easy",
+        "now": 1736935200000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1737626400000,
+          "stability": 8.2956,
+          "difficulty": 1,
+          "elapsed_days": 0,
+          "scheduled_days": 8,
+          "reps": 1,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1736935200000
+        },
+        "log": {
+          "rating": "Easy",
+          "state": "New",
+          "due": 1736935200000,
+          "stability": 0,
+          "difficulty": 0,
+          "elapsed_days": 0,
+          "last_elapsed_days": 0,
+          "scheduled_days": 0,
+          "review": 1736935200000
+        }
+      }
+    },
+    {
+      "id": "review-again",
+      "description": "Mature Review card rated Again",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1750586400000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 32,
+          "scheduled_days": 118,
+          "reps": 4,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1740391200000
+        },
+        "rating": "Again",
+        "now": 1750586400000
+      },
+      "output": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587000000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 118,
+          "scheduled_days": 0,
+          "reps": 5,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "log": {
+          "rating": "Again",
+          "state": "Review",
+          "due": 1740391200000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 118,
+          "last_elapsed_days": 32,
+          "scheduled_days": 118,
+          "review": 1750586400000
+        }
+      }
+    },
+    {
+      "id": "review-hard",
+      "description": "Mature Review card rated Hard",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1750586400000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 32,
+          "scheduled_days": 118,
+          "reps": 4,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1740391200000
+        },
+        "rating": "Hard",
+        "now": 1750586400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1774000800000,
+          "stability": 271.35612496,
+          "difficulty": 4.73915103,
+          "elapsed_days": 118,
+          "scheduled_days": 271,
+          "reps": 5,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "log": {
+          "rating": "Hard",
+          "state": "Review",
+          "due": 1740391200000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 118,
+          "last_elapsed_days": 32,
+          "scheduled_days": 118,
+          "review": 1750586400000
+        }
+      }
+    },
+    {
+      "id": "review-good",
+      "description": "Mature Review card rated Good",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1750586400000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 32,
+          "scheduled_days": 118,
+          "reps": 4,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1740391200000
+        },
+        "rating": "Good",
+        "now": 1750586400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1782813600000,
+          "stability": 373.21797675,
+          "difficulty": 2.09058635,
+          "elapsed_days": 118,
+          "scheduled_days": 373,
+          "reps": 5,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "log": {
+          "rating": "Good",
+          "state": "Review",
+          "due": 1740391200000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 118,
+          "last_elapsed_days": 32,
+          "scheduled_days": 118,
+          "review": 1750586400000
+        }
+      }
+    },
+    {
+      "id": "review-easy",
+      "description": "Mature Review card rated Easy",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1750586400000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 32,
+          "scheduled_days": 118,
+          "reps": 4,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1740391200000
+        },
+        "rating": "Easy",
+        "now": 1750586400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1802080800000,
+          "stability": 596.2867435,
+          "difficulty": 1,
+          "elapsed_days": 118,
+          "scheduled_days": 596,
+          "reps": 5,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "log": {
+          "rating": "Easy",
+          "state": "Review",
+          "due": 1740391200000,
+          "stability": 117.6689256,
+          "difficulty": 2.09745544,
+          "elapsed_days": 118,
+          "last_elapsed_days": 32,
+          "scheduled_days": 118,
+          "review": 1750586400000
+        }
+      }
+    },
+    {
+      "id": "relearning-again",
+      "description": "Relearning card rated Again",
+      "input": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587000000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 118,
+          "scheduled_days": 0,
+          "reps": 5,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "rating": "Again",
+        "now": 1750587000000
+      },
+      "output": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587600000,
+          "stability": 1.35602653,
+          "difficulty": 9.12658829,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 6,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750587000000
+        },
+        "log": {
+          "rating": "Again",
+          "state": "Relearning",
+          "due": 1750586400000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 0,
+          "last_elapsed_days": 118,
+          "scheduled_days": 0,
+          "review": 1750587000000
+        }
+      }
+    },
+    {
+      "id": "relearning-hard",
+      "description": "Relearning card rated Hard",
+      "input": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587000000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 118,
+          "scheduled_days": 0,
+          "reps": 5,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "rating": "Hard",
+        "now": 1750587000000
+      },
+      "output": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587900000,
+          "stability": 4.19742374,
+          "difficulty": 8.25107232,
+          "elapsed_days": 0,
+          "scheduled_days": 0,
+          "reps": 6,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750587000000
+        },
+        "log": {
+          "rating": "Hard",
+          "state": "Relearning",
+          "due": 1750586400000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 0,
+          "last_elapsed_days": 118,
+          "scheduled_days": 0,
+          "review": 1750587000000
+        }
+      }
+    },
+    {
+      "id": "relearning-good",
+      "description": "Relearning card rated Good",
+      "input": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587000000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 118,
+          "scheduled_days": 0,
+          "reps": 5,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "rating": "Good",
+        "now": 1750587000000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1750932600000,
+          "stability": 4.19742374,
+          "difficulty": 7.37555636,
+          "elapsed_days": 0,
+          "scheduled_days": 4,
+          "reps": 6,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750587000000
+        },
+        "log": {
+          "rating": "Good",
+          "state": "Relearning",
+          "due": 1750586400000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 0,
+          "last_elapsed_days": 118,
+          "scheduled_days": 0,
+          "review": 1750587000000
+        }
+      }
+    },
+    {
+      "id": "relearning-easy",
+      "description": "Relearning card rated Easy",
+      "input": {
+        "card": {
+          "state": "Relearning",
+          "due": 1750587000000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 118,
+          "scheduled_days": 0,
+          "reps": 5,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750586400000
+        },
+        "rating": "Easy",
+        "now": 1750587000000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1751191800000,
+          "stability": 6.90370866,
+          "difficulty": 6.50004041,
+          "elapsed_days": 0,
+          "scheduled_days": 7,
+          "reps": 6,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1750587000000
+        },
+        "log": {
+          "rating": "Easy",
+          "state": "Relearning",
+          "due": 1750586400000,
+          "stability": 4.19742374,
+          "difficulty": 7.38771571,
+          "elapsed_days": 0,
+          "last_elapsed_days": 118,
+          "scheduled_days": 0,
+          "review": 1750587000000
+        }
+      }
+    },
+    {
+      "id": "zero-elapsed-again",
+      "description": "Review card rated Again at exactly its scheduled due (zero elapsed beyond due)",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1737626400000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 1,
+          "scheduled_days": 7,
+          "reps": 2,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737021600000
+        },
+        "rating": "Again",
+        "now": 1737626400000
+      },
+      "output": {
+        "card": {
+          "state": "Relearning",
+          "due": 1737627000000,
+          "stability": 1.23894176,
+          "difficulty": 7.39223814,
+          "elapsed_days": 7,
+          "scheduled_days": 0,
+          "reps": 3,
+          "lapses": 1,
+          "learning_steps": 0,
+          "last_review": 1737626400000
+        },
+        "log": {
+          "rating": "Again",
+          "state": "Review",
+          "due": 1737021600000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 7,
+          "last_elapsed_days": 1,
+          "scheduled_days": 7,
+          "review": 1737626400000
+        }
+      }
+    },
+    {
+      "id": "zero-elapsed-hard",
+      "description": "Review card rated Hard at exactly its scheduled due (zero elapsed beyond due)",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1737626400000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 1,
+          "scheduled_days": 7,
+          "reps": 2,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737021600000
+        },
+        "rating": "Hard",
+        "now": 1737626400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1739527200000,
+          "stability": 21.96776599,
+          "difficulty": 4.74828477,
+          "elapsed_days": 7,
+          "scheduled_days": 22,
+          "reps": 3,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737626400000
+        },
+        "log": {
+          "rating": "Hard",
+          "state": "Review",
+          "due": 1737021600000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 7,
+          "last_elapsed_days": 1,
+          "scheduled_days": 7,
+          "review": 1737626400000
+        }
+      }
+    },
+    {
+      "id": "zero-elapsed-good",
+      "description": "Review card rated Good at exactly its scheduled due (zero elapsed beyond due)",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1737626400000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 1,
+          "scheduled_days": 7,
+          "reps": 2,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737021600000
+        },
+        "rating": "Good",
+        "now": 1737626400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1740391200000,
+          "stability": 31.67922703,
+          "difficulty": 2.1043314,
+          "elapsed_days": 7,
+          "scheduled_days": 32,
+          "reps": 3,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737626400000
+        },
+        "log": {
+          "rating": "Good",
+          "state": "Review",
+          "due": 1737021600000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 7,
+          "last_elapsed_days": 1,
+          "scheduled_days": 7,
+          "review": 1737626400000
+        }
+      }
+    },
+    {
+      "id": "zero-elapsed-easy",
+      "description": "Review card rated Easy at exactly its scheduled due (zero elapsed beyond due)",
+      "input": {
+        "card": {
+          "state": "Review",
+          "due": 1737626400000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 1,
+          "scheduled_days": 7,
+          "reps": 2,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737021600000
+        },
+        "rating": "Easy",
+        "now": 1737626400000
+      },
+      "output": {
+        "card": {
+          "state": "Review",
+          "due": 1742205600000,
+          "stability": 52.94649835,
+          "difficulty": 1,
+          "elapsed_days": 7,
+          "scheduled_days": 53,
+          "reps": 3,
+          "lapses": 0,
+          "learning_steps": 0,
+          "last_review": 1737626400000
+        },
+        "log": {
+          "rating": "Easy",
+          "state": "Review",
+          "due": 1737021600000,
+          "stability": 7.31530068,
+          "difficulty": 2.11121424,
+          "elapsed_days": 7,
+          "last_elapsed_days": 1,
+          "scheduled_days": 7,
+          "review": 1737626400000
+        }
+      }
+    }
+  ]
+}

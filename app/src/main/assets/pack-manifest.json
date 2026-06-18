@@ -1,0 +1,10 @@
+{
+  "id": "sanidad-dev-placeholder",
+  "version": 1,
+  "sourceAttribution": "Development / test content (NOT real exam data)",
+  "publishedAt": "2026-06-16",
+  "license": "dev-placeholder",
+  "licenseNotes": "Dev placeholder pack; release pipeline MUST fail closed while this license is active. Replace with a cleared-of-rights official pack before any public distribution.",
+  "sha256": "11e5650e849b3d32f6ba6adff10b355e9b5c806cf5f1102da038edaa8b5f2f16",
+  "packFile": "question-packs/sanidad-dev-placeholder-v1.json"
+}

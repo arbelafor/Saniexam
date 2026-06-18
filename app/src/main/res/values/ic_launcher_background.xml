@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Placeholder palette; final branding lands before public distribution. -->
+    <color name="ic_launcher_background">#21005D</color>
+    <color name="ic_launcher_foreground">#EADDFF</color>
+</resources>

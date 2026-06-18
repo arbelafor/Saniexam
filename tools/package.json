@@ -1,0 +1,17 @@
+{
+  "name": "saniexam-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tooling scripts that are not part of the app (FSRS golden fixture generator, license-gate CI mirror).",
+  "scripts": {
+    "generate-golden": "node generate-golden.ts",
+    "check-pack-license": "bash check-pack-license.sh",
+    "check-no-network": "bash check-no-network.sh"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "ts-fsrs": "5.4.1"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "packId": "sanidad-dev-placeholder",
+  "packVersion": 1,
+  "topics": [
+    { "id": "t-cardio", "name": "Cardiología (dev)" },
+    { "id": "t-legis", "name": "Legislación sanitaria (dev)" }
+  ],
+  "questions": [
+    {
+      "id": "q-001",
+      "topicId": "t-cardio",
+      "prompt": "[DEV PLACEHOLDER] ¿Cuál es la arteria que irriga la cara anterior del corazón?",
+      "explanation": "La arteria coronaria descendente anterior (DA) irriga la cara anterior del ventrículo izquierdo.",
+      "officialYear": 2019,
+      "officialSourceRef": "DEV-PLACEHOLDER",
+      "options": [
+        { "id": "q-001-a", "ordinal": 0, "text": "Arteria circunfleja", "isCorrect": false },
+        { "id": "q-001-b", "ordinal": 1, "text": "Arteria coronaria descendente anterior", "isCorrect": true },
+        { "id": "q-001-c", "ordinal": 2, "text": "Arteria coronaria derecha", "isCorrect": false },
+        { "id": "q-001-d", "ordinal": 3, "text": "Arteria mamaria interna", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-002",
+      "topicId": "t-cardio",
+      "prompt": "[DEV PLACEHOLDER] En un ECG normal, ¿qué onda representa la despolarización ventricular?",
+      "explanation": "El complejo QRS representa la despolarización ventricular.",
+      "officialYear": 2020,
+      "officialSourceRef": "DEV-PLACEHOLDER",
+      "options": [
+        { "id": "q-002-a", "ordinal": 0, "text": "Onda P", "isCorrect": false },
+        { "id": "q-002-b", "ordinal": 1, "text": "Complejo QRS", "isCorrect": true },
+        { "id": "q-002-c", "ordinal": 2, "text": "Onda T", "isCorrect": false },
+        { "id": "q-002-d", "ordinal": 3, "text": "Onda U", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-003",
+      "topicId": "t-legis",
+      "prompt": "[DEV PLACEHOLDER] ¿Qué ley española regula la autonomía del paciente?",
+      "explanation": "La Ley 41/2002, básica reguladora de la autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica.",
+      "officialYear": 2002,
+      "officialSourceRef": "BOE 274/2002",
+      "options": [
+        { "id": "q-003-a", "ordinal": 0, "text": "Ley 14/1986, General de Sanidad", "isCorrect": false },
+        { "id": "q-003-b", "ordinal": 1, "text": "Ley 41/2002, básica reguladora de la autonomía del paciente", "isCorrect": true },
+        { "id": "q-003-c", "ordinal": 2, "text": "Ley 16/2003, de cohesión y calidad del SNS", "isCorrect": false },
+        { "id": "q-003-d", "ordinal": 3, "text": "Ley 44/2003, de ordenación de las profesiones sanitarias", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-004",
+      "topicId": "t-legis",
+      "prompt": "[DEV PLACEHOLDER] El Sistema Nacional de Salud se configura como:",
+      "explanation": "El SNS es el conjunto de los servicios de salud de las CC.AA. coordinados por la Administración General del Estado.",
+      "officialYear": null,
+      "officialSourceRef": null,
+      "options": [
+        { "id": "q-004-a", "ordinal": 0, "text": "Un sistema único de gestión centralizada", "isCorrect": false },
+        { "id": "q-004-b", "ordinal": 1, "text": "Un conjunto coordinado de servicios de salud de las CC.AA.", "isCorrect": true },
+        { "id": "q-004-c", "ordinal": 2, "text": "Una red de hospitales privados concertados", "isCorrect": false },
+        { "id": "q-004-d", "ordinal": 3, "text": "Un organismo dependiente del Ministerio de Defensa", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-005",
+      "topicId": "t-cardio",
+      "prompt": "[DEV PLACEHOLDER] ¿Cuál es el valor normal de la presión arterial sistólica en un adulto sano en reposo?",
+      "explanation": "Valores normales: PAS 90-129 mmHg, PAD 60-84 mmHg.",
+      "officialYear": 2021,
+      "officialSourceRef": "DEV-PLACEHOLDER",
+      "options": [
+        { "id": "q-005-a", "ordinal": 0, "text": "70-89 mmHg", "isCorrect": false },
+        { "id": "q-005-b", "ordinal": 1, "text": "90-129 mmHg", "isCorrect": true },
+        { "id": "q-005-c", "ordinal": 2, "text": "130-149 mmHg", "isCorrect": false },
+        { "id": "q-005-d", "ordinal": 3, "text": "150-179 mmHg", "isCorrect": false }
+      ]
+    }
+  ]
+}

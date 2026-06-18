@@ -1,0 +1,51 @@
+# SDD Configuration — SANITEST
+
+project: sanitest
+display_name: SaniExam (working title; project folder: SANITEST)
+type: android-application
+description: >
+  Android application project. Folder is named SANITEST but the working product
+  name is SaniExam. Currently a near-empty repository with Android Agent Skills
+  installed under .github/skills/ and a project-level Agent.md declaring the
+  intended stack and conventions. No source code, no Gradle wrapper, no test
+  runner are present yet.
+
+context: |
+  Stack target: Kotlin 1.9+, Android minSdk 24, targetSdk 34, Jetpack Compose
+  (default) with legacy XML fallback, Hilt/Dagger DI, Coroutines + StateFlow,
+  Room + Retrofit, Gradle Kotlin DSL with Convention Plugins.
+  Architecture target: Clean Architecture (presentation/domain/data),
+  Repository pattern, offline-first, ViewModel + UDF.
+  No code exists yet. Initialization only — no proposal, spec, design, tasks,
+  or app implementation have been started.
+
+strict_tdd: false
+strict_tdd_reason: >
+  No test runner is configured in the project. Strict TDD is disabled until a
+  test framework (JUnit/MockK/Turbine, Compose Test Rule, or instrumentation
+  runner) is wired into the build. android-testing skill in .github/skills/
+  documents the intended test layout for when this is enabled.
+
+phases:
+  proposal: enabled
+  spec: enabled
+  design: enabled
+  tasks: enabled
+  apply: enabled
+  verify: enabled
+  archive: enabled
+
+delivery_strategy: ask-always
+review_budget_lines: 400
+artifact_store:
+  mode: both
+
+testing:
+  runner: none
+  layers: {}
+  coverage:
+    available: false
+  quality:
+    linter: none
+    type_checker: none
+    formatter: none

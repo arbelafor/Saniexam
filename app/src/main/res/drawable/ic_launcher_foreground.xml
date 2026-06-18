@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Solid backdrop so the icon stays legible before final branding. -->
+    <path
+        android:fillColor="#21005D"
+        android:pathData="M0,0h108v108h-108z" />
+    <!-- Stylised monogram "S" — final mark is replaced before public release. -->
+    <path
+        android:fillColor="#EADDFF"
+        android:pathData="M54,30c-9,0 -16,5.5 -16,13c0,7 5.5,10.5 14,12.5c7,1.5 10,3 10,7c0,4 -3.5,6.5 -8.5,6.5c-6,0 -10,-3 -12,-7l-7,4c3,7 9.5,11 19,11c10,0 17,-5.5 17,-14c0,-8 -6,-11.5 -15,-13.5c-6.5,-1.5 -9,-3 -9,-6c0,-3 2.5,-5 7,-5c4.5,0 8,2 10,5.5l6.5,-4c-3,-6 -8.5,-10 -16,-10z" />
+</vector>
