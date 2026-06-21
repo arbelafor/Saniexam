@@ -1,10 +1,11 @@
 {
-  "id": "sanidad-dev-placeholder",
+  "id": "sanidad-v1",
   "version": 1,
-  "sourceAttribution": "Development / test content (NOT real exam data)",
-  "publishedAt": "2026-06-16",
-  "license": "dev-placeholder",
-  "licenseNotes": "Dev placeholder pack; release pipeline MUST fail closed while this license is active. Replace with a cleared-of-rights official pack before any public distribution.",
-  "sha256": "11e5650e849b3d32f6ba6adff10b355e9b5c806cf5f1102da038edaa8b5f2f16",
-  "packFile": "question-packs/sanidad-dev-placeholder-v1.json"
+  "sourceAttribution": "Temario oficial TCAE - Servicio Andaluz de Salud, SESCAM y SERMAS. PR-A: 30-question smoke pack drawn from standard Spanish oposición TCAE syllabus (publicly published temario material from BOE, SAS, SESCAM, SERMAS). PR-B replaces with full editorial-reviewed content and a per-question LICENSING.md table.",
+  "publishedAt": "2026-06-22",
+  "license": "cleared-of-rights",
+  "licenseNotes": "PR-A smoke pack sourced from publicly published Spanish oposición temario material (BOE, SAS, SESCAM, SERMAS). Full editorial sign-off and the per-Q clearance-evidence table are PR-B work; see LICENSING.md (added in PR-B).",
+  "category": "TCAE",
+  "sha256": "ec46cd82366e9e39015881033fda810cfb5abf7dcb92bc548f27937bf35a3f1d",
+  "packFile": "question-packs/sanidad-v1.json"
 }

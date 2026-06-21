@@ -21,6 +21,28 @@ interface QuestionDao {
 
     @Query("SELECT COUNT(*) FROM question WHERE pack_id = :packId")
     suspend fun count(packId: String): Int
+
+    /**
+     * PR-A: filter the question read path by the pack's category.
+     * The `subject_pack` join enforces the category at the SQL
+     * layer (the `category` column lives on `subject_pack`, not
+     * `question`); the call site resolves the active category
+     * through `user_settings.active_category`. The MVP ships
+     * with `TCAE` as the only registered category.
+     */
+    @Query(
+        "SELECT q.* FROM question q " +
+            "INNER JOIN subject_pack sp ON sp.id = q.pack_id AND sp.version = q.pack_version " +
+            "WHERE sp.category = :category"
+    )
+    fun observeAllByCategory(category: String): Flow<List<QuestionEntity>>
+
+    @Query(
+        "SELECT COUNT(*) FROM question q " +
+            "INNER JOIN subject_pack sp ON sp.id = q.pack_id AND sp.version = q.pack_version " +
+            "WHERE sp.category = :category"
+    )
+    suspend fun countByCategory(category: String): Int
 }
 
 @Dao

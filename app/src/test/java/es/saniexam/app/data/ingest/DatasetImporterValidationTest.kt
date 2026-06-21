@@ -9,6 +9,13 @@ import org.junit.Test
  * JUnit-only tests for the importer's pure helpers. The importer itself
  * depends on Android types and is exercised via the integration test path
  * (deferred to PR4 with the Room transaction test).
+ *
+ * PR-A: the [DatasetImportException.Reason] enum gained
+ * `MissingCategory` and `ProvenanceMissing` so a pack without
+ * pack-level `category` or a per-Q `officialSourceRef` can be
+ * rejected without a stringly-typed comparison. The release
+ * gate is the first line of defence; the validator's enum
+ * reasons are the second.
  */
 class DatasetImporterValidationTest {
 
@@ -43,6 +50,7 @@ class DatasetImporterValidationTest {
         val expected = setOf(
             "AssetMissing", "AssetUnreadable", "ManifestMissing", "ManifestMismatch",
             "PackIdMismatch", "VersionMismatch", "ChecksumMismatch", "MissingAttribution",
+            "MissingCategory", "CategoryMismatch", "ProvenanceMissing",
             "QuestionMissingFields", "ZeroOrMultipleCorrectOptions",
             "OrphanTopicReference", "DuplicateQuestionId",
         )

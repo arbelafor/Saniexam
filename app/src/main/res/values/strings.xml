@@ -61,6 +61,13 @@
     <string name="import_err_zero_or_multi_correct">Alguna pregunta no tiene exactamente una opción correcta.</string>
     <string name="import_err_orphan_topic">Alguna pregunta hace referencia a un tema inexistente.</string>
     <string name="import_err_duplicate_question">Hay preguntas con identificadores duplicados.</string>
+    <!-- PR-A: the pack manifest is missing or mismatches the active
+         `category` field (spec `professional-categories`) or a question
+         is missing a non-blank `officialSourceRef` (spec
+         `licensed-content-packs`). -->
+    <string name="import_err_missing_category">El manifiesto del paquete no incluye la categoría profesional.</string>
+    <string name="import_err_category_mismatch">La categoría del paquete no coincide con la categoría activa.</string>
+    <string name="import_err_provenance_missing">Alguna pregunta no tiene referencia oficial (officialSourceRef) en blanco.</string>
 
     <!-- Stats -->
     <string name="stats_title">Estadísticas</string>

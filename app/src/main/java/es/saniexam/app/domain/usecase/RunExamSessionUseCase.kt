@@ -9,8 +9,9 @@ import es.saniexam.app.domain.model.Question
 import es.saniexam.app.domain.repository.DatasetRepository
 import es.saniexam.app.domain.repository.OptionRepository
 import es.saniexam.app.domain.repository.QuestionRepository
+import es.saniexam.app.domain.repository.UserSettingsRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import java.time.Clock
 import java.time.Duration
@@ -32,11 +33,18 @@ import javax.inject.Inject
  * The use case is stateless across calls: [start] is the only `suspend`
  * operation (it reads the pack from disk); [score] and
  * [withSelection] are pure functions of the in-memory [ExamSession].
+ *
+ * PR-A: the active category resolves through
+ * [UserSettings.activeCategory] (spec `professional-categories`
+ * "Active Category in User Settings"). The MVP ships with `TCAE` as
+ * the only registered category; future categories (Enfermería,
+ * Medicina) reuse the same use case.
  */
 class RunExamSessionUseCase @Inject constructor(
     private val questionRepository: QuestionRepository,
     private val optionRepository: OptionRepository,
     private val datasetRepository: DatasetRepository,
+    private val userSettingsRepository: UserSettingsRepository,
     @IoDispatcher private val io: CoroutineDispatcher,
     private val clock: Clock,
 ) {
@@ -54,10 +62,11 @@ class RunExamSessionUseCase @Inject constructor(
         }
 
     /**
-     * Read the active pack from disk, take a deterministic subset of
-     * up to [MAX_QUESTIONS] questions, and return an in-memory
-     * [ExamSession]. Throws [NoActivePackException] when no pack is
-     * applied; [EmptyPackException] when the active pack has no
+     * Read the active pack from disk through the user's
+     * `active_category`, take a deterministic subset of up to
+     * [MAX_QUESTIONS] questions, and return an in-memory
+     * [ExamSession]. Throws [NoActivePackException] when no pack
+     * is applied; [EmptyPackException] when the active pack has no
      * questions.
      */
     suspend fun start(
@@ -65,9 +74,10 @@ class RunExamSessionUseCase @Inject constructor(
         questionLimit: Int = MAX_QUESTIONS,
         duration: Duration = DEFAULT_DURATION,
     ): ExamSession = withContext(io) {
-        val packs = datasetRepository.observeActivePacks().firstOrNull().orEmpty()
+        val activeCategory = userSettingsRepository.get().activeCategory
+        val packs = datasetRepository.observeActivePacksByCategory(activeCategory).first()
         val pack = packs.firstOrNull() ?: throw NoActivePackException()
-        val allQuestions = questionRepository.observeAll(pack.id).firstOrNull().orEmpty()
+        val allQuestions = questionRepository.observeAllByCategory(activeCategory).first()
         if (allQuestions.isEmpty()) throw EmptyPackException(pack.id)
         val sampled = sample(allQuestions, questionLimit, seed)
         val questions = sampled.map { q ->

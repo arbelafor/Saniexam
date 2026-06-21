@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 #
 # Release-pipeline license gate (CI mirror of the Gradle task
-# `:app:checkReleasePackLicense`). Refuses release builds that
-# bundle a dev-placeholder / unknown / blank license.
+# `:app:checkReleasePackLicense`). Refuses release builds
+# that bundle a dev-placeholder / unknown / blank license OR a
+# manifest without a `category` field.
 #
 # Usage:   tools/check-pack-license.sh
-# Exit 0:  license is acceptable.
-# Exit 1:  license is refused.
+# Exit 0:  license + category are acceptable.
+# Exit 1:  license or category is refused.
 #
-# The Gradle task and this script MUST stay in sync. The shared
-# rule lives in [es.saniexam.app.build.PackLicenseGate] (Kotlin)
-# and is re-implemented in this file in pure POSIX grep / sed.
+# The Gradle task and this script MUST stay in sync. The rule is
+# implemented in app/build.gradle.kts and mirrored here in pure POSIX
+# grep / sed.
+#
+# The license comparison is case-insensitive: a case-variant like
+# `Dev-Placeholder` is still refused. The category comparison
+# requires the field to be present and non-blank (spec
+# `professional-categories` "Pack-Level Category Field").
 #
 # This script does NOT modify the manifest. A future PR that
 # ships a cleared-of-rights pack updates the manifest's
@@ -30,40 +36,78 @@ if [[ ! -f "${MANIFEST}" ]]; then
     exit 1
 fi
 
-# Hand-rolled JSON field extractor. POSIX-portable (no jq
-# dependency).
-extract_license() {
-    grep -E '"license"\s*:\s*"' "${MANIFEST}" \
-        | head -n1 \
-        | sed -E 's/.*"license"\s*:\s*"([^"]*)".*/\1/'
+# Hand-rolled JSON field extractor. POSIX-portable (no jq dependency).
+# It tracks object depth and only accepts fields found at depth 1, so
+# nested `license` / `category` fields cannot satisfy the release gate.
+extract_string() {
+    local key="$1"
+    awk -v key="${key}" '
+        function update_depth(line,    i, ch) {
+            for (i = 1; i <= length(line); i++) {
+                ch = substr(line, i, 1)
+                if (ch == "{") depth++
+                if (ch == "}") depth--
+            }
+        }
+        {
+            if (depth == 1 && $0 ~ "^[[:space:]]*\\\"" key "\\\"[[:space:]]*:[[:space:]]*\\\"") {
+                value = $0
+                sub("^[[:space:]]*\\\"" key "\\\"[[:space:]]*:[[:space:]]*\\\"", "", value)
+                sub("\\\".*$", "", value)
+                print value
+                exit
+            }
+            update_depth($0)
+        }
+    ' "${MANIFEST}"
 }
 
-LICENSE="$(extract_license)"
+LICENSE="$(extract_string license)"
+CATEGORY="$(extract_string category)"
 
 REFUSED_LICENSES=("dev-placeholder" "unknown")
 
-is_refused() {
+# `tr` is POSIX; this lowercases the value in-place.
+lowercase() {
+    printf '%s' "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+is_refused_license() {
     local value="$1"
-    [[ -z "${value// }" ]] && return 0  # blank / whitespace-only
+    local lowered
+    lowered="$(lowercase "${value}")"
+    [[ -z "${lowered// }" ]] && return 0  # blank / whitespace-only
     for refused in "${REFUSED_LICENSES[@]}"; do
-        if [[ "${value}" == "${refused}" ]]; then
+        if [[ "${lowered}" == "${refused}" ]]; then
             return 0
         fi
     done
     return 1
 }
 
-if is_refused "${LICENSE}"; then
+LICENSE_REFUSED="false"
+if is_refused_license "${LICENSE}"; then
+    LICENSE_REFUSED="true"
+fi
+
+CATEGORY_MISSING="false"
+if [[ -z "${CATEGORY// }" ]]; then
+    CATEGORY_MISSING="true"
+fi
+
+if [[ "${LICENSE_REFUSED}" == "true" || "${CATEGORY_MISSING}" == "true" ]]; then
     cat >&2 <<EOF
-Refused: bundled pack manifest license is '${LICENSE}'.
-Release pipeline gate (PR7) refuses to ship a public APK
-with a license in {dev-placeholder, unknown} or blank.
+Refused: bundled pack manifest fails the release gate.
+  license = '${LICENSE}' (refused=${LICENSE_REFUSED})
+  category = '${CATEGORY}' (missing=${CATEGORY_MISSING})
+Release pipeline gate refuses to ship a public APK when
+  - license is in {dev-placeholder, unknown} (any case), blank, or missing, OR
+  - the manifest has no \`category\` field (spec \`professional-categories\`).
 Replace assets/question-packs/* and pack-manifest.json with a
-cleared-of-rights pack, or pin a known license
-(MIT / CC-BY-* / cleared-of-rights / Apache-2.0).
+cleared-of-rights pack carrying \`category: "TCAE"\`.
 EOF
     exit 1
 fi
 
-echo "check-pack-license: PASS (license='${LICENSE}')."
+echo "check-pack-license: PASS (license='${LICENSE}', category='${CATEGORY}')."
 exit 0

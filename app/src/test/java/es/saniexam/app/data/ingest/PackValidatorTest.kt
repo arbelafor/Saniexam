@@ -16,13 +16,20 @@ import org.junit.Test
  *  - "Orphan topic reference" (rejected)
  *  - "Duplicate question id" (rejected)
  *  - Missing fields (rejected)
+ *  - PR-A: "Question missing provenance" (rejected with
+ *    [DatasetImportException.Reason.ProvenanceMissing] — every
+ *    question must carry a non-blank `officialSourceRef`)
+ *  - PR-A: "Pack missing category" (rejected with
+ *    [DatasetImportException.Reason.MissingCategory] — the pack
+ *    must carry a non-blank `category` field)
  */
 class PackValidatorTest {
 
     private val pack = SubjectPack(
-        id = "sanidad-dev-placeholder", version = 1,
-        sourceAttribution = "Dev", publishedAt = "2026-06-16",
-        license = "dev-placeholder", licenseNotes = "n/a",
+        id = "sanidad-v1", version = 1,
+        sourceAttribution = "test", publishedAt = "2026-06-22",
+        license = "cleared-of-rights", licenseNotes = "n/a",
+        category = "TCAE",
     )
 
     @Test
@@ -31,8 +38,8 @@ class PackValidatorTest {
             pack = pack,
             topics = listOf(PackTopicView("t1", "Topic 1")),
             questions = listOf(
-                question("q1", "t1", correctOrdinal = 1),
-                question("q2", "t1", correctOrdinal = 0),
+                question("q1", "t1", correctOrdinal = 1, sourceRef = "BOE-A-2024-1-preg17"),
+                question("q2", "t1", correctOrdinal = 0, sourceRef = "BOE-A-2024-1-preg18"),
             ),
         )
         assertEquals(1, out.topicEntities.size)
@@ -45,7 +52,7 @@ class PackValidatorTest {
         val ex = assertThrows(DatasetImportException::class.java) {
             PackValidator.validate(
                 pack, listOf(PackTopicView("t1", "Topic 1")),
-                listOf(questionWithCorrectCount("q1", "t1", correctCount = 0)),
+                listOf(questionWithCorrectCount("q1", "t1", correctCount = 0, sourceRef = "BOE-A-2024-1-preg17")),
             )
         }
         assertEquals(DatasetImportException.Reason.ZeroOrMultipleCorrectOptions, ex.reason)
@@ -57,7 +64,7 @@ class PackValidatorTest {
         val ex = assertThrows(DatasetImportException::class.java) {
             PackValidator.validate(
                 pack, listOf(PackTopicView("t1", "Topic 1")),
-                listOf(questionWithCorrectCount("q1", "t1", correctCount = 2)),
+                listOf(questionWithCorrectCount("q1", "t1", correctCount = 2, sourceRef = "BOE-A-2024-1-preg17")),
             )
         }
         assertEquals(DatasetImportException.Reason.ZeroOrMultipleCorrectOptions, ex.reason)
@@ -68,7 +75,7 @@ class PackValidatorTest {
         val ex = assertThrows(DatasetImportException::class.java) {
             PackValidator.validate(
                 pack, listOf(PackTopicView("t1", "Topic 1")),
-                listOf(question("q1", topicId = "t-missing", correctOrdinal = 0)),
+                listOf(question("q1", topicId = "t-missing", correctOrdinal = 0, sourceRef = "BOE-A-2024-1-preg17")),
             )
         }
         assertEquals(DatasetImportException.Reason.OrphanTopicReference, ex.reason)
@@ -81,8 +88,8 @@ class PackValidatorTest {
             PackValidator.validate(
                 pack, listOf(PackTopicView("t1", "Topic 1")),
                 listOf(
-                    question("q1", "t1", correctOrdinal = 0),
-                    question("q1", "t1", correctOrdinal = 1),
+                    question("q1", "t1", correctOrdinal = 0, sourceRef = "BOE-A-2024-1-preg17"),
+                    question("q1", "t1", correctOrdinal = 1, sourceRef = "BOE-A-2024-1-preg18"),
                 ),
             )
         }
@@ -96,7 +103,7 @@ class PackValidatorTest {
                 pack, listOf(PackTopicView("t1", "Topic 1")),
                 listOf(PackQuestionView(
                     id = "q1", topicId = "t1", prompt = "  ",
-                    explanation = null, officialYear = null, officialSourceRef = null,
+                    explanation = null, officialYear = null, officialSourceRef = "BOE-A-2024-1-preg17",
                     options = listOf(PackOptionView("q1-a", 0, "a", true)),
                 )),
             )
@@ -104,11 +111,85 @@ class PackValidatorTest {
         assertEquals(DatasetImportException.Reason.QuestionMissingFields, ex.reason)
     }
 
+    /**
+     * PR-A: a question with a blank or null `officialSourceRef` is
+     * rejected with [DatasetImportException.Reason.ProvenanceMissing].
+     * This is the per-Q half of the closed-loop provenance gate:
+     * the release-pipeline gate refuses a manifest without a
+     * pack-level `category`; the validator refuses a pack where
+     * any question lacks a non-blank `officialSourceRef`. Together
+     * they cover both the pack-level and the per-Q layer.
+     */
+    @Test
+    fun `question with null officialSourceRef is rejected with ProvenanceMissing`() {
+        val ex = assertThrows(DatasetImportException::class.java) {
+            PackValidator.validate(
+                pack, listOf(PackTopicView("t1", "Topic 1")),
+                listOf(PackQuestionView(
+                    id = "q1", topicId = "t1", prompt = "Prompt",
+                    explanation = null, officialYear = 2024, officialSourceRef = null,
+                    options = listOf(
+                        PackOptionView("q1-a", 0, "A", true),
+                        PackOptionView("q1-b", 1, "B", false),
+                        PackOptionView("q1-c", 2, "C", false),
+                    ),
+                )),
+            )
+        }
+        assertEquals(DatasetImportException.Reason.ProvenanceMissing, ex.reason)
+        assertEquals("q1", ex.questionId)
+    }
+
+    @Test
+    fun `question with blank officialSourceRef is rejected with ProvenanceMissing`() {
+        val ex = assertThrows(DatasetImportException::class.java) {
+            PackValidator.validate(
+                pack, listOf(PackTopicView("t1", "Topic 1")),
+                listOf(PackQuestionView(
+                    id = "q1", topicId = "t1", prompt = "Prompt",
+                    explanation = null, officialYear = 2024, officialSourceRef = "   ",
+                    options = listOf(
+                        PackOptionView("q1-a", 0, "A", true),
+                        PackOptionView("q1-b", 1, "B", false),
+                        PackOptionView("q1-c", 2, "C", false),
+                    ),
+                )),
+            )
+        }
+        assertEquals(DatasetImportException.Reason.ProvenanceMissing, ex.reason)
+        assertEquals("q1", ex.questionId)
+    }
+
+    /**
+     * PR-A: a pack with a blank `category` is rejected with
+     * [DatasetImportException.Reason.MissingCategory] before any
+     * question is inspected. The release-pipeline license gate
+     * refuses the same manifest at the manifest layer; the
+     * validator's check is the second line of defence.
+     */
+    @Test
+    fun `pack with blank category is rejected with MissingCategory`() {
+        val packNoCategory = pack.copy(category = "  ")
+        val ex = assertThrows(DatasetImportException::class.java) {
+            PackValidator.validate(
+                packNoCategory, listOf(PackTopicView("t1", "Topic 1")),
+                listOf(question("q1", "t1", correctOrdinal = 0, sourceRef = "BOE-A-2024-1-preg17")),
+            )
+        }
+        assertEquals(DatasetImportException.Reason.MissingCategory, ex.reason)
+    }
+
     // --- Helpers ---
 
-    private fun question(id: String, topicId: String, correctOrdinal: Int) = PackQuestionView(
+    private fun question(
+        id: String,
+        topicId: String,
+        correctOrdinal: Int,
+        sourceRef: String,
+        officialYear: Int? = 2024,
+    ) = PackQuestionView(
         id = id, topicId = topicId, prompt = "Prompt for $id",
-        explanation = null, officialYear = null, officialSourceRef = null,
+        explanation = null, officialYear = officialYear, officialSourceRef = sourceRef,
         options = listOf(
             PackOptionView("$id-a", 0, "Option A", isCorrect = 0 == correctOrdinal),
             PackOptionView("$id-b", 1, "Option B", isCorrect = 1 == correctOrdinal),
@@ -116,13 +197,18 @@ class PackValidatorTest {
         ),
     )
 
-    private fun questionWithCorrectCount(id: String, topicId: String, correctCount: Int): PackQuestionView {
+    private fun questionWithCorrectCount(
+        id: String,
+        topicId: String,
+        correctCount: Int,
+        sourceRef: String,
+    ): PackQuestionView {
         val opts = (0 until 3).map { ord ->
             PackOptionView("$id-$ord", ord, "Option $ord", isCorrect = ord < correctCount)
         }
         return PackQuestionView(
             id = id, topicId = topicId, prompt = "Prompt",
-            explanation = null, officialYear = null, officialSourceRef = null,
+            explanation = null, officialYear = 2024, officialSourceRef = sourceRef,
             options = opts,
         )
     }

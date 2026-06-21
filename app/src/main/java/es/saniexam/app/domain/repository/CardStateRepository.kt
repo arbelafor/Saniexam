@@ -35,6 +35,8 @@ interface CardStateRepository {
      */
     suspend fun listDue(now: Instant, limit: Int): List<CardStateWithQuestion>
 
+    suspend fun listDueByCategory(now: Instant, category: String, limit: Int): List<CardStateWithQuestion>
+
     /**
      * Backing-store wipe. Used only by the backup transaction (destructive
      * import). Not a spec-supported mutator of the schedule.

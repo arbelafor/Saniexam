@@ -31,6 +31,11 @@ import java.time.Instant
  *    domain tables (`MIGRATION_1_2`).
  *  - v3 adds the `review_log` + `user_settings` tables that the Review
  *    use cases write into (`MIGRATION_2_3`).
+ *  - v4 adds the `category` and `active_category` columns that make
+ *    the data model multi-category-aware from v1
+ *    (`MIGRATION_3_4`, spec `professional-categories`). Adding a
+ *    new category in the future does NOT require another migration:
+ *    categories are values, not structural changes.
  */
 @Database(
     entities = [
@@ -38,7 +43,7 @@ import java.time.Instant
         OptionEntity::class, DatasetVersionEntity::class, CardStateEntity::class,
         ReviewLogEntity::class, UserSettingsEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 @TypeConverters(SaniExamDbConverters::class)
@@ -104,6 +109,35 @@ abstract class SaniExamDb : RoomDatabase() {
                     "INSERT OR REPLACE INTO `user_settings` " +
                         "(`id`, `last_revealed_card_id`, `last_session_queue_position`, `last_session_at`) " +
                         "VALUES (${UserSettingsEntity.SINGLETON_ID}, NULL, 0, NULL)",
+                )
+            }
+        }
+
+        /**
+         * v3 -> v4: add the `category` and `active_category` columns
+         * (spec `professional-categories`). Both columns are non-null
+         * with a `TCAE` default so v3 users get a sensible value on
+         * the first upgrade. The `user_settings` singleton already
+         * exists from the v3 install; the `active_category` column
+         * is added with a default so the existing row is valid.
+         *
+         * Adding a new professional category in the future does NOT
+         * require another migration: categories are values, not
+         * structural changes. See the
+         * `professional-categories` "Multi-Category Future-Proofing"
+         * scenario.
+         */
+        val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE `subject_pack` ADD COLUMN `category` TEXT NOT NULL DEFAULT 'TCAE'",
+                )
+                db.execSQL(
+                    "UPDATE `subject_pack` SET `category` = 'sanidad-dev-placeholder' " +
+                        "WHERE `id` = 'sanidad-dev-placeholder'",
+                )
+                db.execSQL(
+                    "ALTER TABLE `user_settings` ADD COLUMN `active_category` TEXT NOT NULL DEFAULT 'TCAE'",
                 )
             }
         }

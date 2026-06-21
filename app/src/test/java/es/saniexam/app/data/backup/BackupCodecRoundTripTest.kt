@@ -64,6 +64,7 @@ class BackupCodecRoundTripTest {
             lastRevealedCardId = "q1",
             lastSessionQueuePosition = 3,
             lastSessionAt = Instant.parse("2026-06-15T10:01:00Z"),
+            activeCategory = UserSettings.TCAE,
         )
 
         val bytes = codec.encode(
@@ -191,7 +192,7 @@ class BackupCodecRoundTripTest {
 
     private fun cardState(qid: String, dueAt: Instant, lastReviewedAt: Instant?): CardState = CardState(
         questionId = qid,
-        packId = "sanidad-dev-placeholder",
+        packId = "sanidad-v1",
         packVersion = 1,
         stability = 1.5,
         difficulty = 5.0,

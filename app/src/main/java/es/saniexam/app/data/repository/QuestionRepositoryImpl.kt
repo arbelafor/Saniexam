@@ -23,6 +23,11 @@ class QuestionRepositoryImpl @Inject constructor(
         questionDao.observeAll(packId).map { rows -> rows.map { it.toDomain() } }
     override suspend fun get(id: String): Question? = questionDao.get(id)?.toDomain()
     override suspend fun count(packId: String): Int = questionDao.count(packId)
+
+    override fun observeAllByCategory(category: String): Flow<List<Question>> =
+        questionDao.observeAllByCategory(category).map { rows -> rows.map { it.toDomain() } }
+    override suspend fun countByCategory(category: String): Int =
+        questionDao.countByCategory(category)
 }
 
 @Singleton

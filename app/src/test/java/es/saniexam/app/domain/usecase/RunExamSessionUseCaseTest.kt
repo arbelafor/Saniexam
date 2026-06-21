@@ -3,11 +3,13 @@ package es.saniexam.app.domain.usecase
 import es.saniexam.app.domain.model.Option
 import es.saniexam.app.domain.model.Question
 import es.saniexam.app.domain.model.SubjectPack
+import es.saniexam.app.domain.model.UserSettings
 import es.saniexam.app.domain.repository.CardStateRepository
 import es.saniexam.app.domain.repository.DatasetRepository
 import es.saniexam.app.domain.repository.OptionRepository
 import es.saniexam.app.domain.repository.QuestionRepository
 import es.saniexam.app.domain.repository.ReviewLogRepository
+import es.saniexam.app.domain.repository.UserSettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,12 +40,17 @@ import java.time.ZoneOffset
  * (the v1 `exam-simulation` "No FSRS Perturbation" requirement). The
  * use case's constructor signature is the static guarantee; the
  * reflection test below is the dynamic regression check.
+ *
+ * PR-A: the use case now also accepts [UserSettingsRepository] so
+ * the read path can resolve the active category. The tests inject a
+ * fake that returns [UserSettings.Default] (`activeCategory="TCAE"`).
  */
 class RunExamSessionUseCaseTest {
 
     private val now: Instant = Instant.parse("2026-06-16T10:00:00Z")
     private val clock = Clock.fixed(now, ZoneOffset.UTC)
     private val io = Dispatchers.Unconfined
+    private val tcaeSettings = UserSettings.Default
 
     @Test
     fun `start returns a session with the deterministic question subset`() = runBlocking {
@@ -288,6 +295,7 @@ class RunExamSessionUseCaseTest {
             questionRepository = FakeQuestionRepository(questions),
             optionRepository = FakeOptionRepository(optionsByQuestion),
             datasetRepository = FakeDatasetRepository(activePacks),
+            userSettingsRepository = FakeUserSettingsRepository(tcaeSettings),
             io = io,
             clock = clock,
         )
@@ -302,6 +310,7 @@ class RunExamSessionUseCaseTest {
         publishedAt = "2026-01-01",
         license = "test",
         licenseNotes = "test",
+        category = UserSettings.TCAE,
     )
 
     private fun singleCorrectQuestion(id: String): Question = Question(
@@ -350,6 +359,9 @@ class RunExamSessionUseCaseTest {
             flowOf(questions.filter { it.packId == packId })
         override suspend fun get(id: String): Question? = questions.firstOrNull { it.id == id }
         override suspend fun count(packId: String): Int = questions.count { it.packId == packId }
+        override fun observeAllByCategory(category: String): Flow<List<Question>> =
+            flowOf(questions)
+        override suspend fun countByCategory(category: String): Int = questions.size
     }
 
     private class FakeOptionRepository(
@@ -367,5 +379,16 @@ class RunExamSessionUseCaseTest {
             MutableStateFlow(emptyList<es.saniexam.app.domain.model.DatasetVersion>())
         override suspend fun isApplied(packId: String, packVersion: Int): Boolean = true
         override suspend fun recordVersion(version: es.saniexam.app.domain.model.DatasetVersion) = Unit
+        override fun observeActivePacksByCategory(category: String): Flow<List<SubjectPack>> =
+            MutableStateFlow(activePacks.filter { it.category == category })
+        override suspend fun countActivePacksByCategory(category: String): Int =
+            activePacks.count { it.category == category }
+    }
+
+    private class FakeUserSettingsRepository(
+        private val settings: UserSettings,
+    ) : UserSettingsRepository {
+        override suspend fun get(): UserSettings = settings
+        override suspend fun update(settings: UserSettings) = Unit
     }
 }

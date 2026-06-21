@@ -68,4 +68,11 @@ internal data class UserSettingsDto(
     val lastRevealedCardId: String? = null,
     val lastSessionQueuePosition: Int = 0,
     val lastSessionAt: Long? = null,
+    // PR-A: `activeCategory` is the multi-category plumbing the
+    // backup codec round-trips. The field is added in
+    // [BackupDocument.schemaVersion=1] (a forward-compatible,
+    // defaulted field); older backups decode fine because
+    // kotlinx-serialization applies the default when the JSON
+    // omits the key.
+    val activeCategory: String = "TCAE",
 )
