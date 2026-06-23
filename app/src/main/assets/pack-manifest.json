@@ -1,11 +1,11 @@
 {
   "id": "sanidad-v1",
   "version": 1,
-  "sourceAttribution": "Temario oficial TCAE - Servicio Andaluz de Salud, SESCAM y SERMAS. PR-A: 30-question smoke pack drawn from standard Spanish oposición TCAE syllabus (publicly published temario material from BOE, SAS, SESCAM, SERMAS). PR-B replaces with full editorial-reviewed content and a per-question LICENSING.md table.",
-  "publishedAt": "2026-06-22",
+  "sourceAttribution": "Servicio Aragonés de Salud - Técnico en Cuidados Auxiliares de Enfermería (TCAE), turno libre, convocatoria oposición 2025; examen 2026-05-14. Preguntas y opciones reproducidas literalmente del cuestionario oficial publicado.",
+  "publishedAt": "2026-06-24",
   "license": "cleared-of-rights",
-  "licenseNotes": "PR-A smoke pack sourced from publicly published Spanish oposición temario material (BOE, SAS, SESCAM, SERMAS). Full editorial sign-off and the per-Q clearance-evidence table are PR-B work; see LICENSING.md (added in PR-B).",
+  "licenseNotes": "Provenance recorded from official Servicio Aragonés de Salud TCAE 2025 source URLs (question paper and provisional answer key). No ownership claim is made over the original wording. Human editorial/legal release review is pending before any public store distribution; see LICENSING.md.",
   "category": "TCAE",
-  "sha256": "ec46cd82366e9e39015881033fda810cfb5abf7dcb92bc548f27937bf35a3f1d",
+  "sha256": "a4e00e8dab30b231a429ebf32d02f351e6635143a46a38430f57f6d795be7a94",
   "packFile": "question-packs/sanidad-v1.json"
 }

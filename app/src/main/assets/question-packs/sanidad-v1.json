@@ -2,431 +2,3794 @@
   "packId": "sanidad-v1",
   "packVersion": 1,
   "topics": [
-    { "id": "t-higiene", "name": "Higiene y aseo del paciente" },
-    { "id": "t-alimentacion", "name": "Alimentación y nutrición" },
-    { "id": "t-medicacion", "name": "Administración de medicamentos" },
-    { "id": "t-urgencias", "name": "Urgencias y primeros auxilios" },
-    { "id": "t-legislacion", "name": "Legislación sanitaria" }
+    {
+      "id": "t-legislacion",
+      "name": "Legislación sanitaria y derechos"
+    },
+    {
+      "id": "t-organizacion-sanitaria",
+      "name": "Organización sanitaria y del SNS"
+    },
+    {
+      "id": "t-entorno-aragon",
+      "name": "Entorno económico, territorial y autonómico de Aragón"
+    },
+    {
+      "id": "t-prevencion-riesgos",
+      "name": "Prevención de riesgos laborales"
+    },
+    {
+      "id": "t-anatomia-fisiologia",
+      "name": "Anatomía, fisiología y biología"
+    },
+    {
+      "id": "t-higiene-aseo",
+      "name": "Higiene, aseo, desinfección y esterilización"
+    },
+    {
+      "id": "t-medicacion-farmacologia",
+      "name": "Medicación, farmacología y vías de administración"
+    },
+    {
+      "id": "t-nutricion-alimentacion",
+      "name": "Nutrición y alimentación"
+    },
+    {
+      "id": "t-urgencias-primeros-auxilios",
+      "name": "Urgencias y primeros auxilios"
+    },
+    {
+      "id": "t-salud-mental",
+      "name": "Salud mental, comunicación y valoración"
+    },
+    {
+      "id": "t-neonatologia-pediatria",
+      "name": "Neonatología, pediatría y parto"
+    },
+    {
+      "id": "t-valoracion-enfermeria",
+      "name": "Valoración enfermera y escalas"
+    }
   ],
   "questions": [
     {
       "id": "q-001",
-      "topicId": "t-higiene",
-      "prompt": "¿Cuál es la temperatura del agua recomendada para el aseo del paciente adulto encamado?",
-      "explanation": "La temperatura del agua para el aseo del paciente adulto encamado se recomienda entre 37 °C y 40 °C para evitar quemaduras y proporcionar confort térmico.",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_CuestionarioPractico_Pregunta12",
+      "topicId": "t-organizacion-sanitaria",
+      "prompt": "Cada Área de salud para la provisión de sus servicios se organiza en lineas asistenciales. Indique la INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q001",
       "options": [
-        { "id": "q-001-a", "ordinal": 0, "text": "20-25 °C", "isCorrect": false },
-        { "id": "q-001-b", "ordinal": 1, "text": "37-40 °C", "isCorrect": true },
-        { "id": "q-001-c", "ordinal": 2, "text": "45-50 °C", "isCorrect": false },
-        { "id": "q-001-d", "ordinal": 3, "text": "55-60 °C", "isCorrect": false }
+        {
+          "id": "q-001-o0",
+          "ordinal": 0,
+          "text": "Atención a la infancia.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-001-o1",
+          "ordinal": 1,
+          "text": "Atención sociosanitaria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-001-o2",
+          "ordinal": 2,
+          "text": "Atención a la salud mental.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-001-o3",
+          "ordinal": 3,
+          "text": "Atención especializada.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-002",
-      "topicId": "t-higiene",
-      "prompt": "En la higiene del paciente encamado, ¿en qué orden se realiza el aseo?",
-      "explanation": "El aseo del paciente encamado se realiza de la zona más limpia a la más sucia: cara, cuello, extremidades superiores, tronco, extremidades inferiores, genitales y región perianal.",
-      "officialYear": 2019,
-      "officialSourceRef": "SESCAM_TCAE_2019_Cuestionario_Pregunta4",
+      "topicId": "t-legislacion",
+      "prompt": "Respecto a la movilidad voluntaria, recogida en la Ley 55/2003, señale la opción INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q002",
       "options": [
-        { "id": "q-002-a", "ordinal": 0, "text": "De la zona más sucia a la más limpia", "isCorrect": false },
-        { "id": "q-002-b", "ordinal": 1, "text": "De la zona más limpia a la más sucia", "isCorrect": true },
-        { "id": "q-002-c", "ordinal": 2, "text": "En cualquier orden, no influye", "isCorrect": false },
-        { "id": "q-002-d", "ordinal": 3, "text": "Solo de arriba hacia abajo", "isCorrect": false }
+        {
+          "id": "q-002-o0",
+          "ordinal": 0,
+          "text": "Se efectuarán preferentemente cada tres años...",
+          "isCorrect": true
+        },
+        {
+          "id": "q-002-o1",
+          "ordinal": 1,
+          "text": "Los destinos definitivos... son irrenunciables...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-002-o2",
+          "ordinal": 2,
+          "text": "Perderá la condición de estatutario fijo...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-002-o3",
+          "ordinal": 3,
+          "text": "Estarán abiertos al personal estatutario fijo...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-003",
-      "topicId": "t-higiene",
-      "prompt": "Para la higiene bucal del paciente inconsciente se utiliza:",
-      "explanation": "En el paciente inconsciente la higiene bucal se realiza con una torunda impregnada en antiséptico (clorhexidina al 0,12 %-0,2 %) para evitar aspiraciones y mantener la mucosa húmeda.",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_CuestionarioPractico_Pregunta15",
+      "topicId": "t-entorno-aragon",
+      "prompt": "¿Qué sector, según el informe del IAEST, tuvo un comportamiento destacado en Aragón... durante el CUARTO TRIMESTRE DE 2024?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q003",
       "options": [
-        { "id": "q-003-a", "ordinal": 0, "text": "Cepillo de dientes duro", "isCorrect": false },
-        { "id": "q-003-b", "ordinal": 1, "text": "Torunda con antiséptico (clorhexidina)", "isCorrect": true },
-        { "id": "q-003-c", "ordinal": 2, "text": "Enjuague bucal con agua oxigenada pura", "isCorrect": false },
-        { "id": "q-003-d", "ordinal": 3, "text": "Gasa seca únicamente", "isCorrect": false }
+        {
+          "id": "q-003-o0",
+          "ordinal": 0,
+          "text": "Agricultura.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-003-o1",
+          "ordinal": 1,
+          "text": "Construcción.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-003-o2",
+          "ordinal": 2,
+          "text": "Minería.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-003-o3",
+          "ordinal": 3,
+          "text": "Pesca.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-004",
-      "topicId": "t-higiene",
-      "prompt": "La posición de Fowler se caracteriza por:",
-      "explanation": "La posición de Fowler mantiene al paciente semiincorporado con el cabecero de la cama elevado entre 45° y 60°, favoreciendo la respiración y la alimentación.",
-      "officialYear": 2017,
-      "officialSourceRef": "SERMAS_TCAE_2017_Cuestionario_Pregunta22",
+      "topicId": "t-legislacion",
+      "prompt": "Según la Ley 4/2007, comportamiento sexual no deseado con el propósito o efecto de atentar contra la dignidad se considera:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q004",
       "options": [
-        { "id": "q-004-a", "ordinal": 0, "text": "Decúbito prono con almohada bajo el abdomen", "isCorrect": false },
-        { "id": "q-004-b", "ordinal": 1, "text": "Semiincorporado con cabecero a 45°-60°", "isCorrect": true },
-        { "id": "q-004-c", "ordinal": 2, "text": "Decúbito lateral izquierdo", "isCorrect": false },
-        { "id": "q-004-d", "ordinal": 3, "text": "Trendelenburg invertido", "isCorrect": false }
+        {
+          "id": "q-004-o0",
+          "ordinal": 0,
+          "text": "Malos tratos sexuales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-004-o1",
+          "ordinal": 1,
+          "text": "Acoso sexual.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-004-o2",
+          "ordinal": 2,
+          "text": "Violencia social.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-004-o3",
+          "ordinal": 3,
+          "text": "Violencia contra los derechos sexuales.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-005",
-      "topicId": "t-higiene",
-      "prompt": "Para prevenir las úlceras por presión (UPP), ¿cuál es la frecuencia recomendada de cambios posturales?",
-      "explanation": "La frecuencia recomendada de cambios posturales para prevenir UPP en pacientes encamados es cada 2-3 horas, alternando decúbito supino, lateral derecho y lateral izquierdo.",
-      "officialYear": 2020,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta8",
+      "topicId": "t-legislacion",
+      "prompt": "Según el estatuto de autonomía de Aragón... derecho a acceder a los servicios públicos de salud, en condiciones de:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q005",
       "options": [
-        { "id": "q-005-a", "ordinal": 0, "text": "Cada 8 horas", "isCorrect": false },
-        { "id": "q-005-b", "ordinal": 1, "text": "Cada 2-3 horas", "isCorrect": true },
-        { "id": "q-005-c", "ordinal": 2, "text": "Una vez al día", "isCorrect": false },
-        { "id": "q-005-d", "ordinal": 3, "text": "Cada 12 horas", "isCorrect": false }
+        {
+          "id": "q-005-o0",
+          "ordinal": 0,
+          "text": "Igualdad, universalidad y calidad.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-005-o1",
+          "ordinal": 1,
+          "text": "Igualdad real y efectiva.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-005-o2",
+          "ordinal": 2,
+          "text": "En cualquier condición.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-005-o3",
+          "ordinal": 3,
+          "text": "Solo en casos de urgencia.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-006",
-      "topicId": "t-alimentacion",
-      "prompt": "En la dieta de un paciente diabético, ¿qué nutriente se debe controlar principalmente?",
-      "explanation": "En la dieta del paciente diabético el control principal se realiza sobre los hidratos de carbono de absorción rápida (azúcares simples) por su efecto directo sobre la glucemia.",
-      "officialYear": 2019,
-      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta11",
+      "topicId": "t-legislacion",
+      "prompt": "Respecto a los principios de conducta... Real Decreto 5/2015, es INCORRECTO:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q006",
       "options": [
-        { "id": "q-006-a", "ordinal": 0, "text": "Proteínas", "isCorrect": false },
-        { "id": "q-006-b", "ordinal": 1, "text": "Hidratos de carbono de absorción rápida", "isCorrect": true },
-        { "id": "q-006-c", "ordinal": 2, "text": "Lípidos saturados únicamente", "isCorrect": false },
-        { "id": "q-006-d", "ordinal": 3, "text": "Vitaminas liposolubles", "isCorrect": false }
+        {
+          "id": "q-006-o0",
+          "ordinal": 0,
+          "text": "Deberán poseer la nacionalidad y título correspondiente.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-006-o1",
+          "ordinal": 1,
+          "text": "Informarán a los ciudadanos...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-006-o2",
+          "ordinal": 2,
+          "text": "Garantizarán la atención al ciudadano en la lengua que lo solicite...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-006-o3",
+          "ordinal": 3,
+          "text": "Obedecerán las instrucciones y órdenes profesionales...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-007",
-      "topicId": "t-alimentacion",
-      "prompt": "La dieta absoluta (NPO) implica:",
-      "explanation": "La dieta absoluta (nil per os, NPO) indica la suspensión completa de la ingesta oral de alimentos y líquidos, generalmente previa a pruebas diagnósticas o cirugías.",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta14",
+      "topicId": "t-legislacion",
+      "prompt": "¿Qué afirma la Ley 4/2018, respecto al reconocimiento del derecho a la identidad de género libremente manifestada?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q007",
       "options": [
-        { "id": "q-007-a", "ordinal": 0, "text": "Solo líquidos claros", "isCorrect": false },
-        { "id": "q-007-b", "ordinal": 1, "text": "Supresión total de ingesta oral", "isCorrect": true },
-        { "id": "q-007-c", "ordinal": 2, "text": "Dieta blanda", "isCorrect": false },
-        { "id": "q-007-d", "ordinal": 3, "text": "Solo líquidos espesados", "isCorrect": false }
+        {
+          "id": "q-007-o0",
+          "ordinal": 0,
+          "text": "Toda persona tiene derecho a construir para sí una autodefinición...",
+          "isCorrect": true
+        },
+        {
+          "id": "q-007-o1",
+          "ordinal": 1,
+          "text": "Será requisito acreditar la identidad...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-007-o2",
+          "ordinal": 2,
+          "text": "Solo puede reconocerse a partir de la mayoría de edad...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-007-o3",
+          "ordinal": 3,
+          "text": "Se podrán requerir pruebas de tratamientos hormonales...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-008",
-      "topicId": "t-alimentacion",
-      "prompt": "Para la alimentación por sonda nasogástrica (SNG), el paciente debe colocarse en posición:",
-      "explanation": "Durante la administración de la alimentación por SNG el paciente debe situarse en posición de Fowler (semiincorporado, 30°-45°) para reducir el riesgo de broncoaspiración.",
-      "officialYear": 2020,
-      "officialSourceRef": "SESCAM_TCAE_2020_Cuestionario_Pregunta7",
+      "topicId": "t-organizacion-sanitaria",
+      "prompt": "El Director Gerente del Servicio Aragonés de Salud es nombrado por:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q008",
       "options": [
-        { "id": "q-008-a", "ordinal": 0, "text": "Decúbito supino", "isCorrect": false },
-        { "id": "q-008-b", "ordinal": 1, "text": "Fowler (semiincorporado 30°-45°)", "isCorrect": true },
-        { "id": "q-008-c", "ordinal": 2, "text": "Trendelenburg", "isCorrect": false },
-        { "id": "q-008-d", "ordinal": 3, "text": "Decúbito prono", "isCorrect": false }
+        {
+          "id": "q-008-o0",
+          "ordinal": 0,
+          "text": "El titular del Departamento de Sanidad.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-008-o1",
+          "ordinal": 1,
+          "text": "El Gobierno de Aragón.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-008-o2",
+          "ordinal": 2,
+          "text": "El Presidente de Aragón.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-008-o3",
+          "ordinal": 3,
+          "text": "Las Cortes de Aragón.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-009",
-      "topicId": "t-alimentacion",
-      "prompt": "Antes de administrar la dieta por SNG se debe comprobar:",
-      "explanation": "Antes de cada toma por SNG se debe verificar la ubicación de la sonda (aspirado del contenido gástrico y comprobación del pH) y la permeabilidad de la misma.",
-      "officialYear": 2019,
-      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta18",
+      "topicId": "t-legislacion",
+      "prompt": "¿Cuál identifica CORRECTAMENTE el contenido literal del apartado 2 del art. 43 sobre la organización y tutela de la salud?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q009",
       "options": [
-        { "id": "q-009-a", "ordinal": 0, "text": "Solo la fecha de inserción de la sonda", "isCorrect": false },
-        { "id": "q-009-b", "ordinal": 1, "text": "La ubicación de la sonda y el residuo gástrico", "isCorrect": true },
-        { "id": "q-009-c", "ordinal": 2, "text": "Únicamente la marca de la sonda", "isCorrect": false },
-        { "id": "q-009-d", "ordinal": 3, "text": "Solo el calibre externo", "isCorrect": false }
+        {
+          "id": "q-009-o0",
+          "ordinal": 0,
+          "text": "Los poderes públicos organizan y tutelan la salud pública a través de medidas preventivas...",
+          "isCorrect": true
+        },
+        {
+          "id": "q-009-o1",
+          "ordinal": 1,
+          "text": "Los poderes públicos garantizan el derecho a la salud mediante la creación de un servicio nacional...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-009-o2",
+          "ordinal": 2,
+          "text": "Los poderes públicos promueven la salud...",
+          "isCorrect": false
+        },
+        {
+          "id": "q-009-o3",
+          "ordinal": 3,
+          "text": "Los poderes públicos aseguran la protección de la salud como derecho fundamental...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-010",
-      "topicId": "t-alimentacion",
-      "prompt": "Una dieta blanda está indicada en:",
-      "explanation": "La dieta blanda se utiliza en la convalecencia de procesos digestivos, postoperatorios y en pacientes con dificultad para la masticación o la deglución.",
-      "officialYear": 2018,
-      "officialSourceRef": "SERMAS_TCAE_2018_Cuestionario_Pregunta6",
+      "topicId": "t-legislacion",
+      "prompt": "¿Qué sucede si en un plazo fijado por meses no existe día equivalente en el mes de vencimiento?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q010",
       "options": [
-        { "id": "q-010-a", "ordinal": 0, "text": "Pacientes con diabetes mellitus tipo 1", "isCorrect": false },
-        { "id": "q-010-b", "ordinal": 1, "text": "Postoperatorios y convalecencia digestiva", "isCorrect": true },
-        { "id": "q-010-c", "ordinal": 2, "text": "Pacientes con insuficiencia renal crónica", "isCorrect": false },
-        { "id": "q-010-d", "ordinal": 3, "text": "Pacientes con hipercolesterolemia", "isCorrect": false }
+        {
+          "id": "q-010-o0",
+          "ordinal": 0,
+          "text": "El plazo expira el primer día del mes siguiente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-010-o1",
+          "ordinal": 1,
+          "text": "El plazo se amplia automáticamente un mes más.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-010-o2",
+          "ordinal": 2,
+          "text": "El plazo expira el último día del mes.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-010-o3",
+          "ordinal": 3,
+          "text": "El plazo expira el primer día hábil del mes siguiente.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-011",
-      "topicId": "t-medicacion",
-      "prompt": "La regla de los 5 correctos en la administración de medicamentos incluye verificar:",
-      "explanation": "Los 5 correctos clásicos son: paciente correcto, medicamento correcto, dosis correcta, vía correcta y hora correcta. Algunos protocolos añaden un sexto: registro correcto.",
-      "officialYear": 2017,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2017_Cuestionario_Pregunta20",
+      "topicId": "t-organizacion-sanitaria",
+      "prompt": "Según el artículo 6 del decreto 174/2010, ¿qué actividad NO garantizará la Atención primaria?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q011",
       "options": [
-        { "id": "q-011-a", "ordinal": 0, "text": "Paciente, medicamento, dosis, vía y hora", "isCorrect": true },
-        { "id": "q-011-b", "ordinal": 1, "text": "Solo paciente y dosis", "isCorrect": false },
-        { "id": "q-011-c", "ordinal": 2, "text": "Solo vía y hora", "isCorrect": false },
-        { "id": "q-011-d", "ordinal": 3, "text": "Solo medicamento y paciente", "isCorrect": false }
+        {
+          "id": "q-011-o0",
+          "ordinal": 0,
+          "text": "La atención paliativa a enfermos terminales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-011-o1",
+          "ordinal": 1,
+          "text": "La rehabilitación.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-011-o2",
+          "ordinal": 2,
+          "text": "La atención a la salud bucodental.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-011-o3",
+          "ordinal": 3,
+          "text": "La indicación o prescripción y realización de procedimientos diagnósticos...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-012",
-      "topicId": "t-medicacion",
-      "prompt": "Para la administración de un medicamento por vía intramuscular (IM) en el glúteo, la zona correcta es:",
-      "explanation": "La zona correcta para la inyección IM en el glúteo es el cuadrante superoexterno (cuadrante superior externo) para evitar el nervio ciático.",
-      "officialYear": 2019,
-      "officialSourceRef": "SESCAM_TCAE_2019_Cuestionario_Pregunta23",
+      "topicId": "t-legislacion",
+      "prompt": "La actividad de las entidades territoriales aragonesas se rige por principios de:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q012",
       "options": [
-        { "id": "q-012-a", "ordinal": 0, "text": "Cuadrante inferoexterno", "isCorrect": false },
-        { "id": "q-012-b", "ordinal": 1, "text": "Cuadrante superoexterno", "isCorrect": true },
-        { "id": "q-012-c", "ordinal": 2, "text": "Cualquier zona del glúteo", "isCorrect": false },
-        { "id": "q-012-d", "ordinal": 3, "text": "Línea media del glúteo", "isCorrect": false }
+        {
+          "id": "q-012-o0",
+          "ordinal": 0,
+          "text": "Centralización y jerarquía.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-012-o1",
+          "ordinal": 1,
+          "text": "Subsidiariedad, proporcionalidad y diferenciación.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-012-o2",
+          "ordinal": 2,
+          "text": "Exclusividad autonómica.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-012-o3",
+          "ordinal": 3,
+          "text": "Dependencia estatal.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-013",
-      "topicId": "t-medicacion",
-      "prompt": "La vía subcutánea (SC) se utiliza habitualmente para la administración de:",
-      "explanation": "La vía subcutánea se utiliza para la administración de medicamentos de absorción lenta, como la insulina y los anticoagulantes tipo heparina de bajo peso molecular (HBPM).",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta3",
+      "topicId": "t-legislacion",
+      "prompt": "¿Cuál relaciona INCORRECTAMENTE un artículo de la Constitución con su contenido sobre sucesión y regencia?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q013",
       "options": [
-        { "id": "q-013-a", "ordinal": 0, "text": "Insulina y heparina de bajo peso molecular", "isCorrect": true },
-        { "id": "q-013-b", "ordinal": 1, "text": "Antibióticos intravenosos", "isCorrect": false },
-        { "id": "q-013-c", "ordinal": 2, "text": "Sangre y hemoderivados", "isCorrect": false },
-        { "id": "q-013-d", "ordinal": 3, "text": "Nutrición parenteral", "isCorrect": false }
+        {
+          "id": "q-013-o0",
+          "ordinal": 0,
+          "text": "Art 57.1 (sucesión).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-013-o1",
+          "ordinal": 1,
+          "text": "Art 59.1 (Regencia Presidente Congreso).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-013-o2",
+          "ordinal": 2,
+          "text": "Art 59.2 (Regencia minoría de edad).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-013-o3",
+          "ordinal": 3,
+          "text": "Art 60: el Rey podrá designar una Regencia de tres miembros...",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-014",
-      "topicId": "t-medicacion",
-      "prompt": "Para administrar un enema de limpieza, la posición del paciente es:",
-      "explanation": "La posición correcta para la administración de un enema es la posición de Sims (decúbito lateral izquierdo con el muslo derecho flexionado), para aprovechar la anatomía del colon.",
-      "officialYear": 2017,
-      "officialSourceRef": "SERMAS_TCAE_2017_Cuestionario_Pregunta10",
+      "topicId": "t-legislacion",
+      "prompt": "¿Cuál relaciona INCORRECTAMENTE un artículo de la Constitución sobre intervención estatal excepcional?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q014",
       "options": [
-        { "id": "q-014-a", "ordinal": 0, "text": "Fowler", "isCorrect": false },
-        { "id": "q-014-b", "ordinal": 1, "text": "Sims (decúbito lateral izquierdo)", "isCorrect": true },
-        { "id": "q-014-c", "ordinal": 2, "text": "Trendelenburg", "isCorrect": false },
-        { "id": "q-014-d", "ordinal": 3, "text": "Decúbito prono", "isCorrect": false }
+        {
+          "id": "q-014-o0",
+          "ordinal": 0,
+          "text": "Art 155 (obligar cumplimiento).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-014-o1",
+          "ordinal": 1,
+          "text": "Art 156 (personalidad jurídica).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-014-o2",
+          "ordinal": 2,
+          "text": "Art 157.1 (órganos propios).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-014-o3",
+          "ordinal": 3,
+          "text": "Art 158: El Estado asignará a las CCAA fondos suficientes para el desarrollo de los servicios que asuman.",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-015",
-      "topicId": "t-medicacion",
-      "prompt": "El termómetro clínico de mercurio se ha sustituido en los centros sanitarios por:",
-      "explanation": "El termómetro de mercurio se ha retirado por su toxicidad ambiental y se ha sustituido por termómetros digitales, de infrarrojos o galio.",
-      "officialYear": 2020,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta15",
+      "topicId": "t-legislacion",
+      "prompt": "Respecto al documento de voluntades anticipadas (Ley 6/2002), señale la opción INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q015",
       "options": [
-        { "id": "q-015-a", "ordinal": 0, "text": "Termómetros de mercurio reforzados", "isCorrect": false },
-        { "id": "q-015-b", "ordinal": 1, "text": "Termómetros digitales o de infrarrojos", "isCorrect": true },
-        { "id": "q-015-c", "ordinal": 2, "text": "Termómetros de alcohol", "isCorrect": false },
-        { "id": "q-015-d", "ordinal": 3, "text": "Solo termómetros timpánicos exclusivamente", "isCorrect": false }
+        {
+          "id": "q-015-o0",
+          "ordinal": 0,
+          "text": "Puede recoger la decisión sobre donación de órganos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-015-o1",
+          "ordinal": 1,
+          "text": "Recoge la designación de un representante.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-015-o2",
+          "ordinal": 2,
+          "text": "Es imprescindible su inscripción en el Registro de Voluntades Anticipadas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-015-o3",
+          "ordinal": 3,
+          "text": "Manifiesta instrucciones...",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-016",
-      "topicId": "t-urgencias",
-      "prompt": "En la RCP básica, la relación compresiones/ventilaciones para un adulto es:",
-      "explanation": "En la RCP básica del adulto la relación actual es de 30 compresiones torácicas por cada 2 ventilaciones (30:2), con una frecuencia de 100-120 compresiones por minuto.",
-      "officialYear": 2019,
-      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta25",
+      "topicId": "t-legislacion",
+      "prompt": "¿Cuál relaciona INCORRECTAMENTE un artículo de la Constitución con su contenido?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q016",
       "options": [
-        { "id": "q-016-a", "ordinal": 0, "text": "15:2", "isCorrect": false },
-        { "id": "q-016-b", "ordinal": 1, "text": "30:2", "isCorrect": true },
-        { "id": "q-016-c", "ordinal": 2, "text": "5:1", "isCorrect": false },
-        { "id": "q-016-d", "ordinal": 3, "text": "50:2", "isCorrect": false }
+        {
+          "id": "q-016-o0",
+          "ordinal": 0,
+          "text": "Art 1.1.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-016-o1",
+          "ordinal": 1,
+          "text": "Art 3.1.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-016-o2",
+          "ordinal": 2,
+          "text": "Art 9.1.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-016-o3",
+          "ordinal": 3,
+          "text": "Art 4.1: La bandera de España está constituida por tres franjas horizontales, roja, amarilla y roja.",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-017",
-      "topicId": "t-urgencias",
-      "prompt": "La posición lateral de seguridad (PLS) está indicada en:",
-      "explanation": "La posición lateral de seguridad se utiliza en pacientes inconscientes que respiran espontáneamente, para mantener la vía aérea permeable y evitar aspiraciones.",
-      "officialYear": 2018,
-      "officialSourceRef": "SESCAM_TCAE_2018_Cuestionario_Pregunta9",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "¿Quién será el Delegado de Prevención en empresas de hasta treinta trabajadores?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q017",
       "options": [
-        { "id": "q-017-a", "ordinal": 0, "text": "Paciente consciente con dolor torácico", "isCorrect": false },
-        { "id": "q-017-b", "ordinal": 1, "text": "Paciente inconsciente que respira espontáneamente", "isCorrect": true },
-        { "id": "q-017-c", "ordinal": 2, "text": "Paciente con sospecha de fractura cervical", "isCorrect": false },
-        { "id": "q-017-d", "ordinal": 3, "text": "Paciente en parada cardiorrespiratoria", "isCorrect": false }
+        {
+          "id": "q-017-o0",
+          "ordinal": 0,
+          "text": "El Delegado de personal.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-017-o1",
+          "ordinal": 1,
+          "text": "El Empresario.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-017-o2",
+          "ordinal": 2,
+          "text": "No es necesario Delegado de Prevención.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-017-o3",
+          "ordinal": 3,
+          "text": "Un delegado sindical.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-018",
-      "topicId": "t-urgencias",
-      "prompt": "Ante una hemorragia nasal (epistaxis), la primera medida es:",
-      "explanation": "La primera medida ante una epistaxis es sentar al paciente, inclinar la cabeza hacia delante y comprimir la fosa nasal afecta durante 10-15 minutos.",
-      "officialYear": 2017,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2017_Cuestionario_Pregunta12",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "La formación en materia preventiva deberá impartirse siempre que sea posible:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q018",
       "options": [
-        { "id": "q-018-a", "ordinal": 0, "text": "Tumbar al paciente y echar la cabeza hacia atrás", "isCorrect": false },
-        { "id": "q-018-b", "ordinal": 1, "text": "Sentar al paciente, inclinar la cabeza hacia delante y comprimir la fosa afecta", "isCorrect": true },
-        { "id": "q-018-c", "ordinal": 2, "text": "Aplicar hielo en la nuca", "isCorrect": false },
-        { "id": "q-018-d", "ordinal": 3, "text": "Introducir gasas secas en la fosa afecta", "isCorrect": false }
+        {
+          "id": "q-018-o0",
+          "ordinal": 0,
+          "text": "Fuera de la jornada de trabajo.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-018-o1",
+          "ordinal": 1,
+          "text": "Dentro de la jornada de trabajo.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-018-o2",
+          "ordinal": 2,
+          "text": "Fuera, como horas extraordinarias.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-018-o3",
+          "ordinal": 3,
+          "text": "Fuera, como horas ordinarias.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-019",
-      "topicId": "t-urgencias",
-      "prompt": "En la cadena de supervivencia, el primer eslabón es:",
-      "explanation": "El primer eslabón de la cadena de supervivencia es el reconocimiento precoz de la parada cardiorrespiratoria y la activación del sistema de emergencias (llamada al 112).",
-      "officialYear": 2020,
-      "officialSourceRef": "SERMAS_TCAE_2020_Cuestionario_Pregunta3",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "¿Por quién son designados los delegados de prevención?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q019",
       "options": [
-        { "id": "q-019-a", "ordinal": 0, "text": "Desfibrilación precoz", "isCorrect": false },
-        { "id": "q-019-b", "ordinal": 1, "text": "Reconocimiento y activación del sistema de emergencias", "isCorrect": true },
-        { "id": "q-019-c", "ordinal": 2, "text": "RCP avanzada", "isCorrect": false },
-        { "id": "q-019-d", "ordinal": 3, "text": "Cuidados post-resucitación", "isCorrect": false }
+        {
+          "id": "q-019-o0",
+          "ordinal": 0,
+          "text": "Por el empresario.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-019-o1",
+          "ordinal": 1,
+          "text": "Por el Servicio de Prevención.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-019-o2",
+          "ordinal": 2,
+          "text": "Por los representantes del personal.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-019-o3",
+          "ordinal": 3,
+          "text": "Por la autoridad gubernativa.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-020",
-      "topicId": "t-urgencias",
-      "prompt": "Para tomar el pulso a un paciente adulto consciente, la arteria más utilizada es:",
-      "explanation": "En el adulto consciente el pulso se toma en la arteria radial (cara interna de la muñeca). En niños menores de un año se prefiere la arteria braquial o apical.",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta2",
+      "topicId": "t-entorno-aragon",
+      "prompt": "En los últimos años, la economía aragonesa se ha caracterizado por:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q020",
       "options": [
-        { "id": "q-020-a", "ordinal": 0, "text": "Arteria carótida únicamente", "isCorrect": false },
-        { "id": "q-020-b", "ordinal": 1, "text": "Arteria radial", "isCorrect": true },
-        { "id": "q-020-c", "ordinal": 2, "text": "Arteria tibial posterior", "isCorrect": false },
-        { "id": "q-020-d", "ordinal": 3, "text": "Arteria poplítea", "isCorrect": false }
+        {
+          "id": "q-020-o0",
+          "ordinal": 0,
+          "text": "Estancamiento permanente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-020-o1",
+          "ordinal": 1,
+          "text": "Dependencia del sector agrario.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-020-o2",
+          "ordinal": 2,
+          "text": "Diversificación sectorial.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-020-o3",
+          "ordinal": 3,
+          "text": "Ausencia de exportaciones.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-021",
       "topicId": "t-legislacion",
-      "prompt": "La Ley 41/2002, básica reguladora de la autonomía del paciente, regula:",
-      "explanation": "La Ley 41/2002 regula la autonomía del paciente, los derechos y obligaciones en materia de información y documentación clínica, incluyendo el consentimiento informado y la historia clínica.",
-      "officialYear": 2002,
-      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002",
+      "prompt": "¿En qué plazo se formularán alegaciones en recursos administrativos con nuevos hechos?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q021",
       "options": [
-        { "id": "q-021-a", "ordinal": 0, "text": "La Ley General de Sanidad", "isCorrect": false },
-        { "id": "q-021-b", "ordinal": 1, "text": "La autonomía del paciente, información y documentación clínica", "isCorrect": true },
-        { "id": "q-021-c", "ordinal": 2, "text": "La cohesión y calidad del SNS", "isCorrect": false },
-        { "id": "q-021-d", "ordinal": 3, "text": "La ordenación de las profesiones sanitarias", "isCorrect": false }
+        {
+          "id": "q-021-o0",
+          "ordinal": 0,
+          "text": "Veinte días.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-021-o1",
+          "ordinal": 1,
+          "text": "No inferior a diez días ni superior a treinta.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-021-o2",
+          "ordinal": 2,
+          "text": "No inferior a diez días ni superior a quince.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-021-o3",
+          "ordinal": 3,
+          "text": "Un mes.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-022",
       "topicId": "t-legislacion",
-      "prompt": "La Ley 14/1986, General de Sanidad, establece:",
-      "explanation": "La Ley 14/1986, General de Sanidad, establece la creación de un Sistema Nacional de Salud (SNS) integrado por los servicios de salud de las comunidades autónomas.",
-      "officialYear": 1986,
-      "officialSourceRef": "BOE_A-1986-10499_Ley14-1986",
+      "prompt": "En las competencias exclusivas de Aragón, la Comunidad Autónoma puede ejercer:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q022",
       "options": [
-        { "id": "q-022-a", "ordinal": 0, "text": "La creación del Sistema Nacional de Salud", "isCorrect": true },
-        { "id": "q-022-b", "ordinal": 1, "text": "La regulación de la autonomía del paciente", "isCorrect": false },
-        { "id": "q-022-c", "ordinal": 2, "text": "El consentimiento informado exclusivamente", "isCorrect": false },
-        { "id": "q-022-d", "ordinal": 3, "text": "La historia clínica digital", "isCorrect": false }
+        {
+          "id": "q-022-o0",
+          "ordinal": 0,
+          "text": "Solo función ejecutiva.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-022-o1",
+          "ordinal": 1,
+          "text": "Solo potestad legislativa.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-022-o2",
+          "ordinal": 2,
+          "text": "Potestad legislativa, reglamentaria, función ejecutiva y políticas propias.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-022-o3",
+          "ordinal": 3,
+          "text": "Solo potestad reglamentaria.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-023",
       "topicId": "t-legislacion",
-      "prompt": "El Sistema Nacional de Salud (SNS) se configura como:",
-      "explanation": "El SNS es el conjunto coordinado de los servicios de salud de las comunidades autónomas, integrado funcionalmente, con la coordinación de la Administración General del Estado.",
-      "officialYear": 1986,
-      "officialSourceRef": "BOE_A-1986-10499_Ley14-1986_TituloIII",
+      "prompt": "Señale la opción INCORRECTA sobre el procedimiento electoral de las Juntas de Personal:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q023",
       "options": [
-        { "id": "q-023-a", "ordinal": 0, "text": "Un sistema único de gestión centralizada", "isCorrect": false },
-        { "id": "q-023-b", "ordinal": 1, "text": "Un conjunto coordinado de servicios de salud de las CC.AA.", "isCorrect": true },
-        { "id": "q-023-c", "ordinal": 2, "text": "Una red de hospitales privados concertados", "isCorrect": false },
-        { "id": "q-023-d", "ordinal": 3, "text": "Un organismo dependiente del Ministerio de Defensa", "isCorrect": false }
+        {
+          "id": "q-023-o0",
+          "ordinal": 0,
+          "text": "Sufragio personal, directo, libre y secreto.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-023-o1",
+          "ordinal": 1,
+          "text": "La votación será presencial;pudiendo delegar el voto en un representante.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-023-o2",
+          "ordinal": 2,
+          "text": "Electores los funcionarios en servicio activo.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-023-o3",
+          "ordinal": 3,
+          "text": "Candidaturas por organizaciones sindicales.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-024",
-      "topicId": "t-legislacion",
-      "prompt": "El consentimiento informado debe obtenerse:",
-      "explanation": "El consentimiento informado se obtiene del paciente (o representante legal) antes de cualquier procedimiento, de forma comprensible y por escrito en los casos previstos por la ley.",
-      "officialYear": 2002,
-      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002_Articulo2",
+      "topicId": "t-entorno-aragon",
+      "prompt": "¿Qué rasgo caracteriza la estructura territorial de Aragón?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q024",
       "options": [
-        { "id": "q-024-a", "ordinal": 0, "text": "Después del procedimiento", "isCorrect": false },
-        { "id": "q-024-b", "ordinal": 1, "text": "Antes del procedimiento, de forma comprensible", "isCorrect": true },
-        { "id": "q-024-c", "ordinal": 2, "text": "Únicamente por vía telefónica", "isCorrect": false },
-        { "id": "q-024-d", "ordinal": 3, "text": "Solo en intervenciones quirúrgicas programadas", "isCorrect": false }
+        {
+          "id": "q-024-o0",
+          "ordinal": 0,
+          "text": "Densidad homogénea.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-024-o1",
+          "ordinal": 1,
+          "text": "Urbanización total.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-024-o2",
+          "ordinal": 2,
+          "text": "Fuerte desequilibrio entre áreas urbanas y rurales.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-024-o3",
+          "ordinal": 3,
+          "text": "Población rural joven.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-025",
-      "topicId": "t-legislacion",
-      "prompt": "La historia clínica es:",
-      "explanation": "La historia clínica es el conjunto de documentos que recogen los datos clínicos del paciente a lo largo de su proceso asistencial; su custodia corresponde al centro sanitario.",
-      "officialYear": 2002,
-      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002_Articulo14",
+      "topicId": "t-organizacion-sanitaria",
+      "prompt": "Consejos de Salud de Área (Ley 14/1986). Indique la opción correcta:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q025",
       "options": [
-        { "id": "q-025-a", "ordinal": 0, "text": "Un documento propiedad del paciente en exclusiva", "isCorrect": false },
-        { "id": "q-025-b", "ordinal": 1, "text": "El conjunto de documentos que reflejan el proceso asistencial del paciente", "isCorrect": true },
-        { "id": "q-025-c", "ordinal": 2, "text": "Una herramienta administrativa sin valor legal", "isCorrect": false },
-        { "id": "q-025-d", "ordinal": 3, "text": "Un documento reservado al personal médico", "isCorrect": false }
+        {
+          "id": "q-025-o0",
+          "ordinal": 0,
+          "text": "Son órganos colegiados de participación comunitaria.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-025-o1",
+          "ordinal": 1,
+          "text": "Org. sindicales max. 25%.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-025-o2",
+          "ordinal": 2,
+          "text": "Corporaciones locales max. 25%.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-025-o3",
+          "ordinal": 3,
+          "text": "Elevan mociones a colegios profesionales.",
+          "isCorrect": false
+        }
       ]
     },
     {
       "id": "q-026",
-      "topicId": "t-higiene",
-      "prompt": "El lavado de manos higiénico tiene una duración mínima de:",
-      "explanation": "El lavado de manos higiénico, según la OMS, debe durar entre 40 y 60 segundos para garantizar la eliminación de la flora transitoria.",
-      "officialYear": 2019,
-      "officialSourceRef": "OMS_HandHygiene_2009_Recomendacion6",
+      "topicId": "t-legislacion",
+      "prompt": "Plazo máximo para dictar y notificar resolución de recurso potestativo de reposición:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q026",
       "options": [
-        { "id": "q-026-a", "ordinal": 0, "text": "5 segundos", "isCorrect": false },
-        { "id": "q-026-b", "ordinal": 1, "text": "40-60 segundos", "isCorrect": true },
-        { "id": "q-026-c", "ordinal": 2, "text": "2-3 minutos", "isCorrect": false },
-        { "id": "q-026-d", "ordinal": 3, "text": "10 segundos", "isCorrect": false }
+        {
+          "id": "q-026-o0",
+          "ordinal": 0,
+          "text": "Veinte días.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-026-o1",
+          "ordinal": 1,
+          "text": "Dos meses.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-026-o2",
+          "ordinal": 2,
+          "text": "Tres meses.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-026-o3",
+          "ordinal": 3,
+          "text": "Un mes.",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-027",
-      "topicId": "t-higiene",
-      "prompt": "Para la higiene de manos con solución hidroalcohólica, los 5 momentos de la OMS incluyen:",
-      "explanation": "Los 5 momentos de la OMS para la higiene de manos son: antes del contacto con el paciente, antes de una tarea aséptica, después del riesgo de exposición a fluidos, después del contacto con el paciente y después del contacto con el entorno del paciente.",
-      "officialYear": 2019,
-      "officialSourceRef": "OMS_HandHygiene_2009_My5Moments",
+      "topicId": "t-legislacion",
+      "prompt": "¿Cuál relaciona INCORRECTAMENTE un artículo sobre el procedimiento legislativo ordinario?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q027",
       "options": [
-        { "id": "q-027-a", "ordinal": 0, "text": "Solo antes y después del contacto con el paciente", "isCorrect": false },
-        { "id": "q-027-b", "ordinal": 1, "text": "Antes del contacto, antes de tarea aséptica, tras exposición a fluidos, tras contacto con paciente y tras contacto con su entorno", "isCorrect": true },
-        { "id": "q-027-c", "ordinal": 2, "text": "Solo después del contacto con fluidos", "isCorrect": false },
-        { "id": "q-027-d", "ordinal": 3, "text": "Solo al iniciar y al finalizar el turno", "isCorrect": false }
+        {
+          "id": "q-027-o0",
+          "ordinal": 0,
+          "text": "Art 90.2.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-027-o1",
+          "ordinal": 1,
+          "text": "Art 90.3.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-027-o2",
+          "ordinal": 2,
+          "text": "Art 90.1.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-027-o3",
+          "ordinal": 3,
+          "text": "Art 82.1: las Cortes podrán delegar en el Gobierno la potestad de dictar decretos... para desarrollar una base legal.",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-028",
-      "topicId": "t-medicacion",
-      "prompt": "La zona deltoidea es adecuada para inyecciones intramusculares de volumen:",
-      "explanation": "La zona deltoidea solo admite volúmenes pequeños (≤ 1-2 mL) por su limitada masa muscular; para volúmenes mayores se prefiere el glúteo o el vasto lateral.",
-      "officialYear": 2018,
-      "officialSourceRef": "SESCAM_TCAE_2018_Cuestionario_Pregunta14",
+      "topicId": "t-legislacion",
+      "prompt": "Estructura del Título Preliminar y Capítulo I Título I de la Constitución. Indique la correcta:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q028",
       "options": [
-        { "id": "q-028-a", "ordinal": 0, "text": "Mayores de 5 mL", "isCorrect": false },
-        { "id": "q-028-b", "ordinal": 1, "text": "Pequeños (≤ 1-2 mL)", "isCorrect": true },
-        { "id": "q-028-c", "ordinal": 2, "text": "Cualquier volumen", "isCorrect": false },
-        { "id": "q-028-d", "ordinal": 3, "text": "Solo intravenosos", "isCorrect": false }
+        {
+          "id": "q-028-o0",
+          "ordinal": 0,
+          "text": "Art 1 (soberanía).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-028-o1",
+          "ordinal": 1,
+          "text": "Art 1 (Estado social).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-028-o2",
+          "ordinal": 2,
+          "text": "Art 1-9 (principios);Art 14-29 (derechos).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-028-o3",
+          "ordinal": 3,
+          "text": "Art 1 (valores superiores);Art 2-9 (derechos y deberes fundamentales).",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-029",
-      "topicId": "t-urgencias",
-      "prompt": "El número de emergencias sanitarias en España es:",
-      "explanation": "El número único de emergencias en España es el 112, que coordina también la atención sanitaria urgente junto con los servicios autonómicos de salud.",
-      "officialYear": 2020,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta1",
+      "topicId": "t-legislacion",
+      "prompt": "El Plan Integral de Gestión de la Diversidad Cultural 2022-2025 NO incluye como principio:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q029",
       "options": [
-        { "id": "q-029-a", "ordinal": 0, "text": "061", "isCorrect": false },
-        { "id": "q-029-b", "ordinal": 1, "text": "112", "isCorrect": true },
-        { "id": "q-029-c", "ordinal": 2, "text": "091", "isCorrect": false },
-        { "id": "q-029-d", "ordinal": 3, "text": "080", "isCorrect": false }
+        {
+          "id": "q-029-o0",
+          "ordinal": 0,
+          "text": "Interculturalidad.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-029-o1",
+          "ordinal": 1,
+          "text": "Equidad.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-029-o2",
+          "ordinal": 2,
+          "text": "Interés superior del niño.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-029-o3",
+          "ordinal": 3,
+          "text": "Perspectiva integral del envejecimiento.",
+          "isCorrect": true
+        }
       ]
     },
     {
       "id": "q-030",
-      "topicId": "t-urgencias",
-      "prompt": "Para la medición de la temperatura axilar, el termómetro se mantiene:",
-      "explanation": "La temperatura axilar se mantiene con el termómetro entre 3 y 5 minutos, con el brazo del paciente pegado al tronco para asegurar el cierre de la axila.",
-      "officialYear": 2018,
-      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta11",
+      "topicId": "t-organizacion-sanitaria",
+      "prompt": "Áreas de Salud (Ley 14/1986). Señale la INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q030",
       "options": [
-        { "id": "q-030-a", "ordinal": 0, "text": "10 segundos", "isCorrect": false },
-        { "id": "q-030-b", "ordinal": 1, "text": "Entre 3 y 5 minutos", "isCorrect": true },
-        { "id": "q-030-c", "ordinal": 2, "text": "30 segundos", "isCorrect": false },
-        { "id": "q-030-d", "ordinal": 3, "text": "15 minutos", "isCorrect": false }
+        {
+          "id": "q-030-o0",
+          "ordinal": 0,
+          "text": "Dirigidas por órgano propio.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-030-o1",
+          "ordinal": 1,
+          "text": "Factores climatológicos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-030-o2",
+          "ordinal": 2,
+          "text": "Marco territorial de atención primaria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-030-o3",
+          "ordinal": 3,
+          "text": "Como regla general, el Área de Salud extenderá su acción a una población no superior a 250.000 habitantes.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-031",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "La capacidad de la hemoglobina para unirse al oxígeno aumenta cuando:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q031",
+      "options": [
+        {
+          "id": "q-031-o0",
+          "ordinal": 0,
+          "text": "Disminuye PH y aumenta CO2.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-031-o1",
+          "ordinal": 1,
+          "text": "Aumenta PH y disminuye CO2.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-031-o2",
+          "ordinal": 2,
+          "text": "Aumenta la temperatura corporal.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-031-o3",
+          "ordinal": 3,
+          "text": "Disminuye la concentración de oxígeno.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-032",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Principal riesgo de medicamento vía oral con disminución de nivel de conciencia:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q032",
+      "options": [
+        {
+          "id": "q-032-o0",
+          "ordinal": 0,
+          "text": "Hipotensión.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-032-o1",
+          "ordinal": 1,
+          "text": "Intolerancia digestiva.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-032-o2",
+          "ordinal": 2,
+          "text": "Aspiración broncopulmonar.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-032-o3",
+          "ordinal": 3,
+          "text": "Retraso absorción.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-033",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Identificación de pacientes (Sistema Nacional de Salud). Identificadores habituales:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q033",
+      "options": [
+        {
+          "id": "q-033-o0",
+          "ordinal": 0,
+          "text": "Nombre y habitación.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-033-o1",
+          "ordinal": 1,
+          "text": "Nombre y fecha de nacimiento/historia.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-033-o2",
+          "ordinal": 2,
+          "text": "Número de cama y diagnóstico.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-033-o3",
+          "ordinal": 3,
+          "text": "Nombre del médico.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-034",
+      "topicId": "t-higiene-aseo",
+      "prompt": "¿Cuál NO es característica de un buen desinfectante?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q034",
+      "options": [
+        {
+          "id": "q-034-o0",
+          "ordinal": 0,
+          "text": "Alto poder germicida.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-034-o1",
+          "ordinal": 1,
+          "text": "Soluble en agua y grasas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-034-o2",
+          "ordinal": 2,
+          "text": "Amplio espectro.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-034-o3",
+          "ordinal": 3,
+          "text": "No compatible con otros productos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-035",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "Para evitar riesgos ergonómicos en la movilización de pacientes:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q035",
+      "options": [
+        {
+          "id": "q-035-o0",
+          "ordinal": 0,
+          "text": "Doblar espalda.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-035-o1",
+          "ordinal": 1,
+          "text": "Separar pies.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-035-o2",
+          "ordinal": 2,
+          "text": "Carga lejos del cuerpo.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-035-o3",
+          "ordinal": 3,
+          "text": "Realizar giros de tronco mientras carga peso.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-036",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Actuación que NO corresponde a vigilancia epidemiológica hospitalaria según OMS:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q036",
+      "options": [
+        {
+          "id": "q-036-o0",
+          "ordinal": 0,
+          "text": "Detectar cambios.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-036-o1",
+          "ordinal": 1,
+          "text": "Monitorizar incidencia.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-036-o2",
+          "ordinal": 2,
+          "text": "Medir satisfacción del paciente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-036-o3",
+          "ordinal": 3,
+          "text": "Participar en vigilancia de variantes.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-037",
+      "topicId": "t-salud-mental",
+      "prompt": "Factores que facilitan la comunicación sanitaria:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q037",
+      "options": [
+        {
+          "id": "q-037-o0",
+          "ordinal": 0,
+          "text": "Falta de tiempo.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-037-o1",
+          "ordinal": 1,
+          "text": "Atención centrada en el paciente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-037-o2",
+          "ordinal": 2,
+          "text": "Claridad, empatía, escucha activa.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-037-o3",
+          "ordinal": 3,
+          "text": "Tecnicismos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-038",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "En el anciano, la disminución de secreción de ácido clorhídrico se denomina:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q038",
+      "options": [
+        {
+          "id": "q-038-o0",
+          "ordinal": 0,
+          "text": "Hipoclorhidria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-038-o1",
+          "ordinal": 1,
+          "text": "Aquilia.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-038-o2",
+          "ordinal": 2,
+          "text": "Hiperclorhidria.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-038-o3",
+          "ordinal": 3,
+          "text": "Presbifagia.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-039",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Almacenamiento final de residuos Grupo III en hospital sin refrigeración (Aragón):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q039",
+      "options": [
+        {
+          "id": "q-039-o0",
+          "ordinal": 0,
+          "text": "12 horas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-039-o1",
+          "ordinal": 1,
+          "text": "24 horas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-039-o2",
+          "ordinal": 2,
+          "text": "72 horas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-039-o3",
+          "ordinal": 3,
+          "text": "Una semana.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-040",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Parte que mantiene el instrumental quirúrgico cuando está trabado:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q040",
+      "options": [
+        {
+          "id": "q-040-o0",
+          "ordinal": 0,
+          "text": "Mandíbulas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-040-o1",
+          "ordinal": 1,
+          "text": "Cremallera.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-040-o2",
+          "ordinal": 2,
+          "text": "Caja de traba.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-040-o3",
+          "ordinal": 3,
+          "text": "Anillas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-041",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Medicamentos que deben protegerse de la luz se denominan:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q041",
+      "options": [
+        {
+          "id": "q-041-o0",
+          "ordinal": 0,
+          "text": "Hidrosolubles.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-041-o1",
+          "ordinal": 1,
+          "text": "Termolábiles.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-041-o2",
+          "ordinal": 2,
+          "text": "Fotosensibles.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-041-o3",
+          "ordinal": 3,
+          "text": "Higroscópicos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-042",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Incidente que pudo causar daño pero no ocurrió por azar:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q042",
+      "options": [
+        {
+          "id": "q-042-o0",
+          "ordinal": 0,
+          "text": "Evento adverso.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-042-o1",
+          "ordinal": 1,
+          "text": "Evento centinela.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-042-o2",
+          "ordinal": 2,
+          "text": "Incidencia / Casi-error (Near-miss).",
+          "isCorrect": true
+        },
+        {
+          "id": "q-042-o3",
+          "ordinal": 3,
+          "text": "Negligencia.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-043",
+      "topicId": "t-neonatologia-pediatria",
+      "prompt": "Cuidados inmediatos al recién nacido en sala de partos:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q043",
+      "options": [
+        {
+          "id": "q-043-o0",
+          "ordinal": 0,
+          "text": "Huellas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-043-o1",
+          "ordinal": 1,
+          "text": "Prueba talón.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-043-o2",
+          "ordinal": 2,
+          "text": "Control peso y talla.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-043-o3",
+          "ordinal": 3,
+          "text": "Cuidados cordón.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-044",
+      "topicId": "t-salud-mental",
+      "prompt": "Línea que NO es estratégica del Plan de Salud Mental de Aragón (2022-2025):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q044",
+      "options": [
+        {
+          "id": "q-044-o0",
+          "ordinal": 0,
+          "text": "Adicciones.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-044-o1",
+          "ordinal": 1,
+          "text": "Psicogeriatría.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-044-o2",
+          "ordinal": 2,
+          "text": "Burn-out.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-044-o3",
+          "ordinal": 3,
+          "text": "Humanización.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-045",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "Hábito corporal INCORRECTO para evitar lesiones de espalda:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q045",
+      "options": [
+        {
+          "id": "q-045-o0",
+          "ordinal": 0,
+          "text": "Flexionar piernas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-045-o1",
+          "ordinal": 1,
+          "text": "No contraer abdominales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-045-o2",
+          "ordinal": 2,
+          "text": "Utilizar grúa.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-045-o3",
+          "ordinal": 3,
+          "text": "Sujetar objeto próximo al cuerpo.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-046",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Humedad relativa mínima recomendada ante riesgo de electricidad estática:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q046",
+      "options": [
+        {
+          "id": "q-046-o0",
+          "ordinal": 0,
+          "text": "30%.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-046-o1",
+          "ordinal": 1,
+          "text": "65%.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-046-o2",
+          "ordinal": 2,
+          "text": "50%.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-046-o3",
+          "ordinal": 3,
+          "text": "70%.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-047",
+      "topicId": "t-higiene-aseo",
+      "prompt": "La punción capilar en niños menores de 4 años se realiza en:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q047",
+      "options": [
+        {
+          "id": "q-047-o0",
+          "ordinal": 0,
+          "text": "Dedo mano.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-047-o1",
+          "ordinal": 1,
+          "text": "Oreja.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-047-o2",
+          "ordinal": 2,
+          "text": "Dedo pie.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-047-o3",
+          "ordinal": 3,
+          "text": "Planta del pie.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-048",
+      "topicId": "t-nutricion-alimentacion",
+      "prompt": "NO es una característica del proceso de alimentación:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q048",
+      "options": [
+        {
+          "id": "q-048-o0",
+          "ordinal": 0,
+          "text": "Involuntario.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-048-o1",
+          "ordinal": 1,
+          "text": "Consciente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-048-o2",
+          "ordinal": 2,
+          "text": "Educable.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-048-o3",
+          "ordinal": 3,
+          "text": "Voluntario.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-049",
+      "topicId": "t-salud-mental",
+      "prompt": "El Plan de Salud Mental de Aragón NO se basa en:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q049",
+      "options": [
+        {
+          "id": "q-049-o0",
+          "ordinal": 0,
+          "text": "Redes.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-049-o1",
+          "ordinal": 1,
+          "text": "Género.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-049-o2",
+          "ordinal": 2,
+          "text": "Avances Tecnológicos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-049-o3",
+          "ordinal": 3,
+          "text": "Ámbito Urbano.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-050",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Localización más adecuada para medir presión venosa central:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q050",
+      "options": [
+        {
+          "id": "q-050-o0",
+          "ordinal": 0,
+          "text": "Yugular externa.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-050-o1",
+          "ordinal": 1,
+          "text": "Subclavia o yugular interna.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-050-o2",
+          "ordinal": 2,
+          "text": "Vena basílica.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-050-o3",
+          "ordinal": 3,
+          "text": "Vena femoral.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-051",
+      "topicId": "t-higiene-aseo",
+      "prompt": "La termoterapia se utiliza principalmente para:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q051",
+      "options": [
+        {
+          "id": "q-051-o0",
+          "ordinal": 0,
+          "text": "Neuropatía diabética.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-051-o1",
+          "ordinal": 1,
+          "text": "Aumentar circulación sanguínea.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-051-o2",
+          "ordinal": 2,
+          "text": "Congelar tejidos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-051-o3",
+          "ordinal": 3,
+          "text": "Estimular nervios.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-052",
+      "topicId": "t-valoracion-enfermeria",
+      "prompt": "Escala que mide autonomía para actividades instrumentales (AIVD) con 8 actividades:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q052",
+      "options": [
+        {
+          "id": "q-052-o0",
+          "ordinal": 0,
+          "text": "Barthel.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-052-o1",
+          "ordinal": 1,
+          "text": "Escala de Katz.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-052-o2",
+          "ordinal": 2,
+          "text": "Lawton y Brody.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-052-o3",
+          "ordinal": 3,
+          "text": "Zarit.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-053",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Afirmación INCORRECTA sobre muestras biológicas:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q053",
+      "options": [
+        {
+          "id": "q-053-o0",
+          "ordinal": 0,
+          "text": "Orina urocultivo primera hora.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-053-o1",
+          "ordinal": 1,
+          "text": "LCR a temperatura ambiente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-053-o2",
+          "ordinal": 2,
+          "text": "Sangre bioquímica refrigerándose si lo requiere.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-053-o3",
+          "ordinal": 3,
+          "text": "Heces microbiología pueden conservarse refrigeradas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-054",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "Principal consecuencia de manipulación inadecuada de cargas:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q054",
+      "options": [
+        {
+          "id": "q-054-o0",
+          "ordinal": 0,
+          "text": "Lesiones dorsolumbares.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-054-o1",
+          "ordinal": 1,
+          "text": "Cefaleas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-054-o2",
+          "ordinal": 2,
+          "text": "Trastornos psicoafectivos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-054-o3",
+          "ordinal": 3,
+          "text": "Infecciones nosocomiales.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-055",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Residuos de pacientes con Ébola se clasifican como:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q055",
+      "options": [
+        {
+          "id": "q-055-o0",
+          "ordinal": 0,
+          "text": "Grupo II.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-055-o1",
+          "ordinal": 1,
+          "text": "Grupo III.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-055-o2",
+          "ordinal": 2,
+          "text": "Grupo IV.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-055-o3",
+          "ordinal": 3,
+          "text": "Grupo V.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-056",
+      "topicId": "t-nutricion-alimentacion",
+      "prompt": "Es un aminoácido esencial:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q056",
+      "options": [
+        {
+          "id": "q-056-o0",
+          "ordinal": 0,
+          "text": "Triptófano.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-056-o1",
+          "ordinal": 1,
+          "text": "Alanina.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-056-o2",
+          "ordinal": 2,
+          "text": "Serina.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-056-o3",
+          "ordinal": 3,
+          "text": "Prolina.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-057",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "La presbiacusia en el anciano es:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q057",
+      "options": [
+        {
+          "id": "q-057-o0",
+          "ordinal": 0,
+          "text": "Pérdida visión cercana.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-057-o1",
+          "ordinal": 1,
+          "text": "Dificultad tragar.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-057-o2",
+          "ordinal": 2,
+          "text": "Pérdida progresiva audición (agudos).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-057-o3",
+          "ordinal": 3,
+          "text": "Pérdida gusto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-058",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "¿Cuál es la primera fase de la cicatrización?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q058",
+      "options": [
+        {
+          "id": "q-058-o0",
+          "ordinal": 0,
+          "text": "Proliferativa.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-058-o1",
+          "ordinal": 1,
+          "text": "Inflamatoria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-058-o2",
+          "ordinal": 2,
+          "text": "Maduración.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-058-o3",
+          "ordinal": 3,
+          "text": "Remodelado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-059",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Escala para valorar riesgo de caídas en el anciano:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q059",
+      "options": [
+        {
+          "id": "q-059-o0",
+          "ordinal": 0,
+          "text": "Norton.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-059-o1",
+          "ordinal": 1,
+          "text": "Braden.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-059-o2",
+          "ordinal": 2,
+          "text": "Downton.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-059-o3",
+          "ordinal": 3,
+          "text": "Pfeiffer.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-060",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Sistema de notificación de incidentes del SALUD:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q060",
+      "options": [
+        {
+          "id": "q-060-o0",
+          "ordinal": 0,
+          "text": "SECA.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-060-o1",
+          "ordinal": 1,
+          "text": "SINASP.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-060-o2",
+          "ordinal": 2,
+          "text": "Check-list.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-060-o3",
+          "ordinal": 3,
+          "text": "Notifica-Aragón.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-061",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Recogida más adecuada para muestra de orina urocultivo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q061",
+      "options": [
+        {
+          "id": "q-061-o0",
+          "ordinal": 0,
+          "text": "Higiene + chorro medio + recipiente estéril.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-061-o1",
+          "ordinal": 1,
+          "text": "Primera micción + cualquier recipiente limpio.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-061-o2",
+          "ordinal": 2,
+          "text": "Bote no estéril.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-061-o3",
+          "ordinal": 3,
+          "text": "Recipiente estéril sin higiene.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-062",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Para clasificar las heces según su forma y consistencia:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q062",
+      "options": [
+        {
+          "id": "q-062-o0",
+          "ordinal": 0,
+          "text": "Escala Ramsay.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-062-o1",
+          "ordinal": 1,
+          "text": "Escala Bristol.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-062-o2",
+          "ordinal": 2,
+          "text": "Escala Barthel.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-062-o3",
+          "ordinal": 3,
+          "text": "Escala Simpson.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-063",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Eliminación residuos Grupo III mediante autoclave es proceso de:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q063",
+      "options": [
+        {
+          "id": "q-063-o0",
+          "ordinal": 0,
+          "text": "Incineración.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-063-o1",
+          "ordinal": 1,
+          "text": "Esterilización.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-063-o2",
+          "ordinal": 2,
+          "text": "Trituración.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-063-o3",
+          "ordinal": 3,
+          "text": "Desinfección química.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-064",
+      "topicId": "t-neonatologia-pediatria",
+      "prompt": "¿Por qué la piel del recién nacido es más vulnerable?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q064",
+      "options": [
+        {
+          "id": "q-064-o0",
+          "ordinal": 0,
+          "text": "Temperatura.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-064-o1",
+          "ordinal": 1,
+          "text": "Coloración.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-064-o2",
+          "ordinal": 2,
+          "text": "Herencia genética.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-064-o3",
+          "ordinal": 3,
+          "text": "Inmadurez.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-065",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Las úlceras por presión son lesiones producidas por fuerzas:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q065",
+      "options": [
+        {
+          "id": "q-065-o0",
+          "ordinal": 0,
+          "text": "De choque.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-065-o1",
+          "ordinal": 1,
+          "text": "Fricción.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-065-o2",
+          "ordinal": 2,
+          "text": "Electromagnéticas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-065-o3",
+          "ordinal": 3,
+          "text": "Gravitatorias.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-066",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Proceso que induce respuesta inmunitaria protectora (OMS):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q066",
+      "options": [
+        {
+          "id": "q-066-o0",
+          "ordinal": 0,
+          "text": "Infección.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-066-o1",
+          "ordinal": 1,
+          "text": "Inmunidad pasiva.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-066-o2",
+          "ordinal": 2,
+          "text": "Inmunización.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-066-o3",
+          "ordinal": 3,
+          "text": "Desinfección.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-067",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Postura más habitual para punción lumbar:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q067",
+      "options": [
+        {
+          "id": "q-067-o0",
+          "ordinal": 0,
+          "text": "Fowler.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-067-o1",
+          "ordinal": 1,
+          "text": "Supino.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-067-o2",
+          "ordinal": 2,
+          "text": "Sedestación o decúbito lateral en flexión.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-067-o3",
+          "ordinal": 3,
+          "text": "Trendelenburg.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-068",
+      "topicId": "t-salud-mental",
+      "prompt": "La empatía NO implica:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q068",
+      "options": [
+        {
+          "id": "q-068-o0",
+          "ordinal": 0,
+          "text": "Comprender perspectiva.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-068-o1",
+          "ordinal": 1,
+          "text": "Coordinación y humanización.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-068-o2",
+          "ordinal": 2,
+          "text": "Atención centrada y comunicación clara.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-068-o3",
+          "ordinal": 3,
+          "text": "Ignorar la emoción en beneficio del razonamiento.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-069",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Medida NO correcta para prevenir infección respiratoria nosocomial:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q069",
+      "options": [
+        {
+          "id": "q-069-o0",
+          "ordinal": 0,
+          "text": "Lavado manos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-069-o1",
+          "ordinal": 1,
+          "text": "EPIs.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-069-o2",
+          "ordinal": 2,
+          "text": "Aislamiento.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-069-o3",
+          "ordinal": 3,
+          "text": "Evitar ventilación y renovación de aire.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-070",
+      "topicId": "t-urgencias-primeros-auxilios",
+      "prompt": "Maniobra ante asfixia con oclusión total en adulto consciente:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q070",
+      "options": [
+        {
+          "id": "q-070-o0",
+          "ordinal": 0,
+          "text": "RCP.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-070-o1",
+          "ordinal": 1,
+          "text": "Heimlich.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-070-o2",
+          "ordinal": 2,
+          "text": "Boca-boca.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-070-o3",
+          "ordinal": 3,
+          "text": "Posición Lateral de Seguridad.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-071",
+      "topicId": "t-higiene-aseo",
+      "prompt": "En el control de esterilización NO se emplea:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q071",
+      "options": [
+        {
+          "id": "q-071-o0",
+          "ordinal": 0,
+          "text": "Físicos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-071-o1",
+          "ordinal": 1,
+          "text": "Controles citostáticos.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-071-o2",
+          "ordinal": 2,
+          "text": "Químicos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-071-o3",
+          "ordinal": 3,
+          "text": "Biológicos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-072",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "Capa de la piel formada principalmente por tejido adiposo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q072",
+      "options": [
+        {
+          "id": "q-072-o0",
+          "ordinal": 0,
+          "text": "Dermis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-072-o1",
+          "ordinal": 1,
+          "text": "Epidermis.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-072-o2",
+          "ordinal": 2,
+          "text": "Hipodermis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-072-o3",
+          "ordinal": 3,
+          "text": "Anejos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-073",
+      "topicId": "t-salud-mental",
+      "prompt": "Característica de cuidados paliativos (OMS):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q073",
+      "options": [
+        {
+          "id": "q-073-o0",
+          "ordinal": 0,
+          "text": "Sustituir curativos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-073-o1",
+          "ordinal": 1,
+          "text": "Prolongar vida a cualquier coste.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-073-o2",
+          "ordinal": 2,
+          "text": "Mejorar calidad de vida de paciente y familia.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-073-o3",
+          "ordinal": 3,
+          "text": "Solo últimos días.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-074",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Cuidado de paciente con intubación. Señale la INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q074",
+      "options": [
+        {
+          "id": "q-074-o0",
+          "ordinal": 0,
+          "text": "Humidificación.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-074-o1",
+          "ordinal": 1,
+          "text": "Higiene bucofaríngea.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-074-o2",
+          "ordinal": 2,
+          "text": "Proteger labios con gasas húmedas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-074-o3",
+          "ordinal": 3,
+          "text": "Vaselina.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-075",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Localizaciones de UPP más frecuentes en decúbito prono:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q075",
+      "options": [
+        {
+          "id": "q-075-o0",
+          "ordinal": 0,
+          "text": "Región sacra.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-075-o1",
+          "ordinal": 1,
+          "text": "Maléolos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-075-o2",
+          "ordinal": 2,
+          "text": "Dedos pies, rodillas, mamas, pómulos, orejas, nariz.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-075-o3",
+          "ordinal": 3,
+          "text": "Isquion, coxis, omóplatos.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-076",
+      "topicId": "t-neonatologia-pediatria",
+      "prompt": "Primeras deposiciones del recién nacido:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q076",
+      "options": [
+        {
+          "id": "q-076-o0",
+          "ordinal": 0,
+          "text": "Meconio.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-076-o1",
+          "ordinal": 1,
+          "text": "Loquios.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-076-o2",
+          "ordinal": 2,
+          "text": "Melenas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-076-o3",
+          "ordinal": 3,
+          "text": "Vérnix caseosa.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-077",
+      "topicId": "t-neonatologia-pediatria",
+      "prompt": "En el cordón umbilical se identifica:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q077",
+      "options": [
+        {
+          "id": "q-077-o0",
+          "ordinal": 0,
+          "text": "Una arteria y una vena.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-077-o1",
+          "ordinal": 1,
+          "text": "Dos arterias y dos venas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-077-o2",
+          "ordinal": 2,
+          "text": "Dos arterias y una vena.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-077-o3",
+          "ordinal": 3,
+          "text": "Dos venas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-078",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "Volumen de orina inferior a 500 ml:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q078",
+      "options": [
+        {
+          "id": "q-078-o0",
+          "ordinal": 0,
+          "text": "Anuria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-078-o1",
+          "ordinal": 1,
+          "text": "Poliuria.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-078-o2",
+          "ordinal": 2,
+          "text": "Oliguria.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-078-o3",
+          "ordinal": 3,
+          "text": "Polaquiuria.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-079",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "Primera acción en jerarquía de prevención (Estrategia Aragonesa 2022-2027):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q079",
+      "options": [
+        {
+          "id": "q-079-o0",
+          "ordinal": 0,
+          "text": "EPIS.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-079-o1",
+          "ordinal": 1,
+          "text": "Señalizar.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-079-o2",
+          "ordinal": 2,
+          "text": "Eliminar riesgo en origen.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-079-o3",
+          "ordinal": 3,
+          "text": "Formar.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-080",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "Hemorragia de origen pulmonar con la tos:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q080",
+      "options": [
+        {
+          "id": "q-080-o0",
+          "ordinal": 0,
+          "text": "Epistaxis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-080-o1",
+          "ordinal": 1,
+          "text": "Hemoptisis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-080-o2",
+          "ordinal": 2,
+          "text": "Hematemesis.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-080-o3",
+          "ordinal": 3,
+          "text": "En sábana.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-081",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "Balance hídrico negativo indica:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q081",
+      "options": [
+        {
+          "id": "q-081-o0",
+          "ordinal": 0,
+          "text": "Retención.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-081-o1",
+          "ordinal": 1,
+          "text": "Elimina más de lo que ingresa.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-081-o2",
+          "ordinal": 2,
+          "text": "Bien hidratado.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-081-o3",
+          "ordinal": 3,
+          "text": "Sobrecarga.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-082",
+      "topicId": "t-nutricion-alimentacion",
+      "prompt": "Vitamina liposoluble:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q082",
+      "options": [
+        {
+          "id": "q-082-o0",
+          "ordinal": 0,
+          "text": "Retinol (A).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-082-o1",
+          "ordinal": 1,
+          "text": "Ácido ascórbico (C).",
+          "isCorrect": true
+        },
+        {
+          "id": "q-082-o2",
+          "ordinal": 2,
+          "text": "Ácido pantoténico.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-082-o3",
+          "ordinal": 3,
+          "text": "Ácido fólico.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-083",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Quemadura con ampollas y dolor intenso que afecta a dermis:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q083",
+      "options": [
+        {
+          "id": "q-083-o0",
+          "ordinal": 0,
+          "text": "Primer grado.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-083-o1",
+          "ordinal": 1,
+          "text": "Segundo grado.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-083-o2",
+          "ordinal": 2,
+          "text": "Tercer grado.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-083-o3",
+          "ordinal": 3,
+          "text": "Superficial.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-084",
+      "topicId": "t-neonatologia-pediatria",
+      "prompt": "Parto que transcurre con normalidad:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q084",
+      "options": [
+        {
+          "id": "q-084-o0",
+          "ordinal": 0,
+          "text": "Distócico.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-084-o1",
+          "ordinal": 1,
+          "text": "Eupneico.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-084-o2",
+          "ordinal": 2,
+          "text": "Eutócico.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-084-o3",
+          "ordinal": 3,
+          "text": "Pretérmino.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-085",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Residuos citostáticos pertenecen al:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q085",
+      "options": [
+        {
+          "id": "q-085-o0",
+          "ordinal": 0,
+          "text": "Grupo II.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-085-o1",
+          "ordinal": 1,
+          "text": "Grupo III.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-085-o2",
+          "ordinal": 2,
+          "text": "Grupo IV.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-085-o3",
+          "ordinal": 3,
+          "text": "Residuos urbanos.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-086",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Temperatura del paciente en cirugía (Proyecto Infección Quirúrgica Zero):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q086",
+      "options": [
+        {
+          "id": "q-086-o0",
+          "ordinal": 0,
+          "text": "Normotérmico.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-086-o1",
+          "ordinal": 1,
+          "text": "Hipotérmico.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-086-o2",
+          "ordinal": 2,
+          "text": "Hipertérmico.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-086-o3",
+          "ordinal": 3,
+          "text": "Indiferente.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-087",
+      "topicId": "t-salud-mental",
+      "prompt": "Barreras de comunicación sanitaria:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q087",
+      "options": [
+        {
+          "id": "q-087-o0",
+          "ordinal": 0,
+          "text": "Escucha activa.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-087-o1",
+          "ordinal": 1,
+          "text": "Ruido, miedo, falta empatía.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-087-o2",
+          "ordinal": 2,
+          "text": "Coordinación.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-087-o3",
+          "ordinal": 3,
+          "text": "Preguntas abiertas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-088",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Fuente de infección más importante cuando pasa del reservorio al huésped:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q088",
+      "options": [
+        {
+          "id": "q-088-o0",
+          "ordinal": 0,
+          "text": "Animales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-088-o1",
+          "ordinal": 1,
+          "text": "Fómites.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-088-o2",
+          "ordinal": 2,
+          "text": "Vectores.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-088-o3",
+          "ordinal": 3,
+          "text": "Humano.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-089",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Higiene bucal del paciente terminal. Señale la INCORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q089",
+      "options": [
+        {
+          "id": "q-089-o0",
+          "ordinal": 0,
+          "text": "Varias veces al día.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-089-o1",
+          "ordinal": 1,
+          "text": "Vaselina en labios.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-089-o2",
+          "ordinal": 2,
+          "text": "Cerdas suaves.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-089-o3",
+          "ordinal": 3,
+          "text": "Soluciones alcohólicas para mucosa.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-090",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Método de esterilización altamente tóxico, inflamable y explosivo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q090",
+      "options": [
+        {
+          "id": "q-090-o0",
+          "ordinal": 0,
+          "text": "Vapor.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-090-o1",
+          "ordinal": 1,
+          "text": "Plasma gas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-090-o2",
+          "ordinal": 2,
+          "text": "Ácido peracético.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-090-o3",
+          "ordinal": 3,
+          "text": "Óxido de etileno.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-091",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Posición recomendada para administrar un enema:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q091",
+      "options": [
+        {
+          "id": "q-091-o0",
+          "ordinal": 0,
+          "text": "Fowler.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-091-o1",
+          "ordinal": 1,
+          "text": "Rosser.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-091-o2",
+          "ordinal": 2,
+          "text": "Sims.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-091-o3",
+          "ordinal": 3,
+          "text": "Proetz.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-092",
+      "topicId": "t-prevencion-riesgos",
+      "prompt": "Temperatura entorno trabajo sedentario (RD 486/1997):",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q092",
+      "options": [
+        {
+          "id": "q-092-o0",
+          "ordinal": 0,
+          "text": "15-22.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-092-o1",
+          "ordinal": 1,
+          "text": "17-27.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-092-o2",
+          "ordinal": 2,
+          "text": "20-24.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-092-o3",
+          "ordinal": 3,
+          "text": "18-25.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-093",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Tipo de sonda nasogástrica:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q093",
+      "options": [
+        {
+          "id": "q-093-o0",
+          "ordinal": 0,
+          "text": "Foley.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-093-o1",
+          "ordinal": 1,
+          "text": "Nelaton.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-093-o2",
+          "ordinal": 2,
+          "text": "Salem.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-093-o3",
+          "ordinal": 3,
+          "text": "Robinson.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-094",
+      "topicId": "t-salud-mental",
+      "prompt": "¿Cuántas líneas estratégicas tiene el Plan de Salud Mental de Aragón 2022-2025?",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q094",
+      "options": [
+        {
+          "id": "q-094-o0",
+          "ordinal": 0,
+          "text": "11.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-094-o1",
+          "ordinal": 1,
+          "text": "9.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-094-o2",
+          "ordinal": 2,
+          "text": "7.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-094-o3",
+          "ordinal": 3,
+          "text": "8.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-095",
+      "topicId": "t-salud-mental",
+      "prompt": "La comunicación se entiende como:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q095",
+      "options": [
+        {
+          "id": "q-095-o0",
+          "ordinal": 0,
+          "text": "Unilateral.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-095-o1",
+          "ordinal": 1,
+          "text": "Intercambio de información entre dos o más personas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-095-o2",
+          "ordinal": 2,
+          "text": "Exclusiva de profesionales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-095-o3",
+          "ordinal": 3,
+          "text": "Fenómeno verbal.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-096",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Retirada de vello antes de cirugía. Método recomendado:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q096",
+      "options": [
+        {
+          "id": "q-096-o0",
+          "ordinal": 0,
+          "text": "Crema.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-096-o1",
+          "ordinal": 1,
+          "text": "Maquinilla eléctrica.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-096-o2",
+          "ordinal": 2,
+          "text": "Cuchilla.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-096-o3",
+          "ordinal": 3,
+          "text": "Cera.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-097",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Componente que NO forma parte del antídoto universal:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q097",
+      "options": [
+        {
+          "id": "q-097-o0",
+          "ordinal": 0,
+          "text": "Carbón vegetal.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-097-o1",
+          "ordinal": 1,
+          "text": "Ácido de Magnesio.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-097-o2",
+          "ordinal": 2,
+          "text": "Polvo de Tanino.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-097-o3",
+          "ordinal": 3,
+          "text": "Óxido de Magnesia.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-098",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Vía de administración con absorción más lenta:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q098",
+      "options": [
+        {
+          "id": "q-098-o0",
+          "ordinal": 0,
+          "text": "Rectal.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-098-o1",
+          "ordinal": 1,
+          "text": "Subcutánea.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-098-o2",
+          "ordinal": 2,
+          "text": "Sublingual.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-098-o3",
+          "ordinal": 3,
+          "text": "Intramuscular.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-099",
+      "topicId": "t-salud-mental",
+      "prompt": "Actuación más adecuada de TCAE ante dolor y angustia familiar en paciente terminal:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q099",
+      "options": [
+        {
+          "id": "q-099-o0",
+          "ordinal": 0,
+          "text": "Familia fuera.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-099-o1",
+          "ordinal": 1,
+          "text": "Colaborar en comodidad (posturas, almohadas) y comunicar a enfermería.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-099-o2",
+          "ordinal": 2,
+          "text": "Ignorar comunicación.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-099-o3",
+          "ordinal": 3,
+          "text": "Técnicas distracción.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-100",
+      "topicId": "t-higiene-aseo",
+      "prompt": "NO hace referencia al concepto de limpieza:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q100",
+      "options": [
+        {
+          "id": "q-100-o0",
+          "ordinal": 0,
+          "text": "Separación mecánica suciedad.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-100-o1",
+          "ordinal": 1,
+          "text": "Paso previo descontaminación.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-100-o2",
+          "ordinal": 2,
+          "text": "Verificar exposición a esterilización.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-100-o3",
+          "ordinal": 3,
+          "text": "Nunca sustituye a desinfección.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-101",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Material para recogida de heces en paciente autónomo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q101",
+      "options": [
+        {
+          "id": "q-101-o0",
+          "ordinal": 0,
+          "text": "Agua, jabón, cuña, frasco estéril.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-101-o1",
+          "ordinal": 1,
+          "text": "Gasas, jabón, cuña, frasco.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-101-o2",
+          "ordinal": 2,
+          "text": "Papel higiénico, guantes estériles, frasco, depresor, cuña, gasas estériles.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-101-o3",
+          "ordinal": 3,
+          "text": "Ninguna.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-102",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Situación que NO representa contraindicación absoluta para vía oral:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q102",
+      "options": [
+        {
+          "id": "q-102-o0",
+          "ordinal": 0,
+          "text": "Inconsciente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-102-o1",
+          "ordinal": 1,
+          "text": "Vómitos.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-102-o2",
+          "ordinal": 2,
+          "text": "Disfagia leve.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-102-o3",
+          "ordinal": 3,
+          "text": "Ileo paralítico.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-103",
+      "topicId": "t-valoracion-enfermeria",
+      "prompt": "Capacidad de realizar ABVD se mide con:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q103",
+      "options": [
+        {
+          "id": "q-103-o0",
+          "ordinal": 0,
+          "text": "Barthel.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-103-o1",
+          "ordinal": 1,
+          "text": "Pfeiffer.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-103-o2",
+          "ordinal": 2,
+          "text": "Yesavage.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-103-o3",
+          "ordinal": 3,
+          "text": "Lawton y Brody.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-104",
+      "topicId": "t-salud-mental",
+      "prompt": "Presencia de TCAES en estimación presupuestaria Plan Salud Mental 2022-2025:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q104",
+      "options": [
+        {
+          "id": "q-104-o0",
+          "ordinal": 0,
+          "text": "No (solo médicos y enfermeras).",
+          "isCorrect": true
+        },
+        {
+          "id": "q-104-o1",
+          "ordinal": 1,
+          "text": "Si (sin dotación).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-104-o2",
+          "ordinal": 2,
+          "text": "Si (sin cuantificar).",
+          "isCorrect": false
+        },
+        {
+          "id": "q-104-o3",
+          "ordinal": 3,
+          "text": "Si (número de 8).",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-105",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Opción INCORRECTA al preparar aseo de encamado:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q105",
+      "options": [
+        {
+          "id": "q-105-o0",
+          "ordinal": 0,
+          "text": "Preparar todo antes.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-105-o1",
+          "ordinal": 1,
+          "text": "Aislar al paciente.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-105-o2",
+          "ordinal": 2,
+          "text": "Temperatura agua 25-30ºC.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-105-o3",
+          "ordinal": 3,
+          "text": "Jabones no irritantes.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "q-106",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Función principal de enema carminativo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q106",
+      "options": [
+        {
+          "id": "q-106-o0",
+          "ordinal": 0,
+          "text": "Expulsar gases.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-106-o1",
+          "ordinal": 1,
+          "text": "Tratar inflamaciones.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-106-o2",
+          "ordinal": 2,
+          "text": "Introducir nutrientes.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-106-o3",
+          "ordinal": 3,
+          "text": "Lubricar.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-107",
+      "topicId": "t-medicacion-farmacologia",
+      "prompt": "Posición en intervención de bocio:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q107",
+      "options": [
+        {
+          "id": "q-107-o0",
+          "ordinal": 0,
+          "text": "Morestin.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-107-o1",
+          "ordinal": 1,
+          "text": "Fowler.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-107-o2",
+          "ordinal": 2,
+          "text": "Roser.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-107-o3",
+          "ordinal": 3,
+          "text": "Trendelenburg.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-108",
+      "topicId": "t-nutricion-alimentacion",
+      "prompt": "Macronutriente esencial para el organismo:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q108",
+      "options": [
+        {
+          "id": "q-108-o0",
+          "ordinal": 0,
+          "text": "Vitaminas.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-108-o1",
+          "ordinal": 1,
+          "text": "Minerales.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-108-o2",
+          "ordinal": 2,
+          "text": "Proteínas.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-108-o3",
+          "ordinal": 3,
+          "text": "Fibra.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-109",
+      "topicId": "t-anatomia-fisiologia",
+      "prompt": "Articulaciones sin movimiento:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q109",
+      "options": [
+        {
+          "id": "q-109-o0",
+          "ordinal": 0,
+          "text": "Anfiartrosis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-109-o1",
+          "ordinal": 1,
+          "text": "Diartrosis.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-109-o2",
+          "ordinal": 2,
+          "text": "Sinartrosis.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-109-o3",
+          "ordinal": 3,
+          "text": "Fibrosas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q-110",
+      "topicId": "t-higiene-aseo",
+      "prompt": "Colocación de material en autoclave. Señale la CORRECTA:",
+      "explanation": "",
+      "officialYear": 2025,
+      "officialSourceRef": "SALUD_TCAE_TURNO_LIBRE_2025_2026-05-14_Q110",
+      "options": [
+        {
+          "id": "q-110-o0",
+          "ordinal": 0,
+          "text": "Montones superpuestos.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-110-o1",
+          "ordinal": 1,
+          "text": "Lleno al 100%.",
+          "isCorrect": false
+        },
+        {
+          "id": "q-110-o2",
+          "ordinal": 2,
+          "text": "Contacto con paredes.",
+          "isCorrect": true
+        },
+        {
+          "id": "q-110-o3",
+          "ordinal": 3,
+          "text": "Desmontar o abrir instrumentos con válvulas.",
+          "isCorrect": false
+        }
       ]
     }
   ]

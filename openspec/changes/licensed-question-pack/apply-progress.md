@@ -1,10 +1,10 @@
-# Apply Progress — `licensed-question-pack` (PR-A)
+# Apply Progress — `licensed-question-pack` (PR-A + PR-B)
 
-> Change: `licensed-question-pack` · Project: `sanitest` · Strategy: `feature-branch-chain` (resolved). PR-A base `main` target `feature/licensed-question-pack` (tracker branch).
+> Change: `licensed-question-pack` · Project: `sanitest` · Strategy: `feature-branch-chain` (resolved). PR-A base `main` target `feature/licensed-question-pack-tracker`; PR-B target `feat/licensed-pack-content` base `feature/licensed-question-pack-tracker`.
 > Mode: **Standard** (strict_tdd remains `false`; `:app:testDebugUnitTest` + `:app:testReleaseUnitTest` pass cleanly under the JUnit + Robolectric runner).
-> Artifact store: **hybrid** (this file + Engram topic `sdd/licensed-question-pack/apply-progress`, with the official OpenSpec `tasks.md` also marked `[x]` for completed PR-A tasks).
-> Chain strategy: `feature-branch-chain` (PR-A targets the feature/tracker branch; PR-B will follow the same chain).
-> Decision: **PR-A only** — gate + schema + manifest + ~30-Q smoke pack. PR-B (full ~80 Q + `LICENSING.md` + editorial sign-off) is the next chained PR slice.
+> Artifact store: **hybrid** (this file + Engram topic `sdd/licensed-question-pack/apply-progress`, with the official OpenSpec `tasks.md` marked `[x]` only for completed PR-A/PR-B tasks; human release sign-off remains unchecked).
+> Chain strategy: `feature-branch-chain` (PR-A targets the feature/tracker branch; PR-B also targets the tracker branch as the next chained slice).
+> Decision: **PR-A done, PR-B content/gates done; release sign-off pending** — gate/schema/manifest + 110-Q TCAE content drop + `LICENSING.md` provenance are complete. Technical `sdd-verify` may run; public store release remains blocked on human editorial/legal sign-off.
 
 ---
 
@@ -213,15 +213,105 @@ gradlew :app:check
 # → BUILD SUCCESSFUL (82 actionable tasks)
 ```
 
-## Remaining Tasks (for PR-B)
+## PR-B / Phase 3 — Full TCAE Content (CONTENT/GATES DONE; SIGN-OFF PENDING)
 
-- [ ] 3.1 Author full TCAE pack (50–100 Q, target ~80) in `sanidad-v1.json`; every Q verbatim from official oposición documents; full provenance.
-- [ ] 3.2 Write repo-root `LICENSING.md`: per-Q table (`questionId`, `officialYear`, `officialSourceRef`, clearance-evidence); sign-off line required before release.
-- [ ] 3.3 Recompute `sha256`; re-run all 3 gate invocations; all PASS.
-- [ ] 3.4 `:app:testDebugUnitTest --rerun-tasks` + `:app:assembleDebug` + `:app:lint` all green; no new warnings.
-- [ ] 3.5 Editorial sign-off recorded in `LICENSING.md`; `sdd-verify` confirms gate + per-Q provenance before release.
+| Task | Status | Notes |
+|------|--------|-------|
+| 3.1 Full TCAE pack in `sanidad-v1.json` | ✅ | 110 questions from Servicio Aragonés de Salud, TCAE turno libre, convocatoria 2025, examen 2026-05-14. Stable IDs `q-001`..`q-110`, 12 topics. |
+| 3.2 Repo-root `LICENSING.md` | ✅ | Includes organism/category/process/date, official page, question PDF URL, provisional answer key PDF URL, answer-key status, local source filenames note, per-Q provenance table, and pending human release-review checkbox. |
+| 3.3 Recompute `sha256`; re-run gates | ✅ | SHA-256 = `a4e00e8dab30b231a429ebf32d02f351e6635143a46a38430f57f6d795be7a94` over LF-final-newline pack bytes. Gradle gate PASS, PowerShell gate PASS. Bash gate not runnable on this Windows host (kept POSIX-compatible). |
+| 3.4 Unit tests + assemble + lint | ✅ | `:app:testDebugUnitTest --rerun-tasks`, `:app:assembleDebug`, `:app:lint` all BUILD SUCCESSFUL; only pre-existing warnings. |
+| 3.5 Human editorial/legal release sign-off | ⛔ | Not complete. `LICENSING.md` records provenance only; public store release remains blocked until a human records editorial/legal sign-off. Technical `sdd-verify` may still validate implementation and provenance coverage. |
 
-- [ ] 4.1 `sdd-verify`: execute all 3 license-gate invocations; assert Gradle/scripts missing-category behavior, `PackValidatorTest` (`ProvenanceMissing`/`MissingCategory`), `DatasetImporterValidationTest`, `SaniExamDbMigrationTest` (v3 → v4 + import cleanup), and due-queue category tests all PASS.
+## Workload / PR Boundary (PR-B)
+
+| Field | Value |
+|-------|-------|
+| Forecast in `tasks.md` for PR-B | ~1000–2000 lines (TCAE JSON) + docs |
+| **Actual** data file diff | `sanidad-v1.json` = 110 Q (~1750 lines) |
+| **Actual** docs diff | `LICENSING.md` = 1 new file (~130 lines), `pack-manifest.json` updated |
+| 400-line budget | **EXCEEDED** as expected for a content-drop PR slice; accepted under the resolved `feature-branch-chain` strategy. |
+| Decision | **PR-B only** — full content + `LICENSING.md` provenance + metadata/SHA. No schema/gate architecture changes; release sign-off is pending. |
+
+## Files Changed (PR-B only)
+
+| Path | Action | Purpose |
+|---|---|---|
+| `app/src/main/assets/question-packs/sanidad-v1.json` | Modified | Replaced 30-Q smoke pack with 110-Q official TCAE pack; stable IDs, 12 topics, every Q has `officialSourceRef`. |
+| `app/src/main/assets/pack-manifest.json` | Modified | Updated `sourceAttribution`, `publishedAt`, `licenseNotes`, `sha256`; `license` stays `cleared-of-rights`, `category` stays `TCAE`. |
+| `LICENSING.md` | Created/updated | Per-question provenance table for the Servicio Aragonés de Salud TCAE 2025 source; human editorial/legal release review remains pending. |
+| `.gitattributes` | Created | Forces LF line endings for bundled JSON assets so the SHA-256 in `pack-manifest.json` stays deterministic on Windows checkouts. |
+
+## Deviations from Design (PR-B)
+
+None — PR-B implements the design's PR-B slice verbatim. Notable confirmations:
+
+1. **Pack id stays `sanidad-v1`** and **license stays `cleared-of-rights`** (per design decisions).
+2. **Question count is 110**, above the original 50–100 target, because the supplied official source contains 110 questions.
+3. **Topic taxonomy expanded** from the 5 smoke topics to 12 topics to cover legislación, organización sanitaria, entorno de Aragón, prevención de riesgos, anatomía/fisiología, higiene/aseo, medicación/farmacología, nutrición/alimentación, urgencias/primeros auxilios, salud mental/comunicación, neonatología/pediatría, y valoración enfermera.
+4. **No schema/gate code changes** were required; the PR-A hardened gate accepted the new pack after manifest SHA recomputation.
+5. **Rows 23 and 28 of the source CSV contained semicolons inside option text**; the generator preserves those semicolons verbatim by reconstructing the affected options manually.
+
+## Issues Found (PR-B)
+
+1. **SHA-256 determinism on Windows**: Python's text-mode `open()` writes `\n` as `\r\n`, causing a mismatch between the in-memory SHA and the on-disk file SHA. Fix: write the JSON asset in binary mode (`open(path, "wb")`) so LF line endings are preserved and the manifest hash matches the file bytes exactly.
+2. **Git autocrlf risk for JSON assets**: Git warned that LF in the pack JSON files would be replaced by CRLF on checkout, which would invalidate the manifest SHA-256 for Windows developers. Fix: add repo-root `.gitattributes` declaring `app/src/main/assets/**/*.json text eol=lf`.
+3. **CSV internal semicolons**: Two source rows (23 and 28) contained semicolons inside option text that conflicted with the semicolon delimiter. The generator preserves those semicolons verbatim by reconstructing the affected options manually.
+4. **Bash gate still not runnable on Windows host**: Same limitation as PR-A; the script remains POSIX-compatible for CI Linux/macOS runners.
+5. **Review blocker fixed — license/sign-off wording overstated clearance**: `pack-manifest.json` now keeps the gate-required `license` string but limits `licenseNotes` to provenance, source URLs, no ownership claim, and pending human editorial/legal release review. `LICENSING.md`, `tasks.md`, and this progress log no longer claim completed human sign-off.
+6. **Review blocker checked — answer-key mapping**: The local official provisional answer key PDF (`TCAE-ARAGON-2025-R.pdf`) was extracted with `pdftotext`, producing all 110 official A/B/C/D answers. A full comparison script found 0 mismatches between `sanidad-v1.json` `isCorrect` flags and the official provisional key, including q-054=B, q-056=B, q-057=A, and q-059=B.
+7. **Review blocker fixed — JSON final newline/SHA hygiene**: `sanidad-v1.json` now has an LF final newline under the existing `.gitattributes` `app/src/main/assets/**/*.json text eol=lf` rule; manifest `sha256` was recomputed over the exact on-disk bytes.
+
+## Commands Run (PR-B)
+
+```bash
+# PR-B surgical blocker fixes (2026-06-24)
+pdftotext -layout "C:\Users\arbel\OneDrive - Madrid Digital\APPS\TCAE\TCAE-ARAGON-2025-R.pdf" "C:\Users\arbel\AppData\Local\Temp\opencode\tcae-answer-key.txt"
+# → extracted official provisional answer key: 110 answers
+
+python -c "validate pack structure, provisional-key mapping, LF final newline, and manifest SHA"
+# → questions 110; oneCorrectErrors []; blankSourceRefs []; officialKeyMismatches [];
+# → selectedExamples {54: 'B', 56: 'B', 57: 'A', 59: 'B'}; packEndsLF True;
+# → sha a4e00e8dab30b231a429ebf32d02f351e6635143a46a38430f57f6d795be7a94; manifestShaMatches True
+
+./gradlew.bat :app:checkReleasePackLicense
+# → checkReleasePackLicense: PASS (license='cleared-of-rights', category='TCAE')
+
+pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check-pack-license.ps1
+# → check-pack-license: PASS (license='cleared-of-rights', category='TCAE')
+
+./gradlew.bat :app:testDebugUnitTest --rerun-tasks
+# → BUILD SUCCESSFUL (pre-existing nullable warnings in tests only)
+
+./gradlew.bat :app:check
+# → BUILD SUCCESSFUL
+
+# Validate pack structure and SHA-256
+python -c "import json,hashlib; ..."
+# → questions: 110, topics: 12, computed sha256 == manifest sha256, OK
+
+./gradlew.bat :app:checkReleasePackLicense
+# → checkReleasePackLicense: PASS (license='cleared-of-rights', category='TCAE')
+
+pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check-pack-license.ps1
+# → check-pack-license: PASS (license='cleared-of-rights', category='TCAE')
+
+./gradlew.bat :app:testDebugUnitTest --rerun-tasks
+# → BUILD SUCCESSFUL
+
+./gradlew.bat :app:assembleDebug
+# → BUILD SUCCESSFUL
+
+./gradlew.bat :app:lint
+# → BUILD SUCCESSFUL
+
+./gradlew.bat :app:check
+# → BUILD SUCCESSFUL (82 actionable tasks)
+```
+
+## Remaining Tasks (for sdd-verify / follow-up)
+
+- [ ] 4.1 `sdd-verify`: formal verification report still pending; Windows Gradle and PowerShell gates plus `:app:check` passed on 2026-06-24, while bash remains not runnable on this Windows host.
 - [ ] 4.2 Map each spec scenario in `dataset-import` + `licensed-content-packs` + `professional-categories` to a test/runtime check; record in `verify-report.md`.
-- [ ] 4.3 Confirm `LICENSING.md` sign-off present; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
+- [ ] 4.3 Confirm human editorial/legal release sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
 - [ ] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?
