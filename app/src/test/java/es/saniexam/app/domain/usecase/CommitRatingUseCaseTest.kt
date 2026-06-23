@@ -184,6 +184,7 @@ class CommitRatingUseCaseTest {
             lastRevealedCardId = previous.questionId,
             lastSessionQueuePosition = 3,
             lastSessionAt = now.minusSeconds(3600),
+            activeCategory = UserSettings.TCAE,
         )
         val settingsRepo = FakeUserSettingsRepository(initial = initialSettings)
         val useCase = CommitRatingUseCase(
@@ -232,7 +233,7 @@ class CommitRatingUseCaseTest {
 
     private fun matureReviewCardState(): CardState = CardState(
         questionId = "q1",
-        packId = "sanidad-dev-placeholder",
+        packId = "sanidad-v1",
         packVersion = 1,
         stability = 14.0,
         difficulty = 5.0,
@@ -249,7 +250,7 @@ class CommitRatingUseCaseTest {
 
     private fun newCardState(): CardState = CardState(
         questionId = "q2",
-        packId = "sanidad-dev-placeholder",
+        packId = "sanidad-v1",
         packVersion = 1,
         stability = 0.0,
         difficulty = 0.0,
@@ -274,6 +275,11 @@ class CommitRatingUseCaseTest {
         override suspend fun countDue(now: Instant): Int = 1
         override suspend fun getWithQuestion(questionId: String) = null
         override suspend fun listDue(now: Instant, limit: Int): List<es.saniexam.app.domain.model.CardStateWithQuestion> = emptyList()
+        override suspend fun listDueByCategory(
+            now: Instant,
+            category: String,
+            limit: Int,
+        ): List<es.saniexam.app.domain.model.CardStateWithQuestion> = emptyList()
         override suspend fun deleteAll() { state = state.copy(reps = 0) }
         override suspend fun replaceAll(states: List<CardState>) { if (states.isNotEmpty()) state = states.first() }
     }

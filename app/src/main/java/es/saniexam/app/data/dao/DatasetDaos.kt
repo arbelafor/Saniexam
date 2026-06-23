@@ -13,17 +13,32 @@ import kotlinx.coroutines.flow.Flow
  * DAOs for the dataset metadata tables. PR3 does not yet expose the
  * derived `QuestionWithOptions` projection — the Review UI (PR5) adds
  * that when the read path is wired.
+ *
+ * PR-A: `observeByCategory` and `countByCategory` are the
+ * `professional-categories` "Pack-Level Category Field" + "Active
+ * Category in User Settings" scenario DAOs. Future categories
+ * (Enfermería, Medicina) reuse the same DAO with a different
+ * `category` argument; no schema bump is required.
  */
 @Dao
 interface SubjectPackDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insert(pack: SubjectPackEntity)
 
+    @Query("DELETE FROM subject_pack WHERE id = :packId")
+    suspend fun deleteById(packId: String)
+
     @Query("SELECT * FROM subject_pack")
     fun observeAll(): Flow<List<SubjectPackEntity>>
 
     @Query("SELECT * FROM subject_pack WHERE id = :packId AND version = :packVersion LIMIT 1")
     suspend fun get(packId: String, packVersion: Int): SubjectPackEntity?
+
+    @Query("SELECT * FROM subject_pack WHERE category = :category")
+    fun observeByCategory(category: String): Flow<List<SubjectPackEntity>>
+
+    @Query("SELECT COUNT(*) FROM subject_pack WHERE category = :category")
+    suspend fun countByCategory(category: String): Int
 }
 
 @Dao

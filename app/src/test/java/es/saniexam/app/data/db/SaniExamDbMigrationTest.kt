@@ -8,12 +8,18 @@ import es.saniexam.app.data.entity.OptionEntity
 import es.saniexam.app.data.entity.QuestionEntity
 import es.saniexam.app.data.entity.SubjectPackEntity
 import es.saniexam.app.data.entity.TopicEntity
+import es.saniexam.app.data.ingest.DatasetImporter
+import es.saniexam.app.data.ingest.DatasetImportException
+import es.saniexam.app.data.ingest.PackAssetSource
+import es.saniexam.app.data.ingest.sha256Hex
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertThrows
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -212,7 +218,11 @@ class SaniExamDbMigrationTest {
 
         val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
         val db = Room.databaseBuilder(ctx, SaniExamDb::class.java, v1File.absolutePath)
-            .addMigrations(SaniExamDb.MIGRATION_1_2, SaniExamDb.MIGRATION_2_3)
+            .addMigrations(
+                SaniExamDb.MIGRATION_1_2,
+                SaniExamDb.MIGRATION_2_3,
+                SaniExamDb.MIGRATION_3_4,
+            )
             .build()
         try {
             runBlocking {
@@ -238,6 +248,364 @@ class SaniExamDbMigrationTest {
         }
     }
 
+    /**
+     * PR-A (`licensed-question-pack`): the v3 -> v4 migration adds
+     * the `category` column to `subject_pack` and the
+     * `active_category` column to `user_settings` (spec
+     * `professional-categories` "Pack-Level Category Field" + "Active
+     * Category in User Settings"). Both columns have a `TCAE` default
+     * so v3 installs get a sensible value on the first upgrade. This
+     * test asserts the migration adds both columns by opening a v3
+     * file via the full Room generated impl with `MIGRATION_3_4`
+     * chained, then inspecting the resulting schema with raw PRAGMA
+     * queries. The DAO round-trip is asserted by
+     * [migrated_v4_db_supports_subject_pack_category_and_user_settings_active_category].
+     */
+    @Test
+    fun v3_to_v4_adds_category_and_active_category_columns_with_tcae_default() {
+        // GIVEN a v1 -> v2 -> v3 DB upgraded to v4 via the full
+        // Room generated impl.
+        val v1File = createV1Database()
+        runMigrationAndMaterialiseV2(v1File)
+        runMigrationAndMaterialiseV3(v1File)
+
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.databaseBuilder(ctx, SaniExamDb::class.java, v1File.absolutePath)
+            .addMigrations(
+                SaniExamDb.MIGRATION_1_2,
+                SaniExamDb.MIGRATION_2_3,
+                SaniExamDb.MIGRATION_3_4,
+            )
+            .build()
+        try {
+            // Force the v3 -> v4 migration to run by triggering an
+            // open + a no-op query. Room runs the migration
+            // synchronously on first open; without a query the
+            // `openRaw` below would see the pre-migration v3 schema.
+            runBlocking {
+                db.openHelper.writableDatabase.query("SELECT 1", emptyArray()).use { cursor ->
+                    cursor.moveToFirst()
+                }
+            }
+            // THEN subject_pack has a `category` column and
+            // user_settings has an `active_category` column.
+            openRaw(v1File).use { raw ->
+                raw.rawQuery("PRAGMA table_info(`subject_pack`)", null).use { c ->
+                    val actual = mutableSetOf<String>()
+                    while (c.moveToNext()) actual += c.getString(1) // column name
+                    assertTrue(
+                        "subject_pack must have a `category` column after v3->v4",
+                        "category" in actual,
+                    )
+                }
+                raw.rawQuery("PRAGMA table_info(`user_settings`)", null).use { c ->
+                    val actual = mutableSetOf<String>()
+                    while (c.moveToNext()) actual += c.getString(1) // column name
+                    assertTrue(
+                        "user_settings must have an `active_category` column after v3->v4",
+                        "active_category" in actual,
+                    )
+                }
+            }
+        } finally {
+            db.close()
+        }
+    }
+
+    @Test
+    fun migrated_v4_db_supports_subject_pack_category_and_user_settings_active_category() {
+        // GIVEN a v1 -> v2 -> v3 DB upgraded to v4 via the full
+        // Room generated impl. The v3 file's identity hash is the
+        // known v3 hash; `Room.databaseBuilder.addMigrations`
+        // chains the migrations and runs MIGRATION_3_4 to bring
+        // the schema from v3 to v4.
+        val v1File = createV1Database()
+        runMigrationAndMaterialiseV2(v1File)
+        runMigrationAndMaterialiseV3(v1File)
+
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.databaseBuilder(ctx, SaniExamDb::class.java, v1File.absolutePath)
+            .addMigrations(
+                SaniExamDb.MIGRATION_1_2,
+                SaniExamDb.MIGRATION_2_3,
+                SaniExamDb.MIGRATION_3_4,
+            )
+            .build()
+        try {
+            runBlocking {
+                // user_settings is seeded with active_category=TCAE
+                // from the MIGRATION_2_3 default; the v3 -> v4
+                // migration leaves the value as TCAE because the
+                // column was added with `DEFAULT 'TCAE'`.
+                val settings = db.userSettingsDao().get()
+                assertNotNull("user_settings singleton must be present after v3->v4", settings)
+                assertEquals(
+                    "user_settings.active_category must be TCAE after v3->v4",
+                    "TCAE",
+                    settings!!.activeCategory,
+                )
+            }
+        } finally {
+            db.close()
+        }
+    }
+
+    @Test
+    fun v3_to_v4_marks_legacy_dev_placeholder_outside_active_tcae_category() {
+        val v1File = createV1Database()
+        runMigrationAndMaterialiseV2(v1File)
+        runMigrationAndMaterialiseV3(v1File)
+
+        openRaw(v1File).use { raw ->
+            raw.execSQL(
+                "INSERT INTO subject_pack " +
+                    "(id, version, source_attribution, published_at, license, license_notes) " +
+                    "VALUES ('sanidad-dev-placeholder', 1, 'test', '2026-06-16', 'dev-placeholder', 'test')",
+            )
+        }
+
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.databaseBuilder(ctx, SaniExamDb::class.java, v1File.absolutePath)
+            .addMigrations(
+                SaniExamDb.MIGRATION_1_2,
+                SaniExamDb.MIGRATION_2_3,
+                SaniExamDb.MIGRATION_3_4,
+            )
+            .build()
+        try {
+            runBlocking {
+                db.openHelper.writableDatabase.query("SELECT 1", emptyArray()).use { cursor ->
+                    cursor.moveToFirst()
+                }
+            }
+            openRaw(v1File).use { raw ->
+                raw.rawQuery(
+                    "SELECT category FROM subject_pack WHERE id = 'sanidad-dev-placeholder'",
+                    null,
+                ).use { c ->
+                    assertTrue(c.moveToFirst())
+                    assertEquals("sanidad-dev-placeholder", c.getString(0))
+                }
+            }
+        } finally {
+            db.close()
+        }
+    }
+
+    @Test
+    fun importer_removes_legacy_dev_placeholder_before_inserting_release_pack() = runBlocking {
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.inMemoryDatabaseBuilder(ctx, SaniExamDb::class.java)
+            .allowMainThreadQueries()
+            .build()
+        try {
+            db.subjectPackDao().insert(
+                SubjectPackEntity(
+                    id = "sanidad-dev-placeholder", version = 1,
+                    sourceAttribution = "test", publishedAt = "2026-06-16",
+                    license = "dev-placeholder", licenseNotes = "test",
+                    category = "TCAE",
+                ),
+            )
+            db.topicDao().insertAll(
+                listOf(TopicEntity(id = "t-old", packId = "sanidad-dev-placeholder", packVersion = 1, name = "Old")),
+            )
+            db.questionDao().insertAll(
+                listOf(
+                    QuestionEntity(
+                        id = "q-001", packId = "sanidad-dev-placeholder", packVersion = 1,
+                        topicId = "t-old", prompt = "old", explanation = null,
+                        officialYear = null, officialSourceRef = null,
+                    ),
+                ),
+            )
+            db.optionDao().insertAll(
+                listOf(OptionEntity(id = "old-a", questionId = "q-001", ordinal = 0, text = "old", isCorrect = true)),
+            )
+
+            val packJson = """
+                {
+                  "packId": "sanidad-v1",
+                  "packVersion": 1,
+                  "topics": [{"id": "t-new", "name": "New"}],
+                  "questions": [{
+                    "id": "q-001",
+                    "topicId": "t-new",
+                    "prompt": "new",
+                    "officialYear": 2024,
+                    "officialSourceRef": "BOE-A-2024-1-preg1",
+                    "options": [
+                      {"id": "new-a", "ordinal": 0, "text": "A", "isCorrect": true},
+                      {"id": "new-b", "ordinal": 1, "text": "B", "isCorrect": false}
+                    ]
+                  }]
+                }
+            """.trimIndent()
+            val packBytes = packJson.toByteArray(Charsets.UTF_8)
+            val manifestJson = """
+                {
+                  "id": "sanidad-v1",
+                  "version": 1,
+                  "sourceAttribution": "test",
+                  "publishedAt": "2026-06-22",
+                  "license": "cleared-of-rights",
+                  "licenseNotes": "test",
+                  "category": "TCAE",
+                  "sha256": "${sha256Hex(packBytes)}",
+                  "packFile": "question-packs/sanidad-v1.json"
+                }
+            """.trimIndent()
+            val importer = DatasetImporter(
+                assetSource = MapPackAssetSource(
+                    mapOf(
+                        DatasetImporter.MANIFEST_PATH to manifestJson.toByteArray(Charsets.UTF_8),
+                        "question-packs/sanidad-v1.json" to packBytes,
+                    ),
+                ),
+                json = Json { ignoreUnknownKeys = true },
+                packDao = db.subjectPackDao(),
+                topicDao = db.topicDao(),
+                questionDao = db.questionDao(),
+                optionDao = db.optionDao(),
+                versionDao = db.datasetVersionDao(),
+                db = db,
+            )
+
+            assertEquals(1, importer.importBundled("sanidad-v1", 1, "TCAE"))
+            assertNull(db.subjectPackDao().get("sanidad-dev-placeholder", 1))
+            assertNotNull(db.subjectPackDao().get("sanidad-v1", 1))
+            assertEquals("sanidad-v1", db.questionDao().get("q-001")!!.packId)
+        } finally {
+            db.close()
+        }
+    }
+
+    @Test
+    fun importer_rejects_manifest_with_missing_category() {
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.inMemoryDatabaseBuilder(ctx, SaniExamDb::class.java)
+            .allowMainThreadQueries()
+            .build()
+        try {
+            val packJson = """
+                {
+                  "packId": "sanidad-v1",
+                  "packVersion": 1,
+                  "topics": [{"id": "t-new", "name": "New"}],
+                  "questions": [{
+                    "id": "q-001",
+                    "topicId": "t-new",
+                    "prompt": "new",
+                    "officialSourceRef": "BOE-A-2024-1-preg1",
+                    "options": [
+                      {"id": "new-a", "ordinal": 0, "text": "A", "isCorrect": true},
+                      {"id": "new-b", "ordinal": 1, "text": "B", "isCorrect": false}
+                    ]
+                  }]
+                }
+            """.trimIndent()
+            val packBytes = packJson.toByteArray(Charsets.UTF_8)
+            val manifestJson = """
+                {
+                  "id": "sanidad-v1",
+                  "version": 1,
+                  "sourceAttribution": "test",
+                  "publishedAt": "2026-06-22",
+                  "license": "cleared-of-rights",
+                  "licenseNotes": "test",
+                  "sha256": "${sha256Hex(packBytes)}",
+                  "packFile": "question-packs/sanidad-v1.json"
+                }
+            """.trimIndent()
+            val importer = DatasetImporter(
+                assetSource = MapPackAssetSource(
+                    mapOf(
+                        DatasetImporter.MANIFEST_PATH to manifestJson.toByteArray(Charsets.UTF_8),
+                        "question-packs/sanidad-v1.json" to packBytes,
+                    ),
+                ),
+                json = Json { ignoreUnknownKeys = true },
+                packDao = db.subjectPackDao(),
+                topicDao = db.topicDao(),
+                questionDao = db.questionDao(),
+                optionDao = db.optionDao(),
+                versionDao = db.datasetVersionDao(),
+                db = db,
+            )
+
+            val ex = assertThrows(DatasetImportException::class.java) {
+                runBlocking { importer.importBundled("sanidad-v1", 1, "TCAE") }
+            }
+            assertEquals(DatasetImportException.Reason.MissingCategory, ex.reason)
+        } finally {
+            db.close()
+        }
+    }
+
+    @Test
+    fun importer_rejects_manifest_category_mismatch_with_active_category() {
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val db = Room.inMemoryDatabaseBuilder(ctx, SaniExamDb::class.java)
+            .allowMainThreadQueries()
+            .build()
+        try {
+            val packJson = """
+                {
+                  "packId": "sanidad-v1",
+                  "packVersion": 1,
+                  "topics": [{"id": "t-new", "name": "New"}],
+                  "questions": [{
+                    "id": "q-001",
+                    "topicId": "t-new",
+                    "prompt": "new",
+                    "officialSourceRef": "BOE-A-2024-1-preg1",
+                    "options": [
+                      {"id": "new-a", "ordinal": 0, "text": "A", "isCorrect": true},
+                      {"id": "new-b", "ordinal": 1, "text": "B", "isCorrect": false}
+                    ]
+                  }]
+                }
+            """.trimIndent()
+            val packBytes = packJson.toByteArray(Charsets.UTF_8)
+            val manifestJson = """
+                {
+                  "id": "sanidad-v1",
+                  "version": 1,
+                  "sourceAttribution": "test",
+                  "publishedAt": "2026-06-22",
+                  "license": "cleared-of-rights",
+                  "licenseNotes": "test",
+                  "category": "TCAE",
+                  "sha256": "${sha256Hex(packBytes)}",
+                  "packFile": "question-packs/sanidad-v1.json"
+                }
+            """.trimIndent()
+            val importer = DatasetImporter(
+                assetSource = MapPackAssetSource(
+                    mapOf(
+                        DatasetImporter.MANIFEST_PATH to manifestJson.toByteArray(Charsets.UTF_8),
+                        "question-packs/sanidad-v1.json" to packBytes,
+                    ),
+                ),
+                json = Json { ignoreUnknownKeys = true },
+                packDao = db.subjectPackDao(),
+                topicDao = db.topicDao(),
+                questionDao = db.questionDao(),
+                optionDao = db.optionDao(),
+                versionDao = db.datasetVersionDao(),
+                db = db,
+            )
+
+            val ex = assertThrows(DatasetImportException::class.java) {
+                runBlocking { importer.importBundled("sanidad-v1", 1, "MEDICINA") }
+            }
+            assertEquals(DatasetImportException.Reason.CategoryMismatch, ex.reason)
+            assertNull(runBlocking { db.subjectPackDao().get("sanidad-v1", 1) })
+        } finally {
+            db.close()
+        }
+    }
+
     @Test
     fun migrated_v2_db_supports_real_crud_through_dao() {
         // GIVEN a v1 -> v2 upgraded DB opened via the full Room generated impl.
@@ -249,7 +617,11 @@ class SaniExamDbMigrationTest {
             SaniExamDb::class.java,
             v1File.absolutePath,
         )
-            .addMigrations(SaniExamDb.MIGRATION_1_2, SaniExamDb.MIGRATION_2_3)
+            .addMigrations(
+                SaniExamDb.MIGRATION_1_2,
+                SaniExamDb.MIGRATION_2_3,
+                SaniExamDb.MIGRATION_3_4,
+            )
             .build()
 
         try {
@@ -262,6 +634,7 @@ class SaniExamDbMigrationTest {
                         id = packId, version = packVersion,
                         sourceAttribution = "test", publishedAt = "2026-06-16",
                         license = "dev-placeholder", licenseNotes = "test",
+                        category = "TCAE",
                     ),
                 )
                 db.topicDao().insertAll(
@@ -487,5 +860,11 @@ class SaniExamDbMigrationTest {
         val stream = javaClass.classLoader!!.getResourceAsStream(relativePath)
             ?: error("Schema resource not found on test classpath: $relativePath")
         return stream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+    }
+
+    private class MapPackAssetSource(
+        private val assets: Map<String, ByteArray>,
+    ) : PackAssetSource {
+        override fun read(path: String): ByteArray = assets[path] ?: throw java.io.FileNotFoundException(path)
     }
 }

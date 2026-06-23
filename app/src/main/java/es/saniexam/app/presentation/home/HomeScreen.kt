@@ -316,4 +316,7 @@ private fun errorReasonText(reason: es.saniexam.app.data.ingest.DatasetImportExc
     es.saniexam.app.data.ingest.DatasetImportException.Reason.ZeroOrMultipleCorrectOptions -> stringResource(id = R.string.import_err_zero_or_multi_correct)
     es.saniexam.app.data.ingest.DatasetImportException.Reason.OrphanTopicReference -> stringResource(id = R.string.import_err_orphan_topic)
     es.saniexam.app.data.ingest.DatasetImportException.Reason.DuplicateQuestionId -> stringResource(id = R.string.import_err_duplicate_question)
+    es.saniexam.app.data.ingest.DatasetImportException.Reason.MissingCategory -> stringResource(id = R.string.import_err_missing_category)
+    es.saniexam.app.data.ingest.DatasetImportException.Reason.CategoryMismatch -> stringResource(id = R.string.import_err_category_mismatch)
+    es.saniexam.app.data.ingest.DatasetImportException.Reason.ProvenanceMissing -> stringResource(id = R.string.import_err_provenance_missing)
 }

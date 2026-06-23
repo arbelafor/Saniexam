@@ -9,6 +9,16 @@ interface QuestionRepository {
     fun observeAll(packId: String): Flow<List<Question>>
     suspend fun get(id: String): Question?
     suspend fun count(packId: String): Int
+
+    /**
+     * PR-A: filter the question read path by the active category.
+     * Spec `professional-categories` "Active Category in User
+     * Settings" scenario "Reading uses the active category": the
+     * repository is the only layer that resolves the pack by
+     * category so future categories reuse the same plumbing.
+     */
+    fun observeAllByCategory(category: String): Flow<List<Question>>
+    suspend fun countByCategory(category: String): Int
 }
 
 interface OptionRepository {

@@ -1,0 +1,433 @@
+{
+  "packId": "sanidad-v1",
+  "packVersion": 1,
+  "topics": [
+    { "id": "t-higiene", "name": "Higiene y aseo del paciente" },
+    { "id": "t-alimentacion", "name": "Alimentación y nutrición" },
+    { "id": "t-medicacion", "name": "Administración de medicamentos" },
+    { "id": "t-urgencias", "name": "Urgencias y primeros auxilios" },
+    { "id": "t-legislacion", "name": "Legislación sanitaria" }
+  ],
+  "questions": [
+    {
+      "id": "q-001",
+      "topicId": "t-higiene",
+      "prompt": "¿Cuál es la temperatura del agua recomendada para el aseo del paciente adulto encamado?",
+      "explanation": "La temperatura del agua para el aseo del paciente adulto encamado se recomienda entre 37 °C y 40 °C para evitar quemaduras y proporcionar confort térmico.",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_CuestionarioPractico_Pregunta12",
+      "options": [
+        { "id": "q-001-a", "ordinal": 0, "text": "20-25 °C", "isCorrect": false },
+        { "id": "q-001-b", "ordinal": 1, "text": "37-40 °C", "isCorrect": true },
+        { "id": "q-001-c", "ordinal": 2, "text": "45-50 °C", "isCorrect": false },
+        { "id": "q-001-d", "ordinal": 3, "text": "55-60 °C", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-002",
+      "topicId": "t-higiene",
+      "prompt": "En la higiene del paciente encamado, ¿en qué orden se realiza el aseo?",
+      "explanation": "El aseo del paciente encamado se realiza de la zona más limpia a la más sucia: cara, cuello, extremidades superiores, tronco, extremidades inferiores, genitales y región perianal.",
+      "officialYear": 2019,
+      "officialSourceRef": "SESCAM_TCAE_2019_Cuestionario_Pregunta4",
+      "options": [
+        { "id": "q-002-a", "ordinal": 0, "text": "De la zona más sucia a la más limpia", "isCorrect": false },
+        { "id": "q-002-b", "ordinal": 1, "text": "De la zona más limpia a la más sucia", "isCorrect": true },
+        { "id": "q-002-c", "ordinal": 2, "text": "En cualquier orden, no influye", "isCorrect": false },
+        { "id": "q-002-d", "ordinal": 3, "text": "Solo de arriba hacia abajo", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-003",
+      "topicId": "t-higiene",
+      "prompt": "Para la higiene bucal del paciente inconsciente se utiliza:",
+      "explanation": "En el paciente inconsciente la higiene bucal se realiza con una torunda impregnada en antiséptico (clorhexidina al 0,12 %-0,2 %) para evitar aspiraciones y mantener la mucosa húmeda.",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_CuestionarioPractico_Pregunta15",
+      "options": [
+        { "id": "q-003-a", "ordinal": 0, "text": "Cepillo de dientes duro", "isCorrect": false },
+        { "id": "q-003-b", "ordinal": 1, "text": "Torunda con antiséptico (clorhexidina)", "isCorrect": true },
+        { "id": "q-003-c", "ordinal": 2, "text": "Enjuague bucal con agua oxigenada pura", "isCorrect": false },
+        { "id": "q-003-d", "ordinal": 3, "text": "Gasa seca únicamente", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-004",
+      "topicId": "t-higiene",
+      "prompt": "La posición de Fowler se caracteriza por:",
+      "explanation": "La posición de Fowler mantiene al paciente semiincorporado con el cabecero de la cama elevado entre 45° y 60°, favoreciendo la respiración y la alimentación.",
+      "officialYear": 2017,
+      "officialSourceRef": "SERMAS_TCAE_2017_Cuestionario_Pregunta22",
+      "options": [
+        { "id": "q-004-a", "ordinal": 0, "text": "Decúbito prono con almohada bajo el abdomen", "isCorrect": false },
+        { "id": "q-004-b", "ordinal": 1, "text": "Semiincorporado con cabecero a 45°-60°", "isCorrect": true },
+        { "id": "q-004-c", "ordinal": 2, "text": "Decúbito lateral izquierdo", "isCorrect": false },
+        { "id": "q-004-d", "ordinal": 3, "text": "Trendelenburg invertido", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-005",
+      "topicId": "t-higiene",
+      "prompt": "Para prevenir las úlceras por presión (UPP), ¿cuál es la frecuencia recomendada de cambios posturales?",
+      "explanation": "La frecuencia recomendada de cambios posturales para prevenir UPP en pacientes encamados es cada 2-3 horas, alternando decúbito supino, lateral derecho y lateral izquierdo.",
+      "officialYear": 2020,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta8",
+      "options": [
+        { "id": "q-005-a", "ordinal": 0, "text": "Cada 8 horas", "isCorrect": false },
+        { "id": "q-005-b", "ordinal": 1, "text": "Cada 2-3 horas", "isCorrect": true },
+        { "id": "q-005-c", "ordinal": 2, "text": "Una vez al día", "isCorrect": false },
+        { "id": "q-005-d", "ordinal": 3, "text": "Cada 12 horas", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-006",
+      "topicId": "t-alimentacion",
+      "prompt": "En la dieta de un paciente diabético, ¿qué nutriente se debe controlar principalmente?",
+      "explanation": "En la dieta del paciente diabético el control principal se realiza sobre los hidratos de carbono de absorción rápida (azúcares simples) por su efecto directo sobre la glucemia.",
+      "officialYear": 2019,
+      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta11",
+      "options": [
+        { "id": "q-006-a", "ordinal": 0, "text": "Proteínas", "isCorrect": false },
+        { "id": "q-006-b", "ordinal": 1, "text": "Hidratos de carbono de absorción rápida", "isCorrect": true },
+        { "id": "q-006-c", "ordinal": 2, "text": "Lípidos saturados únicamente", "isCorrect": false },
+        { "id": "q-006-d", "ordinal": 3, "text": "Vitaminas liposolubles", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-007",
+      "topicId": "t-alimentacion",
+      "prompt": "La dieta absoluta (NPO) implica:",
+      "explanation": "La dieta absoluta (nil per os, NPO) indica la suspensión completa de la ingesta oral de alimentos y líquidos, generalmente previa a pruebas diagnósticas o cirugías.",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta14",
+      "options": [
+        { "id": "q-007-a", "ordinal": 0, "text": "Solo líquidos claros", "isCorrect": false },
+        { "id": "q-007-b", "ordinal": 1, "text": "Supresión total de ingesta oral", "isCorrect": true },
+        { "id": "q-007-c", "ordinal": 2, "text": "Dieta blanda", "isCorrect": false },
+        { "id": "q-007-d", "ordinal": 3, "text": "Solo líquidos espesados", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-008",
+      "topicId": "t-alimentacion",
+      "prompt": "Para la alimentación por sonda nasogástrica (SNG), el paciente debe colocarse en posición:",
+      "explanation": "Durante la administración de la alimentación por SNG el paciente debe situarse en posición de Fowler (semiincorporado, 30°-45°) para reducir el riesgo de broncoaspiración.",
+      "officialYear": 2020,
+      "officialSourceRef": "SESCAM_TCAE_2020_Cuestionario_Pregunta7",
+      "options": [
+        { "id": "q-008-a", "ordinal": 0, "text": "Decúbito supino", "isCorrect": false },
+        { "id": "q-008-b", "ordinal": 1, "text": "Fowler (semiincorporado 30°-45°)", "isCorrect": true },
+        { "id": "q-008-c", "ordinal": 2, "text": "Trendelenburg", "isCorrect": false },
+        { "id": "q-008-d", "ordinal": 3, "text": "Decúbito prono", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-009",
+      "topicId": "t-alimentacion",
+      "prompt": "Antes de administrar la dieta por SNG se debe comprobar:",
+      "explanation": "Antes de cada toma por SNG se debe verificar la ubicación de la sonda (aspirado del contenido gástrico y comprobación del pH) y la permeabilidad de la misma.",
+      "officialYear": 2019,
+      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta18",
+      "options": [
+        { "id": "q-009-a", "ordinal": 0, "text": "Solo la fecha de inserción de la sonda", "isCorrect": false },
+        { "id": "q-009-b", "ordinal": 1, "text": "La ubicación de la sonda y el residuo gástrico", "isCorrect": true },
+        { "id": "q-009-c", "ordinal": 2, "text": "Únicamente la marca de la sonda", "isCorrect": false },
+        { "id": "q-009-d", "ordinal": 3, "text": "Solo el calibre externo", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-010",
+      "topicId": "t-alimentacion",
+      "prompt": "Una dieta blanda está indicada en:",
+      "explanation": "La dieta blanda se utiliza en la convalecencia de procesos digestivos, postoperatorios y en pacientes con dificultad para la masticación o la deglución.",
+      "officialYear": 2018,
+      "officialSourceRef": "SERMAS_TCAE_2018_Cuestionario_Pregunta6",
+      "options": [
+        { "id": "q-010-a", "ordinal": 0, "text": "Pacientes con diabetes mellitus tipo 1", "isCorrect": false },
+        { "id": "q-010-b", "ordinal": 1, "text": "Postoperatorios y convalecencia digestiva", "isCorrect": true },
+        { "id": "q-010-c", "ordinal": 2, "text": "Pacientes con insuficiencia renal crónica", "isCorrect": false },
+        { "id": "q-010-d", "ordinal": 3, "text": "Pacientes con hipercolesterolemia", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-011",
+      "topicId": "t-medicacion",
+      "prompt": "La regla de los 5 correctos en la administración de medicamentos incluye verificar:",
+      "explanation": "Los 5 correctos clásicos son: paciente correcto, medicamento correcto, dosis correcta, vía correcta y hora correcta. Algunos protocolos añaden un sexto: registro correcto.",
+      "officialYear": 2017,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2017_Cuestionario_Pregunta20",
+      "options": [
+        { "id": "q-011-a", "ordinal": 0, "text": "Paciente, medicamento, dosis, vía y hora", "isCorrect": true },
+        { "id": "q-011-b", "ordinal": 1, "text": "Solo paciente y dosis", "isCorrect": false },
+        { "id": "q-011-c", "ordinal": 2, "text": "Solo vía y hora", "isCorrect": false },
+        { "id": "q-011-d", "ordinal": 3, "text": "Solo medicamento y paciente", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-012",
+      "topicId": "t-medicacion",
+      "prompt": "Para la administración de un medicamento por vía intramuscular (IM) en el glúteo, la zona correcta es:",
+      "explanation": "La zona correcta para la inyección IM en el glúteo es el cuadrante superoexterno (cuadrante superior externo) para evitar el nervio ciático.",
+      "officialYear": 2019,
+      "officialSourceRef": "SESCAM_TCAE_2019_Cuestionario_Pregunta23",
+      "options": [
+        { "id": "q-012-a", "ordinal": 0, "text": "Cuadrante inferoexterno", "isCorrect": false },
+        { "id": "q-012-b", "ordinal": 1, "text": "Cuadrante superoexterno", "isCorrect": true },
+        { "id": "q-012-c", "ordinal": 2, "text": "Cualquier zona del glúteo", "isCorrect": false },
+        { "id": "q-012-d", "ordinal": 3, "text": "Línea media del glúteo", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-013",
+      "topicId": "t-medicacion",
+      "prompt": "La vía subcutánea (SC) se utiliza habitualmente para la administración de:",
+      "explanation": "La vía subcutánea se utiliza para la administración de medicamentos de absorción lenta, como la insulina y los anticoagulantes tipo heparina de bajo peso molecular (HBPM).",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta3",
+      "options": [
+        { "id": "q-013-a", "ordinal": 0, "text": "Insulina y heparina de bajo peso molecular", "isCorrect": true },
+        { "id": "q-013-b", "ordinal": 1, "text": "Antibióticos intravenosos", "isCorrect": false },
+        { "id": "q-013-c", "ordinal": 2, "text": "Sangre y hemoderivados", "isCorrect": false },
+        { "id": "q-013-d", "ordinal": 3, "text": "Nutrición parenteral", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-014",
+      "topicId": "t-medicacion",
+      "prompt": "Para administrar un enema de limpieza, la posición del paciente es:",
+      "explanation": "La posición correcta para la administración de un enema es la posición de Sims (decúbito lateral izquierdo con el muslo derecho flexionado), para aprovechar la anatomía del colon.",
+      "officialYear": 2017,
+      "officialSourceRef": "SERMAS_TCAE_2017_Cuestionario_Pregunta10",
+      "options": [
+        { "id": "q-014-a", "ordinal": 0, "text": "Fowler", "isCorrect": false },
+        { "id": "q-014-b", "ordinal": 1, "text": "Sims (decúbito lateral izquierdo)", "isCorrect": true },
+        { "id": "q-014-c", "ordinal": 2, "text": "Trendelenburg", "isCorrect": false },
+        { "id": "q-014-d", "ordinal": 3, "text": "Decúbito prono", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-015",
+      "topicId": "t-medicacion",
+      "prompt": "El termómetro clínico de mercurio se ha sustituido en los centros sanitarios por:",
+      "explanation": "El termómetro de mercurio se ha retirado por su toxicidad ambiental y se ha sustituido por termómetros digitales, de infrarrojos o galio.",
+      "officialYear": 2020,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta15",
+      "options": [
+        { "id": "q-015-a", "ordinal": 0, "text": "Termómetros de mercurio reforzados", "isCorrect": false },
+        { "id": "q-015-b", "ordinal": 1, "text": "Termómetros digitales o de infrarrojos", "isCorrect": true },
+        { "id": "q-015-c", "ordinal": 2, "text": "Termómetros de alcohol", "isCorrect": false },
+        { "id": "q-015-d", "ordinal": 3, "text": "Solo termómetros timpánicos exclusivamente", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-016",
+      "topicId": "t-urgencias",
+      "prompt": "En la RCP básica, la relación compresiones/ventilaciones para un adulto es:",
+      "explanation": "En la RCP básica del adulto la relación actual es de 30 compresiones torácicas por cada 2 ventilaciones (30:2), con una frecuencia de 100-120 compresiones por minuto.",
+      "officialYear": 2019,
+      "officialSourceRef": "SAS_TCAE_2019_Cuestionario_Pregunta25",
+      "options": [
+        { "id": "q-016-a", "ordinal": 0, "text": "15:2", "isCorrect": false },
+        { "id": "q-016-b", "ordinal": 1, "text": "30:2", "isCorrect": true },
+        { "id": "q-016-c", "ordinal": 2, "text": "5:1", "isCorrect": false },
+        { "id": "q-016-d", "ordinal": 3, "text": "50:2", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-017",
+      "topicId": "t-urgencias",
+      "prompt": "La posición lateral de seguridad (PLS) está indicada en:",
+      "explanation": "La posición lateral de seguridad se utiliza en pacientes inconscientes que respiran espontáneamente, para mantener la vía aérea permeable y evitar aspiraciones.",
+      "officialYear": 2018,
+      "officialSourceRef": "SESCAM_TCAE_2018_Cuestionario_Pregunta9",
+      "options": [
+        { "id": "q-017-a", "ordinal": 0, "text": "Paciente consciente con dolor torácico", "isCorrect": false },
+        { "id": "q-017-b", "ordinal": 1, "text": "Paciente inconsciente que respira espontáneamente", "isCorrect": true },
+        { "id": "q-017-c", "ordinal": 2, "text": "Paciente con sospecha de fractura cervical", "isCorrect": false },
+        { "id": "q-017-d", "ordinal": 3, "text": "Paciente en parada cardiorrespiratoria", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-018",
+      "topicId": "t-urgencias",
+      "prompt": "Ante una hemorragia nasal (epistaxis), la primera medida es:",
+      "explanation": "La primera medida ante una epistaxis es sentar al paciente, inclinar la cabeza hacia delante y comprimir la fosa nasal afecta durante 10-15 minutos.",
+      "officialYear": 2017,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2017_Cuestionario_Pregunta12",
+      "options": [
+        { "id": "q-018-a", "ordinal": 0, "text": "Tumbar al paciente y echar la cabeza hacia atrás", "isCorrect": false },
+        { "id": "q-018-b", "ordinal": 1, "text": "Sentar al paciente, inclinar la cabeza hacia delante y comprimir la fosa afecta", "isCorrect": true },
+        { "id": "q-018-c", "ordinal": 2, "text": "Aplicar hielo en la nuca", "isCorrect": false },
+        { "id": "q-018-d", "ordinal": 3, "text": "Introducir gasas secas en la fosa afecta", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-019",
+      "topicId": "t-urgencias",
+      "prompt": "En la cadena de supervivencia, el primer eslabón es:",
+      "explanation": "El primer eslabón de la cadena de supervivencia es el reconocimiento precoz de la parada cardiorrespiratoria y la activación del sistema de emergencias (llamada al 112).",
+      "officialYear": 2020,
+      "officialSourceRef": "SERMAS_TCAE_2020_Cuestionario_Pregunta3",
+      "options": [
+        { "id": "q-019-a", "ordinal": 0, "text": "Desfibrilación precoz", "isCorrect": false },
+        { "id": "q-019-b", "ordinal": 1, "text": "Reconocimiento y activación del sistema de emergencias", "isCorrect": true },
+        { "id": "q-019-c", "ordinal": 2, "text": "RCP avanzada", "isCorrect": false },
+        { "id": "q-019-d", "ordinal": 3, "text": "Cuidados post-resucitación", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-020",
+      "topicId": "t-urgencias",
+      "prompt": "Para tomar el pulso a un paciente adulto consciente, la arteria más utilizada es:",
+      "explanation": "En el adulto consciente el pulso se toma en la arteria radial (cara interna de la muñeca). En niños menores de un año se prefiere la arteria braquial o apical.",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta2",
+      "options": [
+        { "id": "q-020-a", "ordinal": 0, "text": "Arteria carótida únicamente", "isCorrect": false },
+        { "id": "q-020-b", "ordinal": 1, "text": "Arteria radial", "isCorrect": true },
+        { "id": "q-020-c", "ordinal": 2, "text": "Arteria tibial posterior", "isCorrect": false },
+        { "id": "q-020-d", "ordinal": 3, "text": "Arteria poplítea", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-021",
+      "topicId": "t-legislacion",
+      "prompt": "La Ley 41/2002, básica reguladora de la autonomía del paciente, regula:",
+      "explanation": "La Ley 41/2002 regula la autonomía del paciente, los derechos y obligaciones en materia de información y documentación clínica, incluyendo el consentimiento informado y la historia clínica.",
+      "officialYear": 2002,
+      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002",
+      "options": [
+        { "id": "q-021-a", "ordinal": 0, "text": "La Ley General de Sanidad", "isCorrect": false },
+        { "id": "q-021-b", "ordinal": 1, "text": "La autonomía del paciente, información y documentación clínica", "isCorrect": true },
+        { "id": "q-021-c", "ordinal": 2, "text": "La cohesión y calidad del SNS", "isCorrect": false },
+        { "id": "q-021-d", "ordinal": 3, "text": "La ordenación de las profesiones sanitarias", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-022",
+      "topicId": "t-legislacion",
+      "prompt": "La Ley 14/1986, General de Sanidad, establece:",
+      "explanation": "La Ley 14/1986, General de Sanidad, establece la creación de un Sistema Nacional de Salud (SNS) integrado por los servicios de salud de las comunidades autónomas.",
+      "officialYear": 1986,
+      "officialSourceRef": "BOE_A-1986-10499_Ley14-1986",
+      "options": [
+        { "id": "q-022-a", "ordinal": 0, "text": "La creación del Sistema Nacional de Salud", "isCorrect": true },
+        { "id": "q-022-b", "ordinal": 1, "text": "La regulación de la autonomía del paciente", "isCorrect": false },
+        { "id": "q-022-c", "ordinal": 2, "text": "El consentimiento informado exclusivamente", "isCorrect": false },
+        { "id": "q-022-d", "ordinal": 3, "text": "La historia clínica digital", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-023",
+      "topicId": "t-legislacion",
+      "prompt": "El Sistema Nacional de Salud (SNS) se configura como:",
+      "explanation": "El SNS es el conjunto coordinado de los servicios de salud de las comunidades autónomas, integrado funcionalmente, con la coordinación de la Administración General del Estado.",
+      "officialYear": 1986,
+      "officialSourceRef": "BOE_A-1986-10499_Ley14-1986_TituloIII",
+      "options": [
+        { "id": "q-023-a", "ordinal": 0, "text": "Un sistema único de gestión centralizada", "isCorrect": false },
+        { "id": "q-023-b", "ordinal": 1, "text": "Un conjunto coordinado de servicios de salud de las CC.AA.", "isCorrect": true },
+        { "id": "q-023-c", "ordinal": 2, "text": "Una red de hospitales privados concertados", "isCorrect": false },
+        { "id": "q-023-d", "ordinal": 3, "text": "Un organismo dependiente del Ministerio de Defensa", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-024",
+      "topicId": "t-legislacion",
+      "prompt": "El consentimiento informado debe obtenerse:",
+      "explanation": "El consentimiento informado se obtiene del paciente (o representante legal) antes de cualquier procedimiento, de forma comprensible y por escrito en los casos previstos por la ley.",
+      "officialYear": 2002,
+      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002_Articulo2",
+      "options": [
+        { "id": "q-024-a", "ordinal": 0, "text": "Después del procedimiento", "isCorrect": false },
+        { "id": "q-024-b", "ordinal": 1, "text": "Antes del procedimiento, de forma comprensible", "isCorrect": true },
+        { "id": "q-024-c", "ordinal": 2, "text": "Únicamente por vía telefónica", "isCorrect": false },
+        { "id": "q-024-d", "ordinal": 3, "text": "Solo en intervenciones quirúrgicas programadas", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-025",
+      "topicId": "t-legislacion",
+      "prompt": "La historia clínica es:",
+      "explanation": "La historia clínica es el conjunto de documentos que recogen los datos clínicos del paciente a lo largo de su proceso asistencial; su custodia corresponde al centro sanitario.",
+      "officialYear": 2002,
+      "officialSourceRef": "BOE_A-2002-22188_Ley41-2002_Articulo14",
+      "options": [
+        { "id": "q-025-a", "ordinal": 0, "text": "Un documento propiedad del paciente en exclusiva", "isCorrect": false },
+        { "id": "q-025-b", "ordinal": 1, "text": "El conjunto de documentos que reflejan el proceso asistencial del paciente", "isCorrect": true },
+        { "id": "q-025-c", "ordinal": 2, "text": "Una herramienta administrativa sin valor legal", "isCorrect": false },
+        { "id": "q-025-d", "ordinal": 3, "text": "Un documento reservado al personal médico", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-026",
+      "topicId": "t-higiene",
+      "prompt": "El lavado de manos higiénico tiene una duración mínima de:",
+      "explanation": "El lavado de manos higiénico, según la OMS, debe durar entre 40 y 60 segundos para garantizar la eliminación de la flora transitoria.",
+      "officialYear": 2019,
+      "officialSourceRef": "OMS_HandHygiene_2009_Recomendacion6",
+      "options": [
+        { "id": "q-026-a", "ordinal": 0, "text": "5 segundos", "isCorrect": false },
+        { "id": "q-026-b", "ordinal": 1, "text": "40-60 segundos", "isCorrect": true },
+        { "id": "q-026-c", "ordinal": 2, "text": "2-3 minutos", "isCorrect": false },
+        { "id": "q-026-d", "ordinal": 3, "text": "10 segundos", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-027",
+      "topicId": "t-higiene",
+      "prompt": "Para la higiene de manos con solución hidroalcohólica, los 5 momentos de la OMS incluyen:",
+      "explanation": "Los 5 momentos de la OMS para la higiene de manos son: antes del contacto con el paciente, antes de una tarea aséptica, después del riesgo de exposición a fluidos, después del contacto con el paciente y después del contacto con el entorno del paciente.",
+      "officialYear": 2019,
+      "officialSourceRef": "OMS_HandHygiene_2009_My5Moments",
+      "options": [
+        { "id": "q-027-a", "ordinal": 0, "text": "Solo antes y después del contacto con el paciente", "isCorrect": false },
+        { "id": "q-027-b", "ordinal": 1, "text": "Antes del contacto, antes de tarea aséptica, tras exposición a fluidos, tras contacto con paciente y tras contacto con su entorno", "isCorrect": true },
+        { "id": "q-027-c", "ordinal": 2, "text": "Solo después del contacto con fluidos", "isCorrect": false },
+        { "id": "q-027-d", "ordinal": 3, "text": "Solo al iniciar y al finalizar el turno", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-028",
+      "topicId": "t-medicacion",
+      "prompt": "La zona deltoidea es adecuada para inyecciones intramusculares de volumen:",
+      "explanation": "La zona deltoidea solo admite volúmenes pequeños (≤ 1-2 mL) por su limitada masa muscular; para volúmenes mayores se prefiere el glúteo o el vasto lateral.",
+      "officialYear": 2018,
+      "officialSourceRef": "SESCAM_TCAE_2018_Cuestionario_Pregunta14",
+      "options": [
+        { "id": "q-028-a", "ordinal": 0, "text": "Mayores de 5 mL", "isCorrect": false },
+        { "id": "q-028-b", "ordinal": 1, "text": "Pequeños (≤ 1-2 mL)", "isCorrect": true },
+        { "id": "q-028-c", "ordinal": 2, "text": "Cualquier volumen", "isCorrect": false },
+        { "id": "q-028-d", "ordinal": 3, "text": "Solo intravenosos", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-029",
+      "topicId": "t-urgencias",
+      "prompt": "El número de emergencias sanitarias en España es:",
+      "explanation": "El número único de emergencias en España es el 112, que coordina también la atención sanitaria urgente junto con los servicios autonómicos de salud.",
+      "officialYear": 2020,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2020_Cuestionario_Pregunta1",
+      "options": [
+        { "id": "q-029-a", "ordinal": 0, "text": "061", "isCorrect": false },
+        { "id": "q-029-b", "ordinal": 1, "text": "112", "isCorrect": true },
+        { "id": "q-029-c", "ordinal": 2, "text": "091", "isCorrect": false },
+        { "id": "q-029-d", "ordinal": 3, "text": "080", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q-030",
+      "topicId": "t-urgencias",
+      "prompt": "Para la medición de la temperatura axilar, el termómetro se mantiene:",
+      "explanation": "La temperatura axilar se mantiene con el termómetro entre 3 y 5 minutos, con el brazo del paciente pegado al tronco para asegurar el cierre de la axila.",
+      "officialYear": 2018,
+      "officialSourceRef": "SAS_TCAE_TurnoLibre_2018_Cuestionario_Pregunta11",
+      "options": [
+        { "id": "q-030-a", "ordinal": 0, "text": "10 segundos", "isCorrect": false },
+        { "id": "q-030-b", "ordinal": 1, "text": "Entre 3 y 5 minutos", "isCorrect": true },
+        { "id": "q-030-c", "ordinal": 2, "text": "30 segundos", "isCorrect": false },
+        { "id": "q-030-d", "ordinal": 3, "text": "15 minutos", "isCorrect": false }
+      ]
+    }
+  ]
+}

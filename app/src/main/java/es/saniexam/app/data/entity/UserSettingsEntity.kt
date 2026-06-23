@@ -14,6 +14,11 @@ import java.time.Instant
  * Used by Review to resume the in-flight session (queue position,
  * reveal state) and by the backup codec to round-trip user state
  * across devices.
+ *
+ * PR-A: `active_category` is the new `professional-categories` column.
+ * The default is `TCAE` (the only registered category in the MVP).
+ * The Room v3 -> v4 migration also adds the column on existing v3
+ * installs; see [es.saniexam.app.data.db.SaniExamDb.MIGRATION_3_4].
  */
 @Entity(tableName = "user_settings")
 data class UserSettingsEntity(
@@ -21,6 +26,7 @@ data class UserSettingsEntity(
     @ColumnInfo(name = "last_revealed_card_id") val lastRevealedCardId: String?,
     @ColumnInfo(name = "last_session_queue_position") val lastSessionQueuePosition: Int,
     @ColumnInfo(name = "last_session_at") val lastSessionAt: Long?,
+    @ColumnInfo(name = "active_category", defaultValue = "TCAE") val activeCategory: String,
 ) {
     companion object {
         const val SINGLETON_ID: Int = 1
@@ -31,6 +37,7 @@ internal fun UserSettingsEntity.toDomain() = UserSettings(
     lastRevealedCardId = lastRevealedCardId,
     lastSessionQueuePosition = lastSessionQueuePosition,
     lastSessionAt = lastSessionAt?.let(Instant::ofEpochMilli),
+    activeCategory = activeCategory,
 )
 
 internal fun UserSettings.toEntity() = UserSettingsEntity(
@@ -38,4 +45,5 @@ internal fun UserSettings.toEntity() = UserSettingsEntity(
     lastRevealedCardId = lastRevealedCardId,
     lastSessionQueuePosition = lastSessionQueuePosition,
     lastSessionAt = lastSessionAt?.toEpochMilli(),
+    activeCategory = activeCategory,
 )

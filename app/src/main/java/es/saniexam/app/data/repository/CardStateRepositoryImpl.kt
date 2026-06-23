@@ -49,6 +49,20 @@ class CardStateRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun listDueByCategory(
+        now: Instant,
+        category: String,
+        limit: Int,
+    ): List<CardStateWithQuestion> {
+        val cards = dao.listDueByCategory(now.toEpochMilli(), category, limit)
+        return cards.mapNotNull { entity ->
+            val card = entity.toDomain()
+            val question = questionDao.get(card.questionId)?.toDomain() ?: return@mapNotNull null
+            val options = optionDao.forQuestion(card.questionId).map { it.toDomain() }
+            CardStateWithQuestion(card, question, options)
+        }
+    }
+
     override suspend fun deleteAll() { dao.deleteAll() }
 
     override suspend fun replaceAll(states: List<CardState>) {

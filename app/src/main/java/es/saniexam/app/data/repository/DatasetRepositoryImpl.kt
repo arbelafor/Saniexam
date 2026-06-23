@@ -2,7 +2,6 @@ package es.saniexam.app.data.repository
 
 import es.saniexam.app.data.dao.DatasetVersionDao
 import es.saniexam.app.data.dao.SubjectPackDao
-import es.saniexam.app.data.entity.SubjectPackEntity
 import es.saniexam.app.data.entity.toDomain
 import es.saniexam.app.data.entity.toEntity
 import es.saniexam.app.domain.model.DatasetVersion
@@ -32,4 +31,10 @@ class DatasetRepositoryImpl @Inject constructor(
         // Caller is expected to be inside a transaction (e.g. the importer).
         versionDao.insert(version.toEntity())
     }
+
+    override fun observeActivePacksByCategory(category: String): Flow<List<SubjectPack>> =
+        packDao.observeByCategory(category).map { rows -> rows.map { it.toDomain() } }
+
+    override suspend fun countActivePacksByCategory(category: String): Int =
+        packDao.countByCategory(category)
 }
