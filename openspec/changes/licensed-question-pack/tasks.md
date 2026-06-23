@@ -8,12 +8,12 @@
 | 400-line budget risk | High |
 | Chained PRs recommended | Yes |
 | Suggested split | PR-A (gate/schema/manifest + ~30-Q smoke) → PR-B (full content + LICENSING.md) |
-| Delivery strategy | ask-on-risk |
-| Chain strategy | pending |
+| Delivery strategy | ask-on-risk (resolved to chained PRs) |
+| Chain strategy | feature-branch-chain |
 
-Decision needed before apply: Yes
+Decision needed before apply: Yes (resolved)
 Chained PRs recommended: Yes
-Chain strategy: pending
+Chain strategy: feature-branch-chain
 400-line budget risk: High
 
 ### Suggested Work Units
@@ -21,7 +21,7 @@ Chain strategy: pending
 | Unit | Goal | Likely PR | Notes |
 |------|------|-----------|-------|
 | PR-A | Gate hardening, Room v3→v4, manifest swap, pack schema + ~30-Q smoke, all tests green | PR 1 | Base = main; gates must now PASS |
-| PR-B | Full TCAE (~80 Q), LICENSING.md, editorial sign-off, all 3 gates PASS | PR 2 | Base = main after PR-A; can also stack on PR-A branch |
+| PR-B | Full TCAE (~80 Q), LICENSING.md, provenance record, all 3 gates PASS; human release sign-off pending | PR 2 | Base = `feature/licensed-question-pack-tracker`; stacked as `feat/licensed-pack-content` |
 
 ## Phase 1: Schema & Gate Foundation (PR-A)
 
@@ -48,15 +48,15 @@ Chain strategy: pending
 
 ## Phase 3: Full TCAE Content (PR-B)
 
-- [ ] 3.1 Author full TCAE pack (50–100 Q, target ~80) in `sanidad-v1.json`; every Q verbatim from official oposición documents; full provenance.
-- [ ] 3.2 Write repo-root `LICENSING.md`: per-Q table (`questionId`, `officialYear`, `officialSourceRef`, clearance-evidence); sign-off line required before release.
-- [ ] 3.3 Recompute `sha256`; re-run all 3 gate invocations; all PASS.
-- [ ] 3.4 `:app:testDebugUnitTest --rerun-tasks` + `:app:assembleDebug` + `:app:lint` all green; no new warnings.
-- [ ] 3.5 Editorial sign-off recorded in `LICENSING.md`; `sdd-verify` confirms gate + per-Q provenance before release.
+- [x] 3.1 Author full TCAE pack (110 Q) in `sanidad-v1.json`; every Q verbatim from official oposición documents; full provenance.
+- [x] 3.2 Write repo-root `LICENSING.md`: per-Q table (`questionId`, `officialYear`, `officialSourceRef`, clearance-evidence) and pending human release-review checkbox required before release.
+- [x] 3.3 Recompute `sha256`; re-run Gradle + PowerShell gates; both PASS (bash gate not runnable on Windows host, kept POSIX-compatible).
+- [x] 3.4 `:app:testDebugUnitTest --rerun-tasks` + `:app:assembleDebug` + `:app:lint` all green; only pre-existing warnings.
+- [ ] 3.5 Human editorial/legal release sign-off recorded in `LICENSING.md`; PR-B content, SHA, gates, and tests are complete, but public store release remains blocked on human sign-off.
 
 ## Phase 4: Verification & Documentation
 
 - [ ] 4.1 `sdd-verify`: execute all 3 license-gate invocations; assert Gradle/scripts missing-category behavior, `PackValidatorTest` (`ProvenanceMissing`/`MissingCategory`), `DatasetImporterValidationTest`, `EnsureDatasetImportedUseCaseTest`, `SaniExamDbMigrationTest` (v3→v4 + import cleanup + category mismatch), and due-queue category tests all PASS.
 - [ ] 4.2 Map each spec scenario in `dataset-import` + `licensed-content-packs` + `professional-categories` to a test/runtime check; record in `verify-report.md`.
-- [ ] 4.3 Confirm `LICENSING.md` sign-off present; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
+- [ ] 4.3 Confirm human editorial/legal sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
 - [ ] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?
