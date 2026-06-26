@@ -155,12 +155,14 @@ private fun toDto(u: UserSettings): UserSettingsDto = UserSettingsDto(
     lastRevealedCardId = u.lastRevealedCardId,
     lastSessionQueuePosition = u.lastSessionQueuePosition,
     lastSessionAt = u.lastSessionAt?.toEpochMilli(),
+    activeCategory = u.activeCategory,
 )
 
 private fun fromDto(d: UserSettingsDto): UserSettings = UserSettings(
     lastRevealedCardId = d.lastRevealedCardId,
     lastSessionQueuePosition = d.lastSessionQueuePosition,
     lastSessionAt = d.lastSessionAt?.let(Instant::ofEpochMilli),
+    activeCategory = d.activeCategory,
 )
 
 internal fun sha256Hex(bytes: ByteArray): String {

@@ -1,10 +1,11 @@
 {
-  "id": "sanidad-dev-placeholder",
+  "id": "sanidad-v1",
   "version": 1,
-  "sourceAttribution": "Development / test content (NOT real exam data)",
-  "publishedAt": "2026-06-16",
-  "license": "dev-placeholder",
-  "licenseNotes": "Dev placeholder pack; release pipeline MUST fail closed while this license is active. Replace with a cleared-of-rights official pack before any public distribution.",
-  "sha256": "11e5650e849b3d32f6ba6adff10b355e9b5c806cf5f1102da038edaa8b5f2f16",
-  "packFile": "question-packs/sanidad-dev-placeholder-v1.json"
+  "sourceAttribution": "Servicio Aragonés de Salud - Técnico en Cuidados Auxiliares de Enfermería (TCAE), turno libre, convocatoria oposición 2025; examen 2026-05-14. Preguntas y opciones reproducidas literalmente del cuestionario oficial publicado.",
+  "publishedAt": "2026-06-24",
+  "license": "cleared-of-rights",
+  "licenseNotes": "Provenance recorded from official Servicio Aragonés de Salud TCAE 2025 source URLs (question paper and provisional answer key). No ownership claim is made over the original wording. Human editorial/legal release review is pending before any public store distribution; see LICENSING.md.",
+  "category": "TCAE",
+  "sha256": "a4e00e8dab30b231a429ebf32d02f351e6635143a46a38430f57f6d795be7a94",
+  "packFile": "question-packs/sanidad-v1.json"
 }

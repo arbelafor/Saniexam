@@ -27,6 +27,7 @@ class DatasetImportException(
     enum class Reason {
         AssetMissing, AssetUnreadable, ManifestMissing, ManifestMismatch,
         PackIdMismatch, VersionMismatch, ChecksumMismatch, MissingAttribution,
+        MissingCategory, CategoryMismatch, ProvenanceMissing,
         QuestionMissingFields, ZeroOrMultipleCorrectOptions,
         OrphanTopicReference, DuplicateQuestionId,
     }
@@ -36,6 +37,10 @@ class DatasetImportException(
     val id: String, val version: Int,
     val sourceAttribution: String, val publishedAt: String,
     val license: String, val licenseNotes: String,
+    // PR-A: `category` is now part of the manifest schema. It is
+    // nullable only so a missing JSON field decodes and can be
+    // rejected as MissingCategory instead of silently defaulting.
+    val category: String? = null,
     val sha256: String, val packFile: String,
 )
 
@@ -76,7 +81,11 @@ open class DatasetImporter @Inject constructor(
     private val versionDao: DatasetVersionDao,
     private val db: SaniExamDb?,
 ) {
-    open suspend fun importBundled(packId: String, packVersion: Int): Int = withContext(Dispatchers.IO) {
+    open suspend fun importBundled(
+        packId: String,
+        packVersion: Int,
+        expectedCategory: String,
+    ): Int = withContext(Dispatchers.IO) {
         val manifest = readManifest(MANIFEST_PATH)
         if (manifest.id != packId) throw DatasetImportException(DatasetImportException.Reason.PackIdMismatch)
         if (manifest.version != packVersion) throw DatasetImportException(DatasetImportException.Reason.VersionMismatch)
@@ -91,12 +100,23 @@ open class DatasetImporter @Inject constructor(
             throw DatasetImportException(DatasetImportException.Reason.ManifestMismatch)
         }
         validateAttribution(manifest)
+        val category = manifest.category?.trim()
+        if (category.isNullOrBlank()) {
+            throw DatasetImportException(DatasetImportException.Reason.MissingCategory)
+        }
+        if (category != expectedCategory.trim()) {
+            throw DatasetImportException(DatasetImportException.Reason.CategoryMismatch)
+        }
 
         val pack = SubjectPack(
             id = manifest.id, version = manifest.version,
             sourceAttribution = manifest.sourceAttribution,
             publishedAt = manifest.publishedAt,
             license = manifest.license, licenseNotes = manifest.licenseNotes,
+            // PR-A: category flows from manifest -> domain -> entity.
+            // The validator enforces non-blank; the release gate
+            // enforces non-blank at the manifest layer.
+            category = category,
         )
         val validated = PackValidator.validate(
             pack = pack,
@@ -118,6 +138,12 @@ open class DatasetImporter @Inject constructor(
         )
 
         (db ?: error("DatasetImporter requires a non-null SaniExamDb in production")).withTransaction {
+            // Upgraded installs may still hold the old dev-placeholder pack
+            // with globally-scoped question IDs such as q-001. Remove it
+            // before inserting the release pack so stale placeholder content
+            // cannot stay active and cannot collide with bundled IDs.
+            packDao.deleteById(LEGACY_DEV_PLACEHOLDER_PACK_ID)
+            packDao.deleteById(pack.id)
             packDao.insert(pack.toEntity())
             topicDao.insertAll(validated.topicEntities)
             questionDao.insertAll(validated.questionEntities)
@@ -156,6 +182,7 @@ open class DatasetImporter @Inject constructor(
 
     companion object {
         const val MANIFEST_PATH = "pack-manifest.json"
+        private const val LEGACY_DEV_PLACEHOLDER_PACK_ID = "sanidad-dev-placeholder"
     }
 }
 

@@ -26,6 +26,10 @@ import javax.inject.Singleton
  *    `BackupRepositoryImpl` can inject the DAOs directly.
  *  - PR5 adds the v2 -> v3 migration (review_log + user_settings
  *    tables) and the corresponding DAO providers.
+ *  - PR-A (`licensed-question-pack`) adds the v3 -> v4 migration
+ *    (category + active_category columns, spec
+ *    `professional-categories`) so the data model is
+ *    multi-category-aware from v1.
  */
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,7 +44,11 @@ object DatabaseModule {
         SaniExamDb::class.java,
         SaniExamDb.NAME,
     )
-        .addMigrations(SaniExamDb.MIGRATION_1_2, SaniExamDb.MIGRATION_2_3)
+        .addMigrations(
+            SaniExamDb.MIGRATION_1_2,
+            SaniExamDb.MIGRATION_2_3,
+            SaniExamDb.MIGRATION_3_4,
+        )
         .build()
 
     @Provides

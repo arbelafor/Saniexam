@@ -22,6 +22,15 @@ interface CardStateDao {
     @Query("SELECT * FROM card_state WHERE due_at <= :nowMs ORDER BY due_at ASC LIMIT :limit")
     fun observeDue(nowMs: Long, limit: Int): Flow<List<CardStateEntity>>
 
+    @Query(
+        "SELECT cs.* FROM card_state cs " +
+            "INNER JOIN question q ON q.id = cs.question_id " +
+            "INNER JOIN subject_pack sp ON sp.id = q.pack_id AND sp.version = q.pack_version " +
+            "WHERE cs.due_at <= :nowMs AND sp.category = :category " +
+            "ORDER BY cs.due_at ASC LIMIT :limit"
+    )
+    suspend fun listDueByCategory(nowMs: Long, category: String, limit: Int): List<CardStateEntity>
+
     @Query("SELECT COUNT(*) FROM card_state")
     suspend fun count(): Int
 

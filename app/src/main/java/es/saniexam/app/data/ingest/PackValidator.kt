@@ -18,6 +18,14 @@ internal data class ValidatedPack(
  *  - "Orphan topic reference" (rejected)
  *  - "Duplicate question id" (rejected)
  *  - "Question with missing required fields" (rejected)
+ *  - PR-A: "Question missing provenance" (rejected with
+ *    [DatasetImportException.Reason.ProvenanceMissing]) — every
+ *    question must carry a non-blank `officialSourceRef` (spec
+ *    `dataset-import` "Official-Source Metadata and Provenance"
+ *    and spec `licensed-content-packs` "Per-Question Provenance").
+ *    A blank or null `officialSourceRef` is the release-time
+ *    failure path: the validator rejects the entire pack and the
+ *    release pipeline license gate fails closed.
  */
 internal object PackValidator {
 
@@ -43,6 +51,17 @@ internal object PackValidator {
         topics: List<PackTopicView>,
         questions: List<PackQuestionView>,
     ): ValidatedPack {
+        // PR-A: pack-level `category` MUST be present and non-blank.
+        // The release gate already refuses a manifest with a missing
+        // category; the ingest path is the second line of defence so
+        // a manifest that slipped through (or a hand-edited asset
+        // bundle) cannot persist rows without provenance.
+        if (pack.category.isBlank()) {
+            throw DatasetImportException(
+                DatasetImportException.Reason.MissingCategory,
+            )
+        }
+
         val topicIds = topics.map { it.id }.toSet()
         if (questions.any { it.topicId !in topicIds }) {
             val orphan = questions.first { it.topicId !in topicIds }
@@ -59,6 +78,17 @@ internal object PackValidator {
             if (q.id.isBlank() || q.prompt.isBlank() || q.options.isEmpty()) {
                 throw DatasetImportException(
                     DatasetImportException.Reason.QuestionMissingFields, q.id,
+                )
+            }
+            // PR-A: provenance is mandatory at the per-question level.
+            // The release gate refuses a manifest without a pack-level
+            // `category`; the validator refuses a pack where any
+            // question lacks a non-blank `officialSourceRef`. Together
+            // they form a closed loop: a pack with no provenance
+            // cannot ship and cannot be ingested.
+            if (q.officialSourceRef.isNullOrBlank()) {
+                throw DatasetImportException(
+                    DatasetImportException.Reason.ProvenanceMissing, q.id,
                 )
             }
             if (!seenQuestionIds.add(q.id)) {

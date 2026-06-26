@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
     alias(libs.plugins.ksp)
@@ -54,40 +56,43 @@ ksp {
     arg("room.incremental", "true")
 }
 
-// PR7 release-pipeline gate. Fails closed when the bundled pack
-// manifest's `license` is in the refused set (dev-placeholder,
-// unknown, blank, missing). Mirrors
-// [es.saniexam.app.build.PackLicenseGate] at the Gradle layer so
-// the gate is enforceable from CI without running the JUnit
-// suite. Use `./gradlew :app:checkReleasePackLicense` from the
-// project root.
+// Release-pipeline gate. Fails closed when the bundled pack
+// manifest's `license` is in the refused set (case-insensitive
+// match against `dev-placeholder`, `unknown`, blank, missing) OR
+// when the manifest is missing the required `category` field
+// (spec `professional-categories` "Pack-Level Category Field").
+// Implemented at the Gradle layer so the gate is enforceable from CI
+// without running the JUnit suite. Use `./gradlew :app:checkReleasePackLicense`
+// from the project root.
 tasks.register("checkReleasePackLicense") {
     group = "verification"
-    description = "Refuses release builds that bundle a dev-placeholder / unknown / blank license."
+    description = "Refuses release builds that bundle a dev-placeholder / unknown / blank license or a manifest without `category`."
     val manifest = file("src/main/assets/pack-manifest.json")
     doLast {
         require(manifest.exists()) { "pack-manifest.json missing at ${manifest.absolutePath}" }
-        val raw = manifest.readText()
-        val license = "\"license\"\\s*:\\s*\"([^\"]*)\""
-            .toRegex()
-            .find(raw)
-            ?.groupValues
-            ?.get(1)
-            ?.trim()
-            .orEmpty()
+        val parsed = JsonSlurper().parse(manifest) as? Map<*, *>
+            ?: throw GradleException("Refused: pack-manifest.json root must be a JSON object.")
+        val license = (parsed["license"] as? String)?.trim().orEmpty()
+        val category = (parsed["category"] as? String)?.trim().orEmpty()
         val refused = setOf("dev-placeholder", "unknown")
-        val isRefused = license.isEmpty() || license in refused
-        if (isRefused) {
+        // Case-insensitive comparison so a case-variant like
+        // `Dev-Placeholder` or `DEV-PLACEHOLDER` is still refused.
+        val isLicenseRefused = license.isEmpty() || license.lowercase() in refused
+        val isCategoryMissing = category.isEmpty()
+        if (isLicenseRefused || isCategoryMissing) {
             val msg = buildString {
-                appendLine("Refused: bundled pack manifest license is '$license'.")
-                appendLine("Release pipeline gate (PR7) refuses to ship a public APK")
-                appendLine("with a license in {dev-placeholder, unknown} or blank.")
+                appendLine("Refused: bundled pack manifest fails the release gate.")
+                appendLine("  license = '$license' (refused=$isLicenseRefused)")
+                appendLine("  category = '$category' (missing=$isCategoryMissing)")
+                appendLine("Release pipeline gate refuses to ship a public APK when")
+                appendLine("  - license is in {dev-placeholder, unknown} (any case), blank, or missing, OR")
+                appendLine("  - the manifest has no `category` field (spec `professional-categories`).")
                 appendLine("Replace assets/question-packs/* and pack-manifest.json with a")
-                appendLine("cleared-of-rights pack, or pin a known license (MIT / CC-BY-* / cleared-of-rights / Apache-2.0).")
+                appendLine("cleared-of-rights pack carrying `category: \"TCAE\"`.")
             }
             throw GradleException(msg)
         }
-        logger.lifecycle("checkReleasePackLicense: PASS (license='$license').")
+        logger.lifecycle("checkReleasePackLicense: PASS (license='$license', category='$category').")
     }
 }
 
@@ -95,6 +100,10 @@ tasks.register("checkReleasePackLicense") {
 // `check` lifecycle so `./gradlew :app:check` fails the build
 // when the bundled pack would be refused at release.
 tasks.named("check") {
+    dependsOn("checkReleasePackLicense")
+}
+
+tasks.matching { it.name == "assembleRelease" }.configureEach {
     dependsOn("checkReleasePackLicense")
 }
 

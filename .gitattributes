@@ -1,0 +1,3 @@
+# Keep bundled question-pack JSON assets as LF so the SHA-256 in pack-manifest.json
+# remains deterministic across platforms (especially Windows with core.autocrlf).
+app/src/main/assets/**/*.json text eol=lf

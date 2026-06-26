@@ -20,8 +20,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
  */
 internal object UnusedSubjectPackDao : SubjectPackDao {
     override suspend fun insert(pack: SubjectPackEntity) = error("UnusedSubjectPackDao.insert")
+    override suspend fun deleteById(packId: String) = error("UnusedSubjectPackDao.deleteById")
     override fun observeAll(): Flow<List<SubjectPackEntity>> = MutableStateFlow(emptyList())
     override suspend fun get(packId: String, packVersion: Int): SubjectPackEntity? = error("UnusedSubjectPackDao.get")
+    override fun observeByCategory(category: String): Flow<List<SubjectPackEntity>> = MutableStateFlow(emptyList())
+    override suspend fun countByCategory(category: String): Int = error("UnusedSubjectPackDao.countByCategory")
 }
 
 internal object UnusedTopicDao : TopicDao {
@@ -35,6 +38,8 @@ internal object UnusedQuestionDao : QuestionDao {
     override fun observeAll(packId: String): Flow<List<QuestionEntity>> = MutableStateFlow(emptyList())
     override suspend fun get(id: String): QuestionEntity? = error("UnusedQuestionDao.get")
     override suspend fun count(packId: String): Int = error("UnusedQuestionDao.count")
+    override fun observeAllByCategory(category: String): Flow<List<QuestionEntity>> = MutableStateFlow(emptyList())
+    override suspend fun countByCategory(category: String): Int = error("UnusedQuestionDao.countByCategory")
 }
 
 internal object UnusedOptionDao : OptionDao {

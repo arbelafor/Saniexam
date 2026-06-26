@@ -309,6 +309,7 @@ class ExamViewModelTest {
                 questionRepository = FakeQuestionRepository(emptyList()),
                 optionRepository = FakeOptionRepository(emptyList()),
                 datasetRepository = FakeDatasetRepository(activePacks = listOf(pack("p1"))),
+                userSettingsRepository = FakeUserSettingsRepository(),
                 io = testDispatcher,
                 clock = clock,
             )
@@ -319,6 +320,7 @@ class ExamViewModelTest {
             datasetRepository = FakeDatasetRepository(
                 activePacks = if (throwNoActivePack) emptyList() else listOf(pack("p1")),
             ),
+            userSettingsRepository = FakeUserSettingsRepository(),
             io = testDispatcher,
             clock = clock,
         )
@@ -331,6 +333,7 @@ class ExamViewModelTest {
         publishedAt = "2026-01-01",
         license = "test",
         licenseNotes = "test",
+        category = es.saniexam.app.domain.model.UserSettings.TCAE,
     )
 
     private fun singleCorrectQuestion(id: String): Question = Question(
@@ -349,6 +352,9 @@ class ExamViewModelTest {
             MutableStateFlow(questions.filter { it.packId == packId })
         override suspend fun get(id: String): Question? = questions.firstOrNull { it.id == id }
         override suspend fun count(packId: String): Int = questions.count { it.packId == packId }
+        override fun observeAllByCategory(category: String): Flow<List<Question>> =
+            MutableStateFlow(questions)
+        override suspend fun countByCategory(category: String): Int = questions.size
     }
 
     private class FakeOptionRepository(private val questions: List<Question>) : OptionRepository {
@@ -371,6 +377,19 @@ class ExamViewModelTest {
             MutableStateFlow(emptyList<es.saniexam.app.domain.model.DatasetVersion>())
         override suspend fun isApplied(packId: String, packVersion: Int): Boolean = true
         override suspend fun recordVersion(version: es.saniexam.app.domain.model.DatasetVersion) = Unit
+        override fun observeActivePacksByCategory(category: String): Flow<List<SubjectPack>> =
+            MutableStateFlow(activePacks.filter { it.category == category })
+        override suspend fun countActivePacksByCategory(category: String): Int =
+            activePacks.count { it.category == category }
+    }
+
+    private class FakeUserSettingsRepository(
+        initial: es.saniexam.app.domain.model.UserSettings =
+            es.saniexam.app.domain.model.UserSettings.Default,
+    ) : es.saniexam.app.domain.repository.UserSettingsRepository {
+        private var state: es.saniexam.app.domain.model.UserSettings = initial
+        override suspend fun get(): es.saniexam.app.domain.model.UserSettings = state
+        override suspend fun update(settings: es.saniexam.app.domain.model.UserSettings) { state = settings }
     }
 }
 
