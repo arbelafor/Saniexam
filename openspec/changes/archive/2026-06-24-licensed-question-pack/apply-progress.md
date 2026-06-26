@@ -309,9 +309,16 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check-pack-license.ps1
 # → BUILD SUCCESSFUL (82 actionable tasks)
 ```
 
-## Remaining Tasks (for sdd-verify / follow-up)
+## Technical Verify Update — 2026-06-24
 
-- [ ] 4.1 `sdd-verify`: formal verification report still pending; Windows Gradle and PowerShell gates plus `:app:check` passed on 2026-06-24, while bash remains not runnable on this Windows host.
-- [ ] 4.2 Map each spec scenario in `dataset-import` + `licensed-content-packs` + `professional-categories` to a test/runtime check; record in `verify-report.md`.
-- [ ] 4.3 Confirm human editorial/legal release sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
-- [ ] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?
+| Task | Status | Evidence |
+|---|---|---|
+| 4.1 `sdd-verify` gate execution | ✅ | `verify-report.md` records Gradle gate PASS, PowerShell gate PASS, structural Bash parity, 106/106 unit tests PASS, `assembleDebug` PASS, `lint` PASS, and `:app:check` PASS. |
+| 4.2 spec-to-test/runtime mapping | ✅ | `verify-report.md` maps `dataset-import`, `licensed-content-packs`, and `professional-categories` requirements to tests, runtime checks, manifest/SHA evidence, and provenance table coverage. |
+
+Technical verification is **PASS WITH WARNINGS**. Human editorial/legal release sign-off was recorded in `LICENSING.md` on 2026-06-24 by the project owner.
+
+## Remaining Tasks (release/sign-off follow-up)
+
+- [x] 4.3 Confirm human editorial/legal release sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
+- [x] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?

@@ -52,11 +52,11 @@ Chain strategy: feature-branch-chain
 - [x] 3.2 Write repo-root `LICENSING.md`: per-Q table (`questionId`, `officialYear`, `officialSourceRef`, clearance-evidence) and pending human release-review checkbox required before release.
 - [x] 3.3 Recompute `sha256`; re-run Gradle + PowerShell gates; both PASS (bash gate not runnable on Windows host, kept POSIX-compatible).
 - [x] 3.4 `:app:testDebugUnitTest --rerun-tasks` + `:app:assembleDebug` + `:app:lint` all green; only pre-existing warnings.
-- [ ] 3.5 Human editorial/legal release sign-off recorded in `LICENSING.md`; PR-B content, SHA, gates, and tests are complete, but public store release remains blocked on human sign-off.
+- [x] 3.5 Human editorial/legal release sign-off recorded in `LICENSING.md`; PR-B content, SHA, gates, and tests are complete.
 
 ## Phase 4: Verification & Documentation
 
-- [ ] 4.1 `sdd-verify`: execute all 3 license-gate invocations; assert Gradle/scripts missing-category behavior, `PackValidatorTest` (`ProvenanceMissing`/`MissingCategory`), `DatasetImporterValidationTest`, `EnsureDatasetImportedUseCaseTest`, `SaniExamDbMigrationTest` (v3→v4 + import cleanup + category mismatch), and due-queue category tests all PASS.
-- [ ] 4.2 Map each spec scenario in `dataset-import` + `licensed-content-packs` + `professional-categories` to a test/runtime check; record in `verify-report.md`.
-- [ ] 4.3 Confirm human editorial/legal sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
-- [ ] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?
+- [x] 4.1 `sdd-verify`: execute all 3 license-gate invocations; assert Gradle/scripts missing-category behavior, `PackValidatorTest` (`ProvenanceMissing`/`MissingCategory`), `DatasetImporterValidationTest`, `EnsureDatasetImportedUseCaseTest`, `SaniExamDbMigrationTest` (v3→v4 + import cleanup + category mismatch), and due-queue category tests all PASS.
+- [x] 4.2 Map each spec scenario in `dataset-import` + `licensed-content-packs` + `professional-categories` to a test/runtime check; record in `verify-report.md`.
+- [x] 4.3 Confirm human editorial/legal sign-off is recorded before release; UI surfaces `officialYear` + `officialSourceRef` in question detail; Home shows non-zero count.
+- [x] 4.4 Open to user before apply: license `cleared-of-rights` confirmed? TCAE source set ready or authored during apply? `LICENSING.md` repo-root approved? Keep dev pack as fallback under `app/src/dev/assets/question-packs/`?

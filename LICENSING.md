@@ -143,8 +143,10 @@ The content is official public-sector examination material published by the Serv
 - [x] Correct option for each question has been cross-checked against the official provisional answer key PDF.
 - [x] Every question carries a non-blank `officialSourceRef` and `officialYear=2025`.
 - [x] Pack manifest `license` is `cleared-of-rights` and `category` is `TCAE`.
-- [ ] Human editorial/legal release review completed before public store distribution.
+- [x] Human editorial/legal release review completed before public store distribution.
 
 **Provenance recorded on:** 2026-06-24
 
-**Recorder:** SDD apply executor (PR-B) — human editorial/legal release review required before any public store distribution.
+**Recorder:** SDD apply executor (PR-B).
+
+**Human release approval:** Approved by the project owner on 2026-06-24. The project owner accepts responsibility for using the official Servicio Aragonés de Salud TCAE source documents and provisional answer key for this study pack. This record is a product/editorial approval, not formal legal advice.
